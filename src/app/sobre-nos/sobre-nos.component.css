@@ -1,0 +1,25 @@
+
+.bgroxo{
+    background-color:#9794f2 ;
+}
+
+.fa{
+    font-size: 35pt;
+    padding: 10px;
+
+}
+.iconLinkedin{
+    color:#0e76a8;
+}
+.iconGithub{
+    color:  #211F1F;
+}
+
+.iconLinkedin:hover{
+    color:#0e2aa8;
+
+}
+
+.iconGithub:hover{
+    color:  #474141;
+}
