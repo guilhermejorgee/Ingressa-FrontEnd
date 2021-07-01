@@ -35,7 +35,9 @@ export class InicioComponent implements OnInit {
 
     const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
     
-    if(environment.fotoPerfil.match(verificador)){
+   // if(environment.fotoPerfil.match(verificador)){
+
+    if(verificador.test(environment.fotoPerfil)){
 
       foto = environment.fotoPerfil
       

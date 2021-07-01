@@ -69,6 +69,10 @@ export class CadastrarComponent implements OnInit {
 
       alert('Usuario cadastrado com sucesso')
 
+      }, erro=>{
+        if(erro.status == 400 || erro.status == 500){
+          alert('Informações inválidas')
+        }
       })
     }
   }
