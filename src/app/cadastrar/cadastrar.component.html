@@ -2,9 +2,9 @@
 
 <div class="container-fluid">
 
-    <div class="row d-flex justify-content-start">
-        <div class="col-md-12 p-3">
-            <a routerLink="/entrar">Entrar</a>
+   <div class="row d-flex justify-content-start enable-mobile">
+        <div class="col-md-12 p-3 enable-mobile">
+            <a class="v-p-l texto" routerLink="/entrar"><i class="fas fa-chevron-circle-left"></i> Voltar para o Login</a>
         </div>
     </div>
 
@@ -15,38 +15,48 @@
             <div class="container-fluid d-flex align-items-center justify-content-center" id="container-central">
 
                 <div class="col-md-7 text-center disable-mobile">
-                    <img src="assets/img/logo-grande.png" alt="">
+                    <img src="https://i.imgur.com/EoCiFTO.png" alt="">
                 </div>
 
                 <div class="col-md-5 bg-l p-3">
 
                     <div class="container d-flex justify-content-center enable-mobile">
 
-                        <img class="enable-mobile mb-3" src="assets/img/logo-pequeno.png" alt="">
+
+                        <img class="enable-mobile mb-3" src="https://i.imgur.com/4LRmSKg.png" alt="">
 
                     </div>
 
+                    
+
                     <div class="form-group text-center texto">
+                        <a routerLink="/entrar" class="v-p-l disable-mobile"><p class="text-end"><i class="fas fa-chevron-circle-left"></i> Voltar para o login</p></a>
                         <!-- <label for="usuario">Usuário</label>-->
-                        <input class="form-control bg-in" type="text" name="usuario" id="usuario"
+                        <input [(ngModel)]="usuario.nome" class="form-control bg-in" type="text" name="usuario" id="usuario"
+                            placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group text-center texto">
+                        <!-- <label for="usuario">Email</label>-->
+                        <input [(ngModel)]="usuario.email" class="form-control bg-in mt-2" type="text" name="email" id="email"
                             placeholder="Digite um email">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="senha">Senha</label> -->
-                        <input class="form-control mt-2 bg-in " type="password" name="senha" id="senha"
+                        <input (input)="confirmSenha($event)" class="form-control mt-2 bg-in " type="password" name="senha" id="senha"
                             placeholder="Digite uma senha">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="senha">Senha</label> -->
-                        <input class="form-control mt-2 bg-in " type="password" name="confirmSenha" id="confirmSenha"
+                        <input [(ngModel)]="usuario.senha" class="form-control mt-2 bg-in " type="password" name="confirmSenha" id="confirmSenha"
                             placeholder="Confirme a senha digitada">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="senha">Senha</label> -->
-                        <input class="form-control mt-2 bg-in" type="date" name="date" id="date"
+                        <input [(ngModel)]="usuario.dataNascimento" class="form-control mt-2 bg-in" type="date" name="date" id="date"
                             placeholder="Data de nascimento">
                     </div>
 
@@ -56,7 +66,7 @@
                             placeholder="Link foto de perfil">
                     </div>
 
-                    <select name="select" class="form-select bg-in mt-2">
+                    <select name="select" class="form-select bg-in mt-2" (change)="tipoUsuario($event)">
                         <option class="fw-bolder" value="valor1" selected>Escolha a opção que se aplica ao seu caso
                         </option>
                         <option class="fw-bolder" value="valor2">Estou em busca de emprego</option>
@@ -65,7 +75,7 @@
 
 
                     <div class="d-flex justify-content-center mt-3">
-                        <button type="submit" class="btn bg-btn w-100">Cadastrar</button>
+                        <button (click)="cadastrar()" type="submit" class="btn bg-btn w-100">Cadastrar</button>
                     </div>
 
                 </div>

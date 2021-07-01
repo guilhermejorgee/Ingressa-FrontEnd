@@ -111,6 +111,15 @@ a {
     
 }
 
+.v-p-l{
+    font-size: 10pt;
+    color: #845ABF;
+}
+
+.v-p-l:hover{
+    color: #644196;
+}
+
 @media screen and (max-width: 800px) {
     .disable-mobile {
         display: none;
