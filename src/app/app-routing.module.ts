@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { ContatoComponent } from './contato/contato.component';
+import { EntrarComponent } from './entrar/entrar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { MenuComponent } from './menu/menu.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 
 const routes: Routes = [
 
-  {path: '', redirectTo: 'inicio', pathMatch: 'full'},
+  {path: '', redirectTo: 'entrar', pathMatch: 'full'},
 
   {path:'inicio', component: InicioComponent},
   {path:'contato', component: ContatoComponent},
-  {path:'sobrenos', component: SobreNosComponent}
+  {path:'sobrenos', component: SobreNosComponent},
+  {path:'entrar', component: EntrarComponent},
+  {path:'cadastrar', component:CadastrarComponent}
 
 
 ];
