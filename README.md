@@ -9,14 +9,14 @@ criar uma plataforma aberta para receber profissionais mulheres e conectá-las a
 
 Campos da Model usuario
 
-+id
-+nome
-+email
-+dataNascimento
-+senha
-+usuarioEmpregador
-+descSobre
-+fotoPerfil
++ id
++ nome
++ email
++ dataNascimento
++ senha
++ usuarioEmpregador
++ descSobre
++ fotoPerfil
 
 O campo dataNascimento é utilizado para verificar a idade do usuario cadastrado, e se ele for menor de 14 anos, o usuário não pode
 usar a plataforma, já que ele não seria empregável
@@ -34,8 +34,7 @@ a emprego.
 		<td>CSS</td>
 		<td>Bootstrap</td>
 		<td>Angular</td>
-	</tr>
-	
+  </tr>
 	<tr>
 		<td>16</td>
 		<td>4</td>
@@ -53,9 +52,9 @@ a emprego.
 
 Implementações futuras:
 
-+Canal de suporte
-+Filtro de vagas que se encaixem melhor no perfil da profissional
-+Avaliação de empregadores
++ Canal de suporte
++ Filtro de vagas que se encaixem melhor no perfil da profissional
++ Avaliação de empregadores
 
 
 
