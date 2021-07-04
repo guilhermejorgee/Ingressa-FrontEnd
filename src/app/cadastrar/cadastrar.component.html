@@ -30,27 +30,30 @@
                     
 
                     <div class="form-group text-center texto">
-                        <a routerLink="/entrar" class="v-p-l disable-mobile"><p class="text-end"><i class="fas fa-chevron-circle-left"></i> Voltar para o login</p></a>
+                      <div class="d-flex justify-content-between">
+                        <a class="v-p-l" (click)="exibeAdmin()" id="adminClick"><p><i class="fas fa-unlock"></i> Cadastrar Admin</p></a>
+                        <a routerLink="/entrar" class="v-p-l disable-mobile"><p><i class="fas fa-chevron-circle-left"></i> Voltar para o login</p></a>
+                     </div>  
                         <!-- <label for="usuario">Usuário</label>-->
-                        <input [(ngModel)]="usuario.nome" class="form-control bg-in" type="text" name="usuario" id="usuario"
+                        <input [(ngModel)]="usuario.nome" class="form-control bg-in" type="text" name="usuario" id="usuario" 
                             placeholder="Digite seu nome">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="usuario">Email</label>-->
-                        <input [(ngModel)]="usuario.email" class="form-control bg-in mt-2" type="text" name="email" id="email"
+                        <input [(ngModel)]="usuario.email" class="form-control bg-in mt-2" type="text" name="email" id="email" (keyup)="validandoEmail()"
                             placeholder="Digite um email">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="senha">Senha</label> -->
-                        <input (input)="confirmSenha($event)" class="form-control mt-2 bg-in " type="password" name="senha" id="senha"
+                        <input (input)="confirmSenha($event)" class="form-control mt-2 bg-in " type="password" name="senha" id="senha" (keyup)="validandoSenha()"
                             placeholder="Digite uma senha">
                     </div>
 
                     <div class="form-group text-center texto">
                         <!-- <label for="senha">Senha</label> -->
-                        <input [(ngModel)]="usuario.senha" class="form-control mt-2 bg-in " type="password" name="confirmSenha" id="confirmSenha"
+                        <input [(ngModel)]="usuario.senha" class="form-control mt-2 bg-in " type="password" name="confirmSenha" id="confirmSenha" (keyup)="verificandoSenhas()"
                             placeholder="Confirme a senha digitada">
                     </div>
 
@@ -73,10 +76,17 @@
                         <option class="fw-bolder" value="valor3">Gostaria de divulgar vagas de emprego</option>
                     </select>
 
+                   <div class="form-group text-center texto" id="admin">
+                       <!--  <label for="usuario">Admin</label>-->
+                        <input (input)="verificandoAdmin($event)"  class="form-control bg-in mt-2" type="text" name="inputAdmin" id="inputAdmin"
+                            placeholder="Digite a chave para criação da conta de administrador">
+                    </div>
 
                     <div class="d-flex justify-content-center mt-3">
                         <button (click)="cadastrar()" type="submit" class="btn bg-btn w-100">Cadastrar</button>
                     </div>
+
+               
 
                 </div>
 

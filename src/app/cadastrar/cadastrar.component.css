@@ -120,6 +120,14 @@ a {
     color: #644196;
 }
 
+#admin{
+    display: none;
+}
+
+#adminClick:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
     .disable-mobile {
         display: none;

@@ -20,6 +20,8 @@ export class Usuario{
 
     public qtdPostagem: number;
 
+    public usuarioAdmin: boolean;
+
     public postagem: Postagem[];
  
 
