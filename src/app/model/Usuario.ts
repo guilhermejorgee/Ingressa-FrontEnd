@@ -10,6 +10,8 @@ export class Usuario{
 
     public dataNascimento: Date;
 
+    public telefone: string;
+
     public senha: string;
 
     public usuarioEmpregador: boolean;
@@ -21,6 +23,8 @@ export class Usuario{
     public qtdPostagem: number;
 
     public usuarioAdmin: boolean;
+
+    public empresaAtual: string;
 
     public postagem: Postagem[];
  
