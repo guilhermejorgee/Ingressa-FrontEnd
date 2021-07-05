@@ -5,7 +5,9 @@
 /*fonte logo INGRESSA*/
 @font-face {
     font-family: Argentum;
-    src: local(argentum-sans) url(/../assets/argentum-sans.regular.ttf);
+
+    src: local(argentum-sans) url(../../assets/argentum-sans.regular.ttf);
+
 }
 
 /*cor do menu*/

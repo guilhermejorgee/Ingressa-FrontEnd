@@ -1,0 +1,36 @@
+
+a{
+    color: black;
+    text-decoration: none;
+    
+}
+
+.bg-azul{
+    background-color: #9794F2;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.bg-lightgrey{
+    background-color: lightgrey;
+}
+
+.bg-roxo{
+    background-color: #845ABF;
+}
+
+.bg-roxo2{
+    background-color: #CCC2F2;
+}
+
+.bg-roxo3{
+    background-color: #E3DCF2;
+}
+
+.text-roxo{
+    color: #845ABF;
+}
+ 
+
