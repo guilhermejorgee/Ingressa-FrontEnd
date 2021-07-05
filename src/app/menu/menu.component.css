@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap%27');
+
+@import url('https://fonts.googleapis.com/css2family=Poppins:wght@100&display=swap%27');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap%27');
+
+/*fonte logo INGRESSA*/
+@font-face {
+    font-family: Argentum;
+    src: local(argentum-sans) url(../../assets/argentum-sans.regular.ttf);
+}
+
 /*cor do menu*/
 .bg-roxo{
     background-color: #845ABF;
@@ -8,24 +20,12 @@
     background-color: #e3dcf2;
 }
 
-/*fonte logo INGRESSA*/
-@font-face {
-    font-family: Argentum;
-    src: local(argentum-sans) url(./../../assets/argentum-sans.regular.ttf);
-}
 
 .ft-menu{
     font-family: "Argentum";
     font-size: 26px;
     font-weight: bolder
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap%27');
-
-@import url('https://fonts.googleapis.com/css2family=Poppins:wght@100&display=swap%27');
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap%27');
-
 
 .ft-eczar{
     font-family: 'Eczar';
