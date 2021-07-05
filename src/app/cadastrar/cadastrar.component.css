@@ -23,7 +23,7 @@
 
 .bg-in {
     /* background-color: rgba(170, 167, 242, 0.8);*/
-    background: #e3dcf2;
+    background-color: #e3dcf2;
     height: 46px;
     border: 1px solid #9794F2;
     color: #000;
@@ -118,6 +118,18 @@ a {
 
 .v-p-l:hover{
     color: #644196;
+}
+
+#admin{
+    display: none;
+}
+
+#adminClick:hover{
+    cursor: pointer;
+}
+
+#empresaAtual{
+    display: none;
 }
 
 @media screen and (max-width: 800px) {

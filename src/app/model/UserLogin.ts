@@ -16,4 +16,8 @@ export class UserLogin{
 
     public fotoPerfil: string;
 
+    public empresaAtual: string;
+
+    public telefone: string;
+
 }
