@@ -18,7 +18,7 @@ export class Postagem{
 
     public midia: String;
 
-    public qtdCurtidas: number;
+    public qtCurtidas: number;
 
     public tema: Tema;
 
