@@ -41,4 +41,9 @@ export class InicioService {
     );
   }
 
+  getPostagensEmAlta(): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/emalta', this.token)
+  }
+
+
 }

@@ -94,7 +94,8 @@
                                 </div>
 
                                 <div class="card-body d-flex justify-content-around mb-2">
-                                    <button class="btn btn-outline-success"> <a href="#">Gostei</a> </button>
+                                    
+                                    <button class="btn btn-outline-success"> <a href="#">{{item.qtCurtidas}} Gostei</a> </button>
                                     <button class="btn btn-outline-secondary"> <a href="#">Comentar</a> </button>
                                     <button class="btn btn-outline-primary"> <a href="#">Compartilhar</a> </button>
                                 </div>
@@ -132,11 +133,8 @@
                 <div class="card-body  text-center">
                     <h5> <b>Postagens em Alta</b></h5>
 
-                    <ul class="list-group list-group-flush my-3">
-                        <li class="list-group-item bg-roxo3"><a> Pagina 1</a></li>
-                        <li class="list-group-item bg-roxo3"><a> Pagina 2</a></li>
-                        <li class="list-group-item bg-roxo3"><a> Pagina 3</a></li>
-                        <li class="list-group-item bg-roxo3"><a> Pagina 4</a></li>
+                    <ul class="list-group list-group-flush my-3" *ngFor='let item of postagensEmAlta'>
+                        <li class="list-group-item bg-roxo3"><a>{{item.titulo}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -168,8 +166,8 @@
 
 
                         <div class="form-group my-3 mx-3">
-                            <select [(ngModel)]="temaEscolhido" class="form-control" name="tema" id="tema" (change)="findByIdTema()">
-                                <option *ngFor='let item of temas' value="{{item.id}}">{{item.area}}</option>
+                            <select *ngFor='let item of temas' [(ngModel)]="temaEscolhido"  class="form-control" name="tema" id="tema" (change)="findByIdTema()">
+                                <option  value="{{item.id}}">{{item.area}}</option>
                             </select>
 
                         </div>
@@ -191,7 +189,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <button (click)="PostPostagensComum()" type="button" class="btn btn-secondary bg-roxo">Publicar</button>
+                        <button data-bs-dismiss="modal" (click)="PostPostagensComum()" type="button" class="btn btn-secondary bg-roxo">Publicar</button>
                     </div>
 
 
