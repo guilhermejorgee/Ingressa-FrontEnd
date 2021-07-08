@@ -12,6 +12,12 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ContatoComponent } from './contato/contato.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { VagasComponent } from './vagas/vagas.component';
+
+import { PerfilComponent } from './perfil/perfil.component';
+
+import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+
 
 
 @NgModule({
@@ -23,7 +29,11 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     InicioComponent,
     ContatoComponent,
     EntrarComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    VagasComponent,
+    PerfilComponent,
+    MinhasPostagensComponent
+
   ],
   imports: [
     BrowserModule,
