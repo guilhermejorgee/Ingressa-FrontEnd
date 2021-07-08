@@ -13,6 +13,11 @@ import { ContatoComponent } from './contato/contato.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 
+import { PerfilComponent } from './perfil/perfil.component';
+
+import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     InicioComponent,
     ContatoComponent,
     EntrarComponent,
-    CadastrarComponent
+    CadastrarComponent,
+
+    PerfilComponent
+
+    MinhasPostagensComponent
+
   ],
   imports: [
     BrowserModule,
