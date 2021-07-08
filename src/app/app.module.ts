@@ -14,6 +14,11 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { VagasComponent } from './vagas/vagas.component';
 
+import { PerfilComponent } from './perfil/perfil.component';
+
+import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { VagasComponent } from './vagas/vagas.component';
     ContatoComponent,
     EntrarComponent,
     CadastrarComponent,
-    VagasComponent
+    VagasComponent,
+    PerfilComponent,
+    MinhasPostagensComponent
+
   ],
   imports: [
     BrowserModule,
