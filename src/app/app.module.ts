@@ -12,6 +12,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ContatoComponent } from './contato/contato.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     InicioComponent,
     ContatoComponent,
     EntrarComponent,
-    CadastrarComponent
+    CadastrarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
