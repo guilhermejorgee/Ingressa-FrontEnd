@@ -1,21 +1,18 @@
 <div class="container-fluid bg-fundo">
 
     <div class="row d-flex justify-content-center">
-        <div class="col-md-7 ">
-            <div class="bg-roxo container rounded-3 mt-3 mb-3 pb-3">
-                <h3 class="text-center">Procure um novo emprego</h3>
-                <div class="d-flex justify-content-center">
-                    <input placeholder="🔎 Cargo ou area" type="text" class="w-50  me-2">
-                    <input placeholder="Região" type="text" class="m-auto w-50  me-2">
-                    <button class="ms-auto rounded-3">Pesquisar</button>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-md-7 flex-column">
+
+                <div class="bg-roxo container rounded-3 mt-3 mb-3 pb-3 ">
+                    <h3 class="text-center">Procure um novo emprego</h3>
+                    <div class="d-flex justify-content-center">
+                        <input placeholder="🔎 Cargo ou area" type="text" class="w-50  me-2">
+                        <input placeholder="Região" type="text" class="m-auto w-50  me-2">
+                        <button class="ms-auto rounded-3">Pesquisar</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container px-4 pb-3 ">
-            <div class="row d-flex justify-content-center  bg-perfil pb-3 rounded-3">
-                <h3 class="text-center py-2">Vagas em aberto</h3>
-                <div class="col-md-12 d-flex align-items-center quebraCard">
-
 
             <div class="col-md-4 bg rounded-3  mt-3 mb-3 pb-3 ">
                 <h6 class="text-center">Pensando em publicar uma vaga para sua empresa?</h6>
@@ -162,19 +159,34 @@
                                     data-bs-target="#carouselExampleControls" data-bs-slide="next">
                                     <span class="carousel-control-next-icon ms-auto" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
-
                                 </button>
+
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 
         </div>
 
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Criando Vaga</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
