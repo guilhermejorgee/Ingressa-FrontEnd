@@ -29,4 +29,16 @@ export class PostagemService {
     return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/emalta', this.token)
   }
 
+  getPostagemDeUsuario(id:number): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/usuario/${id}`, this.token)
+  }
+
+  putPostagemDeUsuario(postagem:Postagem):Observable<Postagem>{
+    return this.http.put<Postagem>('https://redeingressa.herokuapp.com/postagens', postagem, this.token)
+  }
+
+  getPostagemById(id:number):Observable<Postagem>{
+    return this.http.get<Postagem>(`https://redeingressa.herokuapp.com/postagens/${id}`, this.token)
+  }
+
 }

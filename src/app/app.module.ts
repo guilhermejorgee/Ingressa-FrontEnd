@@ -17,6 +17,7 @@ import { VagasComponent } from './vagas/vagas.component';
 import { PerfilComponent } from './perfil/perfil.component';
 
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -42,7 +43,10 @@ import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.co
     FormsModule
 
   ],
-  providers: [],
+  providers: [{
+    provide:LocationStrategy,
+    useClass:HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
