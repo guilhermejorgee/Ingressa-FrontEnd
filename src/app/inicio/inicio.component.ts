@@ -17,6 +17,8 @@ export class InicioComponent implements OnInit {
 
   nome = environment.nome
 
+  foto = environment.fotoPerfil
+
   postagens: Postagem[]
 
   postagensEmAlta: Postagem[]
@@ -61,7 +63,7 @@ export class InicioComponent implements OnInit {
   }
 
 
-  verificaFoto() {
+ /* verificaFoto() {
 
     let foto;
 
@@ -81,7 +83,7 @@ export class InicioComponent implements OnInit {
 
     return foto;
 
-  }
+  }*/
 
   findPostagensComuns() {
 
