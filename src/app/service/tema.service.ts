@@ -23,4 +23,8 @@ export class TemaService {
   getTemasComuns(): Observable<Tema[]>{
     return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema/comuns', this.token)
   }
+
+  getAllTemas(): Observable<Tema[]>{
+    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema', this.token)
+  }
 }

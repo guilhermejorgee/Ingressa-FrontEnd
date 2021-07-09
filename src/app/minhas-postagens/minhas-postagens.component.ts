@@ -13,18 +13,18 @@ import { PostagemService } from '../service/postagem.service';
 })
 export class MinhasPostagensComponent implements OnInit {
 
+  nome = environment.nome
+
   temaEscolhido: number;
   tema: Tema = new Tema()
 
   usuario: Usuario = new Usuario()
   user = environment.id
 
-idUsuario = environment.id
 
-
-idPostagem:number
-postagem: Postagem[]
-postagemUsuario: Postagem = new Postagem()
+  idPostagem:number
+  postagem: Postagem[]
+  postagemUsuario: Postagem = new Postagem()
 
   constructor(
     private router:Router,
@@ -34,32 +34,31 @@ postagemUsuario: Postagem = new Postagem()
 
   ngOnInit() {
 
-    this.getAllPostagensDeUsuario()
-
-
+  /*  this.getAllPostagensDeUsuario()*/
 
     let id = this.route.snapshot.params['id']
+    
+   // this.findPostagemId()
 
-    this.findPostagemId(id)
+   this.getAllPostagensDeUsuario()
 
   }
 
   getAllPostagensDeUsuario(){
-    this.postagemService.getPostagemDeUsuario(this.idUsuario).subscribe((resp: Postagem[])=>{
+    this.postagemService.getPostagemDeUsuario(this.user).subscribe((resp: Postagem[])=>{
       this.postagem = resp
     })
 
   }
 
-  findPostagemId(id:number){
+  /*findPostagemId(id: number){
     this.postagemService.getPostagemById(id).subscribe((resp:Postagem)=>{
       this.postagemUsuario = resp
     })
-  }
+  }*/
 
   putPostagensUsuario() {
     this.usuario.id = this.user
-
 
     this.postagemUsuario.usuario = this.usuario
 

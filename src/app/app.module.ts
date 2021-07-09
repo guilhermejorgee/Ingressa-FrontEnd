@@ -18,6 +18,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 
 
 
@@ -33,7 +34,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     CadastrarComponent,
     VagasComponent,
     PerfilComponent,
-    MinhasPostagensComponent
+    MinhasPostagensComponent,
+    PostagemEditComponent
 
   ],
   imports: [
