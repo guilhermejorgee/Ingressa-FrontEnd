@@ -6,6 +6,7 @@ import { EntrarComponent } from './entrar/entrar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { MenuComponent } from './menu/menu.component';
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 import { VagasComponent } from './vagas/vagas.component';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'entrar', component: EntrarComponent},
   {path:'cadastrar', component:CadastrarComponent},
   {path:'vagas', component:VagasComponent},
-  {path: 'minhas-postagens', component: MinhasPostagensComponent}
+  {path: 'minhas-postagens', component: MinhasPostagensComponent},
+  {path: 'perfil/:id', component: PerfilComponent}
 
 
 

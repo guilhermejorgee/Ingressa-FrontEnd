@@ -31,6 +31,8 @@ export class InicioComponent implements OnInit {
 
   user = environment.id
 
+  id = environment.id
+
 
 
   constructor(
