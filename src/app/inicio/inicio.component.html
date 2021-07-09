@@ -9,7 +9,7 @@
                     <div class="d-flex justify-content-center">
                         <div class="col-md-6">
                             <div>
-                                <img src="{{verificaFoto()}}" class="bg-l card-img-top img-fluid rounded-circle  my-3"
+                                <img src="{{foto}}" class="bg-l card-img-top img-fluid rounded-circle  my-3"
                                     alt="...">
                                 <h4 class="text-center">{{nome}}</h4>
                             </div>
@@ -25,7 +25,7 @@
                             <i class="fas fa-user-edit me-2"></i><a class="mr-2-5" [routerLink]="['/perfil', id]">Meu Perfil</a>
                         </div>
                         <div class="d-flex align-items-center rounded p-2  mt-1">
-                            <i class="fas fa-align-left me-3"></i><a href="#">Minhas Postagens</a>
+                            <i class="fas fa-align-left me-3"></i><a routerLink='/minhas-postagens'>Minhas Postagens</a>
                         </div>
                     </div>
                     </div>
@@ -64,7 +64,7 @@
 
                         <div class="col-md-9 my-2 d-flex align-items-center">
 
-                            <img src="{{verificaFoto()}}" class="card-img-top img-fluid rounded-circle me-2"
+                            <img src="{{foto}}" class="card-img-top img-fluid rounded-circle me-2"
                                 alt=" Foto de Perfil" style="width: 50px;">
 
                             <button class="btn button-h border-roxoclaro bg-roxo4 text-dark w-100 text-start"

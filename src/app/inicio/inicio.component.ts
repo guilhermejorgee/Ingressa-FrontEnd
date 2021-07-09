@@ -5,6 +5,8 @@ import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
 import { InicioService } from '../service/inicio.service';
+import { PostagemService } from '../service/postagem.service';
+import { TemaService } from '../service/tema.service';
 
 @Component({
   selector: 'app-inicio',
@@ -14,6 +16,8 @@ import { InicioService } from '../service/inicio.service';
 export class InicioComponent implements OnInit {
 
   nome = environment.nome
+
+  foto = environment.fotoPerfil
 
   postagens: Postagem[]
 
@@ -37,7 +41,9 @@ export class InicioComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private inicioService: InicioService
+    private postagemService: PostagemService,
+    private temaService: TemaService
+
   ) { }
 
   ngOnInit() {
@@ -59,7 +65,7 @@ export class InicioComponent implements OnInit {
   }
 
 
-  verificaFoto() {
+ /* verificaFoto() {
 
     let foto;
 
@@ -79,11 +85,11 @@ export class InicioComponent implements OnInit {
 
     return foto;
 
-  }
+  }*/
 
   findPostagensComuns() {
 
-    this.inicioService.getAllPostagensComuns().subscribe((resp: Postagem[]) => {
+    this.postagemService.getAllPostagensComuns().subscribe((resp: Postagem[]) => {
       this.postagens = resp;
 
     })
@@ -92,7 +98,7 @@ export class InicioComponent implements OnInit {
 
   findByIdTema() {
 
-    this.inicioService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema) => {
+    this.temaService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema) => {
       this.tema = resp;
       console.log(this.tema.id)
     })
@@ -110,7 +116,7 @@ export class InicioComponent implements OnInit {
 
 
 
-    this.inicioService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
+    this.postagemService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
 
 
@@ -122,13 +128,13 @@ export class InicioComponent implements OnInit {
   }
 
   getAllTemas() {
-    this.inicioService.getTemasComuns().subscribe((resp: Tema[]) => {
+    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
       this.temas = resp
     })
   }
 
   findPostagensEmAlta(){
-    this.inicioService.getPostagensEmAlta().subscribe((resp: Postagem[])=>{
+    this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[])=>{
       this.postagensEmAlta = resp;
     })
  

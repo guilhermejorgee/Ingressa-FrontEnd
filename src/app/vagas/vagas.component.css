@@ -10,6 +10,7 @@
     background-color: #9794F2;
 }
 
-.quebraCard{
-    overflow: scroll;
+.tm-card{
+    height: 300px;
+    width: 375px;
 }
