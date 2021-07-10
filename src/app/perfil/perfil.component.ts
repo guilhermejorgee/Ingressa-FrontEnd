@@ -38,7 +38,6 @@ export class PerfilComponent implements OnInit {
         this.router.navigate(['/entrar'])
     }
 
-      this.authService.refreshToken
       this.usuario.usuarioAdmin = false;
       this.idUsuario = this.route.snapshot.params['id']
       this.findByIdUsuario(this.idUsuario)
@@ -283,6 +282,8 @@ export class PerfilComponent implements OnInit {
   }
 
   atualizar(){
+
+    
     this.usuario.usuarioEmpregador = this.tipoDeUsuario
 
     if (this.usuario.usuarioEmpregador == null) {
@@ -295,6 +296,12 @@ export class PerfilComponent implements OnInit {
 
     }
     else {
+
+      if(this.usuario.email == ''){
+        this.usuario.email = null;
+      } 
+
+      console.log(this.usuario.email)
 
       this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp;
@@ -310,7 +317,7 @@ export class PerfilComponent implements OnInit {
         this.router.navigate(['/entrar'])
 
       }, erro => {
-        if (erro.status == 400 || erro.status == 500) {
+        if (erro.status == 400, erro.status == 500) {
           alert('Informações inválidas')
         }
       })
