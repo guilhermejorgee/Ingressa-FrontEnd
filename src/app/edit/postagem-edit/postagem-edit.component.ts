@@ -16,6 +16,9 @@ export class PostagemEditComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
 
+  usuario: Usuario = new Usuario()
+  usuarioPostagem = environment.id
+
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number;
@@ -63,6 +66,10 @@ export class PostagemEditComponent implements OnInit {
     this.tema.id = this.idTema
 
     this.postagem.tema = this.tema
+
+    this.usuario.id = this.usuarioPostagem
+
+    this.postagem.usuario = this.usuario
 
     this.postagem.qtCurtidas = null;
 

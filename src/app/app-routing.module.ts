@@ -21,10 +21,9 @@ const routes: Routes = [
   {path:'entrar', component: EntrarComponent},
   {path:'cadastrar', component:CadastrarComponent},
   {path:'vagas', component:VagasComponent},
-  {path: 'minhas-postagens', component: MinhasPostagensComponent},
+  {path: 'minhas-postagens/:id', component: MinhasPostagensComponent},
   {path: 'perfil/:id', component: PerfilComponent},
   {path: 'put-postagens/:id', component: PostagemEditComponent}
-
 
 
 

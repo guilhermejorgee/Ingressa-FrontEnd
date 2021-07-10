@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
+import { AuthService } from '../service/auth.service';
 import { InicioService } from '../service/inicio.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
@@ -39,10 +40,12 @@ export class InicioComponent implements OnInit {
 
 
 
+
   constructor(
     private router: Router,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private authService: AuthService
 
   ) { }
 
@@ -61,8 +64,8 @@ export class InicioComponent implements OnInit {
 
     this.getAllTemas()
 
-
   }
+
 
 
  /* verificaFoto() {
@@ -137,9 +140,23 @@ export class InicioComponent implements OnInit {
     this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[])=>{
       this.postagensEmAlta = resp;
     })
- 
 
     }
+
+  verificaFotoPostagem(foto: string){
+
+    const regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+
+    let fotoPostagem = document.querySelector("#fotoPostagem");
+
+    if (foto.match(regex)) {
+      fotoPostagem.setAttribute('style', 'display:block');
+    }
+    else{
+      fotoPostagem.setAttribute('style', 'display:none');
+    }
+
+  }
 
   }
 

@@ -57,11 +57,13 @@ export class AuthService {
 
   }
 
+
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
       `https://redeingressa.herokuapp.com/usuarios/${id}`,
       {headers: new HttpHeaders().set('Authorization', environment.token)}
     )
   }
+
 
 }
