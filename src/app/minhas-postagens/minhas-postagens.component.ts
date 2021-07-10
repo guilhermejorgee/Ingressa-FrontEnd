@@ -5,6 +5,7 @@ import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
 import { PostagemService } from '../service/postagem.service';
+import { TemaService } from '../service/tema.service';
 
 @Component({
   selector: 'app-minhas-postagens',
@@ -15,8 +16,10 @@ export class MinhasPostagensComponent implements OnInit {
 
   nome = environment.nome
 
-  temaEscolhido: number;
   tema: Tema = new Tema()
+  listaTemas: Tema[]
+  idTema: number;
+
 
   usuario: Usuario = new Usuario()
   user = environment.id
@@ -29,18 +32,19 @@ export class MinhasPostagensComponent implements OnInit {
   constructor(
     private router:Router,
     private postagemService: PostagemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private temaService: TemaService
   ) { }
 
   ngOnInit() {
 
   /*  this.getAllPostagensDeUsuario()*/
 
-    let id = this.route.snapshot.params['id']
     
    // this.findPostagemId()
 
    this.getAllPostagensDeUsuario()
+   this.findAllTemas()
 
   }
 
@@ -51,22 +55,49 @@ export class MinhasPostagensComponent implements OnInit {
 
   }
 
-  /*findPostagemId(id: number){
-    this.postagemService.getPostagemById(id).subscribe((resp:Postagem)=>{
+  redEditPost(id: number){
+    this.router.navigate(["minhas-postagens/", id]);
+  }
+
+  findPostagemId(){
+    this.idPostagem = this.route.snapshot.params['id']
+    this.postagemService.getPostagemById(this.idPostagem).subscribe((resp:Postagem)=>{
       this.postagemUsuario = resp
-    })
-  }*/
-
-  putPostagensUsuario() {
-    this.usuario.id = this.user
-
-    this.postagemUsuario.usuario = this.usuario
-
-    this.postagemUsuario.id = this.idPostagem
-    this.postagemService.putPostagemDeUsuario(this.postagemUsuario).subscribe((resp: Postagem)=>{
-      this.postagemUsuario = resp
-      alert('Edição feita com sucesso')
     })
   }
+
+  findByIdTema() {
+  
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
+      this.tema = resp;
+
+    })
+  }
+
+ findAllTemas(){
+   this.temaService.getAllTemas().subscribe((resp: Tema[])=>{
+     this.listaTemas = resp;
+   })
+ }
+
+
+ atualizar() {
+
+  this.tema.id = this.idTema
+
+  this.postagemUsuario.tema = this.tema
+
+  this.usuario.id = this.user
+
+  this.postagemUsuario.usuario = this.usuario
+
+  this.postagemUsuario.qtCurtidas = null;
+
+  this.postagemService.putPostagemDeUsuario(this.postagemUsuario).subscribe((resp: Postagem) => {
+    this.postagemUsuario = resp
+
+    alert('Edição feita com sucesso')
+  })
+}
 
 }

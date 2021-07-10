@@ -20,10 +20,7 @@ const routes: Routes = [
   {path:'entrar', component: EntrarComponent},
   {path:'cadastrar', component:CadastrarComponent},
   {path:'vagas', component:VagasComponent},
-  {path: 'minhas-postagens', component: MinhasPostagensComponent},
-  {path: 'put-postagens/:id', component: PostagemEditComponent}
-
-
+  {path: 'minhas-postagens/:id', component: MinhasPostagensComponent}
 
 ];
 
