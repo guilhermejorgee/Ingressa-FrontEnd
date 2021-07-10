@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { InicioComponent, SafePipe } from './inicio/inicio.component';
 import { ContatoComponent } from './contato/contato.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
@@ -35,7 +35,8 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
     VagasComponent,
     PerfilComponent,
     MinhasPostagensComponent,
-    PostagemEditComponent
+    PostagemEditComponent,
+    SafePipe
 
   ],
   imports: [

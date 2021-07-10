@@ -8,6 +8,26 @@ import { AuthService } from '../service/auth.service';
 import { InicioService } from '../service/inicio.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: string) {
+
+    let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+    if (regex.test(url)) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    else {
+      return null;
+    }
+
+
+  }
+}
 
 @Component({
   selector: 'app-inicio',
@@ -36,16 +56,14 @@ export class InicioComponent implements OnInit {
 
   user = environment.id
 
- 
-
-
+  urlVideo: string;
 
 
   constructor(
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private authService: AuthService
+    private authService: AuthService,
 
   ) { }
 
@@ -68,27 +86,27 @@ export class InicioComponent implements OnInit {
 
 
 
- /* verificaFoto() {
-
-    let foto;
-
-    const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
-
-    // if(environment.fotoPerfil.match(verificador)){
-
-    if (verificador.test(environment.fotoPerfil)) {
-
-      foto = environment.fotoPerfil
-
-    }
-    else {
-
-      foto = "../assets/unnamed.png"
-    }
-
-    return foto;
-
-  }*/
+  /* verificaFoto() {
+ 
+     let foto;
+ 
+     const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+ 
+     // if(environment.fotoPerfil.match(verificador)){
+ 
+     if (verificador.test(environment.fotoPerfil)) {
+ 
+       foto = environment.fotoPerfil
+ 
+     }
+     else {
+ 
+       foto = "../assets/unnamed.png"
+     }
+ 
+     return foto;
+ 
+   }*/
 
   findPostagensComuns() {
 
@@ -109,6 +127,21 @@ export class InicioComponent implements OnInit {
 
   PostPostagensComum() {
 
+    let regex = /^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.?be)\/.+$/
+
+    if (regex.test(this.postagem.midia)) {
+
+      const regex = /(?:.+)(?:\.be\/|v=)(.+?)(?:&|$)(?:t=)?(.+)?/gm
+      const subst = `$1`;
+
+      let url = this.postagem.midia
+  
+      let idVideo = url.replace(regex, subst);
+
+      this.postagem.midia = "https://www.youtube.com/embed/" + idVideo;
+
+    }
+
     this.usuario.id = this.user
 
     this.postagem.usuario = this.usuario
@@ -116,8 +149,6 @@ export class InicioComponent implements OnInit {
     this.tema.id = this.temaEscolhido
 
     this.postagem.tema = this.tema
-
-
 
     this.postagemService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
@@ -136,28 +167,24 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  findPostagensEmAlta(){
-    this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[])=>{
+  findPostagensEmAlta() {
+    this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[]) => {
       this.postagensEmAlta = resp;
     })
 
+  }
+
+  verificandoVideo(url: string) {
+
+    let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+    if (regex.test(url)) {
+      return true
     }
-
-  verificaFotoPostagem(foto: string){
-
-    const regex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
-
-    let fotoPostagem = document.querySelector("#fotoPostagem");
-
-    if (foto.match(regex)) {
-      fotoPostagem.setAttribute('style', 'display:block');
-    }
-    else{
-      fotoPostagem.setAttribute('style', 'display:none');
+    else {
+      return false;
     }
 
   }
 
-  }
-
-
+}

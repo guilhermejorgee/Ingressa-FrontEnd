@@ -11,7 +11,7 @@
                             <div>
                                 <img src="{{foto}}" class="bg-l card-img-top img-fluid rounded-circle  my-3"
                                     alt="...">
-                                <h4 class="text-center"></h4>
+                                <h4 class="text-center">{{nome}}</h4>
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens'>
-
+                    
                     <div class="mx-4 my-3 d-flex align-items-center">
                         <div>
                             <img src="{{item.usuario.fotoPerfil}}" class="me-2 card-img-top img-fluid rounded-circle"
@@ -106,11 +106,13 @@
                     <div class="card-body">
                         <h5 class="card-title"><b>{{item.titulo}}</b></h5>
                         <p class="card-text my-3">{{item.texto}}</p>
-                     <!--  <div class="d-flex justify-content-center">
-                            <img  id="fotoPostagem" src="{{item.midia}}" class="card-img-top img-fluid" alt="..." style="width: 370px;">
+                       <div class="d-flex justify-content-center">
+                            <img onerror="this.style.display='none'" src="{{item.midia}}" class="card-img-top img-fluid" alt="..." style="width: 370px;">
                         </div>
-                       <div class="d-flex justify-content-center" >
-                            <img id="videoPostagem" src="{{item.midia}}" class="card-img-top img-fluid" alt="..." style="width: 370px;">--> 
+                       <div class="d-flex justify-content-center">
+                        <iframe *ngIf="verificandoVideo(item.midia)" width="100%" height="300" [src]="item.midia | safe"></iframe>
+                        </div>
+                        
                         
                     </div>
 
