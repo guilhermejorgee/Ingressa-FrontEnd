@@ -21,6 +21,12 @@ export class AuthService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+  }
+
   entrar(userLogin: UserLogin): Observable<UserLogin>{
 
     return this.http.post<UserLogin>('https://redeingressa.herokuapp.com/usuarios/logar', userLogin);
@@ -30,6 +36,12 @@ export class AuthService {
   cadastrar(usuario: Usuario): Observable<Usuario>{
 
     return this.http.post<Usuario>('https://redeingressa.herokuapp.com/usuarios/cadastrar', usuario);
+
+  }
+
+  atualizar(usuario: Usuario): Observable<Usuario>{
+
+    return this.http.put<Usuario>('https://redeingressa.herokuapp.com/usuarios', usuario, {headers: new HttpHeaders().set('Authorization', environment.token)});
 
   }
 
@@ -48,7 +60,7 @@ export class AuthService {
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
       `https://redeingressa.herokuapp.com/usuarios/${id}`,
-      this.token
+      {headers: new HttpHeaders().set('Authorization', environment.token)}
     )
   }
 
