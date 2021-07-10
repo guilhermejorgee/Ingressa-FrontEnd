@@ -9,6 +9,7 @@ import { Usuario } from '../model/Usuario';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   constructor(
@@ -16,6 +17,15 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+  }
 
   entrar(userLogin: UserLogin): Observable<UserLogin>{
 
@@ -29,6 +39,12 @@ export class AuthService {
 
   }
 
+  atualizar(usuario: Usuario): Observable<Usuario>{
+
+    return this.http.put<Usuario>('https://redeingressa.herokuapp.com/usuarios', usuario, {headers: new HttpHeaders().set('Authorization', environment.token)});
+
+  }
+
   logado(){
 
     let ok: boolean = false
@@ -39,6 +55,14 @@ export class AuthService {
 
     return ok;
 
+  }
+
+
+  getByIdUsuario(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(
+      `https://redeingressa.herokuapp.com/usuarios/${id}`,
+      {headers: new HttpHeaders().set('Authorization', environment.token)}
+    )
   }
 
 

@@ -36,6 +36,8 @@ export class InicioComponent implements OnInit {
 
   user = environment.id
 
+ 
+
 
 
 
@@ -65,7 +67,8 @@ export class InicioComponent implements OnInit {
   }
 
 
-/*  verificaFoto() {
+
+ /* verificaFoto() {
 
     let foto;
 

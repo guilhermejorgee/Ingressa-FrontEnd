@@ -22,6 +22,8 @@ export class CadastrarComponent implements OnInit {
 
   verificaEmpresaAtual: boolean;
 
+  verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
+
 
   constructor(
     private authService: AuthService,
@@ -263,6 +265,16 @@ export class CadastrarComponent implements OnInit {
 
     }
     else {
+    
+    
+      if (this.verificador.test(this.usuario.fotoPerfil)) {
+  
+      }
+      else {
+  
+        this.usuario.fotoPerfil = "https://i.imgur.com/1afzaLZ.png"
+      }
+
 
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp;
