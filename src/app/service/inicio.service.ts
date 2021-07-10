@@ -14,9 +14,5 @@ export class InicioService {
     private http: HttpClient
   ) { }
 
-  token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
-  }
-
 
 }
