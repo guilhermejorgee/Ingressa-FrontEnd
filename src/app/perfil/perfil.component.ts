@@ -33,13 +33,12 @@ export class PerfilComponent implements OnInit {
 
     window.scroll(0,0)
     
-    /*if(environment.token == ''){
-         alert('Sessão expirada, faça login novamente')
-         this.router.navigate(['/entrar'])
-   
-   
-       }*/
+    if(environment.token == ''){
+        alert('Sessão expirada, faça login novamente')
+        this.router.navigate(['/entrar'])
+    }
 
+      this.authService.refreshToken
       this.usuario.usuarioAdmin = false;
       this.idUsuario = this.route.snapshot.params['id']
       this.findByIdUsuario(this.idUsuario)
@@ -277,7 +276,6 @@ export class PerfilComponent implements OnInit {
 
   }
 
-
   findByIdUsuario(id: number){
     this.authService.getByIdUsuario(id).subscribe((resp: Usuario)=>{
       this.usuario = resp
@@ -298,18 +296,18 @@ export class PerfilComponent implements OnInit {
     }
     else {
 
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
+      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp;
 
-        this.router.navigate(['/inicio'])
+        //this.router.navigate(['/inicio'])
 
-        alert('Usuário cadastrado com sucesso! Faça login novamente.')
+        alert('Usuário atualizar com sucesso! Faça login novamente.')
         environment.id = 0
         environment.nome = ''
         environment.token = ''
         environment.usuarioEmpregador = false,
         environment.fotoPerfil = ''
-        this.router.navigate(['/login'])
+        this.router.navigate(['/entrar'])
 
       }, erro => {
         if (erro.status == 400 || erro.status == 500) {
