@@ -9,36 +9,28 @@
                     <div class="d-flex justify-content-center">
                         <div class="col-md-6">
                             <div>
-                                <img src="{{foto}}" class="bg-l card-img-top img-fluid rounded-circle  my-3"
-                                    alt="...">
+                                <img src="{{foto}}" class="bg-l card-img-top img-fluid rounded-circle  my-3" alt="...">
                                 <h4 class="text-center">{{nome}}</h4>
                             </div>
                         </div>
 
                     </div>
 
-                   <div class="d-flex flex-column p-1 mt-2">
+                    <div class="d-flex flex-column p-1 mt-2">
 
                         <div class="ms-1">
 
-                        <div class="d-flex align-items-center rounded p-2 border-b-p">
-                            <i class="fas fa-user-edit me-2"></i><a class="mr-2-5" [routerLink]="['/perfil', user]">Meu Perfil</a>
-                        </div>
-                        <div class="d-flex align-items-center rounded p-2  mt-1">
-        <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-postagens', -1]">Minhas Postagens</a>
+                            <div class="d-flex align-items-center rounded p-2 border-b-p">
+                                <i class="fas fa-user-edit me-2"></i><a class="mr-2-5"
+                                    [routerLink]="['/perfil', user]">Meu Perfil</a>
+                            </div>
+                            <div class="d-flex align-items-center rounded p-2  mt-1">
+                                <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-postagens', -1]">Minhas
+                                    Postagens</a>
+                            </div>
                         </div>
                     </div>
-                    </div>
 
-                  <!--    <div class=" mt-2">
-                        <ul class="list-group list-group-flush ">
-
-                            <li class="list-group-item bg-roxo6"><i class="fas fa-user-edit me-2"></i><a
-                                    class="mr-2-5">Meu Perfil</a></li>
-                            <li class="list-group-item bg-roxo6"><i class="fas fa-align-left me-3"></i><a
-                                    href="#">Minhas Postagens</a></li>
-                        </ul>
-                    </div>-->
 
                 </div>
                 <div class="sticky-top">
@@ -64,8 +56,8 @@
 
                         <div class="col-md-9 my-2 d-flex align-items-center">
 
-                            <img src="{{foto}}" class="card-img-top img-fluid rounded-circle me-2"
-                                alt=" Foto de Perfil" style="width: 50px;">
+                            <img src="{{foto}}" class="card-img-top img-fluid rounded-circle me-2" alt=" Foto de Perfil"
+                                style="width: 50px;">
 
                             <button class="btn button-h border-roxoclaro bg-roxo4 text-dark w-100 text-start"
                                 style="height: 45px;" data-bs-toggle="modal" data-bs-target="#publicacaoModal">
@@ -79,53 +71,100 @@
 
                 <div class="container-fluid">
                     <span class="me-2 p-t-p">Postagens por tema:</span>
-                    <select class="form-select bg-roxo4 border-roxoclaro" name="" id="">
-                        <option value="">
-                            asdasdsadas
-                        </option>
-                        <option value="">
-                            asdasdsadas
-                        </option>
+                    <select [(ngModel)]="rastrearOpcaoTema" (change)="findByIdTemaPostagens($event)" class="form-select bg-roxo4 border-roxoclaro"
+                        name="" id="">
+                        <option value="todos">Todos</option>
+                        <option *ngFor="let item of temas" value="{{item.id}}">{{item.area}}</option>
                     </select>
                 </div>
 
-                <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens'>
-                    
-                    <div class="mx-4 my-3 d-flex align-items-center">
-                        <div>
-                            <img src="{{item.usuario.fotoPerfil}}" class="me-2 card-img-top img-fluid rounded-circle"
-                                alt="..." style="width: 50px;">
+                <!--Lista Temas-->
+                <div *ngIf="verificaPostagemTema()">
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem'>
+
+                        <div class="mx-4 my-3 d-flex align-items-center">
+                            <div>
+                                <img src="{{item.usuario.fotoPerfil}}"
+                                    class="me-2 card-img-top img-fluid rounded-circle" alt="..." style="width: 50px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="text-secondary">{{item.usuario.nome}}</span>
+                                <small>{{item.dataDePostagem | date: 'dd/MM/yyyy'}} às {{item.dataDePostagem | date:
+                                    'HH:mm'}}</small>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column">
-                            <span class="text-secondary">{{item.usuario.nome}}</span>
-                            <small>{{item.dataDePostagem | date: 'dd/MM/yyyy'}} às {{item.dataDePostagem | date:
-                                'HH:mm'}}</small>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{item.titulo}}</b></h5>
+                            <p class="card-text my-3">{{item.texto}}</p>
+                            <div class="d-flex justify-content-center">
+                                <img onerror="this.style.display='none'" src="{{item.midia}}"
+                                    class="card-img-top img-fluid" alt="..." style="width: 370px;">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <iframe *ngIf="verificandoVideo(item.midia)" width="100%" height="300"
+                                    [src]="item.midia | safe"></iframe>
+                            </div>
+
+
                         </div>
+
+
+                        <div class="d-flex justify-content-around mb-2">
+
+                            <button class="btn btn-outline-success"> <a href="#">{{item.qtCurtidas}} Gostei</a>
+                            </button>
+                            <button class="btn btn-outline-secondary"> <a href="#">Comentar</a> </button>
+                            <button class="btn btn-outline-primary"> <a href="#">Compartilhar</a> </button>
+                        </div>
+
                     </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title"><b>{{item.titulo}}</b></h5>
-                        <p class="card-text my-3">{{item.texto}}</p>
-                       <div class="d-flex justify-content-center">
-                            <img onerror="this.style.display='none'" src="{{item.midia}}" class="card-img-top img-fluid" alt="..." style="width: 370px;">
-                        </div>
-                       <div class="d-flex justify-content-center">
-                        <iframe *ngIf="verificandoVideo(item.midia)" width="100%" height="300" [src]="item.midia | safe"></iframe>
-                        </div>
-                        
-                        
-                    </div>
-
-
-                    <div class="d-flex justify-content-around mb-2">
-
-                        <button class="btn btn-outline-success"> <a href="#">{{item.qtCurtidas}} Gostei</a>
-                        </button>
-                        <button class="btn btn-outline-secondary"> <a href="#">Comentar</a> </button>
-                        <button class="btn btn-outline-primary"> <a href="#">Compartilhar</a> </button>
-                    </div>
-
                 </div>
+                 <!--/Lista Temas-->
+
+                 <!--Lista Geral-->
+                <div *ngIf="verificaPostagemGeral()">
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens'>
+
+                        <div class="mx-4 my-3 d-flex align-items-center">
+                            <div>
+                                <img src="{{item.usuario.fotoPerfil}}"
+                                    class="me-2 card-img-top img-fluid rounded-circle" alt="..." style="width: 50px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="text-secondary">{{item.usuario.nome}}</span>
+                                <small>{{item.dataDePostagem | date: 'dd/MM/yyyy'}} às {{item.dataDePostagem | date:
+                                    'HH:mm'}}</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{item.titulo}}</b></h5>
+                            <p class="card-text my-3">{{item.texto}}</p>
+                            <div class="d-flex justify-content-center">
+                                <img onerror="this.style.display='none'" src="{{item.midia}}"
+                                    class="card-img-top img-fluid" alt="..." style="width: 370px;">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <iframe *ngIf="verificandoVideo(item.midia)" width="100%" height="300"
+                                    [src]="item.midia | safe"></iframe>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-around mb-2">
+
+                            <button class="btn btn-outline-success"> <a href="#">{{item.qtCurtidas}} Gostei</a>
+                            </button>
+                            <button class="btn btn-outline-secondary"> <a href="#">Comentar</a> </button>
+                            <button class="btn btn-outline-primary"> <a href="#">Compartilhar</a> </button>
+                        </div>
+
+                    </div>
+                </div>
+                 <!--/Lista Temas-->
 
 
 
@@ -190,7 +229,7 @@
                                 placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
                                 rows="8"></textarea>
 
-                                <input [(ngModel)]="postagem.midia" class="form-control w-100" type="text">
+                            <input [(ngModel)]="postagem.midia" class="form-control w-100" type="text">
 
 
                             <div class="form-group my-3 mx-3">

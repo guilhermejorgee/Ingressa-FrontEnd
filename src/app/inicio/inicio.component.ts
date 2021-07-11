@@ -29,6 +29,7 @@ export class SafePipe implements PipeTransform {
   }
 }
 
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -58,6 +59,10 @@ export class InicioComponent implements OnInit {
 
   urlVideo: string;
 
+  temaPostagens: Tema = new Tema();
+
+  rastrearOpcaoTema: string = "todos";
+
 
   constructor(
     private router: Router,
@@ -80,33 +85,29 @@ export class InicioComponent implements OnInit {
 
     this.findPostagensEmAlta()
 
-    this.getAllTemas()
+    this.getAllTemasComuns()
 
   }
 
+  verificaPostagemTema() {
 
+    if (this.rastrearOpcaoTema != "todos") {
+      return true;
+    }
 
-  /* verificaFoto() {
- 
-     let foto;
- 
-     const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
- 
-     // if(environment.fotoPerfil.match(verificador)){
- 
-     if (verificador.test(environment.fotoPerfil)) {
- 
-       foto = environment.fotoPerfil
- 
-     }
-     else {
- 
-       foto = "../assets/unnamed.png"
-     }
- 
-     return foto;
- 
-   }*/
+    return false;
+
+  }
+
+  verificaPostagemGeral() {
+
+    if (this.rastrearOpcaoTema == "todos") {
+      return true;
+    }
+
+    return false;
+
+  }
 
   findPostagensComuns() {
 
@@ -121,9 +122,29 @@ export class InicioComponent implements OnInit {
 
     this.temaService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema) => {
       this.tema = resp;
-      console.log(this.tema.id)
+
     })
   }
+
+
+  findByIdTemaPostagens(event: any) {
+
+    if (event.target.value != "todos") {
+
+      this.temaService.getByIdTema(event.target.value).subscribe((resp: Tema) => {
+        this.temaPostagens = resp;
+      
+
+      })}
+  }
+
+
+  getAllTemasComuns() {
+    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
+      this.temas = resp
+    })
+  }
+
 
   PostPostagensComum() {
 
@@ -135,7 +156,7 @@ export class InicioComponent implements OnInit {
       const subst = `$1`;
 
       let url = this.postagem.midia
-  
+
       let idVideo = url.replace(regex, subst);
 
       this.postagem.midia = "https://www.youtube.com/embed/" + idVideo;
@@ -155,17 +176,12 @@ export class InicioComponent implements OnInit {
 
 
       alert('Postagem realizada com sucesso')
-      this.findPostagensComuns()
+      // this.findPostagensComuns()
       this.postagem = new Postagem()
       this.router.navigate(['/inicio'])
     })
   }
 
-  getAllTemas() {
-    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
-      this.temas = resp
-    })
-  }
 
   findPostagensEmAlta() {
     this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[]) => {
