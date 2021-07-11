@@ -107,3 +107,11 @@ ul{
 .h-p{
     min-height: 600px;
 }
+
+.pesTemas{
+    display: none;
+}
+
+#dibloc{
+    display:block
+}

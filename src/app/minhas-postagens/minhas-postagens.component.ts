@@ -6,6 +6,26 @@ import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: string) {
+
+    let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+    if (regex.test(url)) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    else {
+      return null;
+    }
+
+
+  }
+}
 
 @Component({
   selector: 'app-minhas-postagens',
@@ -19,6 +39,7 @@ export class MinhasPostagensComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number;
+  temaPostagens: Tema = new Tema()
 
 
   usuario: Usuario = new Usuario()
@@ -28,6 +49,8 @@ export class MinhasPostagensComponent implements OnInit {
   idPostagem:number
   postagem: Postagem[]
   postagemUsuario: Postagem = new Postagem()
+
+  rastrearOpcaoTema: string = "todos";
 
   constructor(
     private router:Router,
@@ -46,6 +69,37 @@ export class MinhasPostagensComponent implements OnInit {
    this.getAllPostagensDeUsuario()
    this.findAllTemas()
 
+  }
+
+  verificaPostagemTema() {
+
+    if (this.rastrearOpcaoTema != "todos") {
+      return true;
+    }
+
+    return false;
+
+  }
+
+  verificaPostagemGeral() {
+
+    if (this.rastrearOpcaoTema == "todos") {
+      return true;
+    }
+
+    return false;
+
+  }
+
+  findByIdTemaPostagens(event: any) {
+
+    if (event.target.value != "todos") {
+
+      this.temaService.getByIdTema(event.target.value).subscribe((resp: Tema) => {
+        this.temaPostagens = resp;
+      
+
+      })}
   }
 
   getAllPostagensDeUsuario(){
@@ -74,11 +128,25 @@ export class MinhasPostagensComponent implements OnInit {
     })
   }
 
+
  findAllTemas(){
    this.temaService.getAllTemas().subscribe((resp: Tema[])=>{
      this.listaTemas = resp;
    })
  }
+
+ verificandoVideo(url: string) {
+
+  let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+  if (regex.test(url)) {
+    return true
+  }
+  else {
+    return false;
+  }
+
+}
 
 
  atualizar() {
