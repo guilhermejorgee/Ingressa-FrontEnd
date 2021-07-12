@@ -10,6 +10,7 @@ import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AlertasService } from '../service/alertas.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -69,7 +70,7 @@ export class InicioComponent implements OnInit {
     private postagemService: PostagemService,
     private temaService: TemaService,
     private authService: AuthService,
-
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -175,7 +176,7 @@ export class InicioComponent implements OnInit {
       this.postagem = resp;
 
 
-      alert('Postagem realizada com sucesso')
+      this.alertas.showAlertSuccess('Postagem realizada com sucesso')
       // this.findPostagensComuns()
       this.postagem = new Postagem()
       this.router.navigate(['/inicio'])

@@ -22,6 +22,8 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { TemaComponent } from './tema/tema.component';
 import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
 import { TemaDeleteComponent } from './deletar/tema-delete/tema-delete.component';
+import { AlertaComponent } from './alerta/alerta.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 
@@ -42,14 +44,16 @@ import { TemaDeleteComponent } from './deletar/tema-delete/tema-delete.component
     SafePipe,
     TemaComponent,
     TemaEditComponent,
-    TemaDeleteComponent
+    TemaDeleteComponent,
+    AlertaComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
 
   ],
   providers: [{
