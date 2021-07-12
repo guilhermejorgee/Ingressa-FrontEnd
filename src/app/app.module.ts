@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
-import { InicioComponent } from './inicio/inicio.component';
+import { InicioComponent, SafePipe } from './inicio/inicio.component';
 import { ContatoComponent } from './contato/contato.component';
 import { EntrarComponent } from './entrar/entrar.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
@@ -17,6 +17,8 @@ import { VagasComponent } from './vagas/vagas.component';
 import { PerfilComponent } from './perfil/perfil.component';
 
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 
 
 
@@ -32,7 +34,9 @@ import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.co
     CadastrarComponent,
     VagasComponent,
     PerfilComponent,
-    MinhasPostagensComponent
+    MinhasPostagensComponent,
+    PostagemEditComponent,
+    SafePipe
 
   ],
   imports: [
@@ -42,7 +46,10 @@ import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.co
     FormsModule
 
   ],
-  providers: [],
+  providers: [{
+    provide:LocationStrategy,
+    useClass:HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

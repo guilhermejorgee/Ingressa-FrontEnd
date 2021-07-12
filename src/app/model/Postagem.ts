@@ -8,15 +8,15 @@ export class Postagem{
 
     public dataDePostagem: Date;
 
-    public regiao: String;
+    public regiao: string;
 
-    public cargo: String;
+    public cargo: string;
 
-    public titulo: String;
+    public titulo: string;
 
-    public texto: String;
+    public texto: string;
 
-    public midia: String;
+    public midia: string;
 
     public qtCurtidas: number;
 

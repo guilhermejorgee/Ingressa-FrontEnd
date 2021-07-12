@@ -4,9 +4,31 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
+import { AuthService } from '../service/auth.service';
 import { InicioService } from '../service/inicio.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: string) {
+
+    let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+    if (regex.test(url)) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+    else {
+      return null;
+    }
+
+
+  }
+}
+
 
 @Component({
   selector: 'app-inicio',
@@ -35,12 +57,18 @@ export class InicioComponent implements OnInit {
 
   user = environment.id
 
+  urlVideo: string;
+
+  temaPostagens: Tema = new Tema();
+
+  rastrearOpcaoTema: string = "todos";
 
 
   constructor(
     private router: Router,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private authService: AuthService,
 
   ) { }
 
@@ -57,33 +85,29 @@ export class InicioComponent implements OnInit {
 
     this.findPostagensEmAlta()
 
-    this.getAllTemas()
-
+    this.getAllTemasComuns()
 
   }
 
+  verificaPostagemTema() {
 
- /* verificaFoto() {
-
-    let foto;
-
-    const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
-
-    // if(environment.fotoPerfil.match(verificador)){
-
-    if (verificador.test(environment.fotoPerfil)) {
-
-      foto = environment.fotoPerfil
-
-    }
-    else {
-
-      foto = "../assets/unnamed.png"
+    if (this.rastrearOpcaoTema != "todos") {
+      return true;
     }
 
-    return foto;
+    return false;
 
-  }*/
+  }
+
+  verificaPostagemGeral() {
+
+    if (this.rastrearOpcaoTema == "todos") {
+      return true;
+    }
+
+    return false;
+
+  }
 
   findPostagensComuns() {
 
@@ -98,11 +122,46 @@ export class InicioComponent implements OnInit {
 
     this.temaService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema) => {
       this.tema = resp;
-      console.log(this.tema.id)
+
     })
   }
 
+
+  findByIdTemaPostagens(event: any) {
+
+    if (event.target.value != "todos") {
+
+      this.temaService.getByIdTema(event.target.value).subscribe((resp: Tema) => {
+        this.temaPostagens = resp;
+      
+
+      })}
+  }
+
+
+  getAllTemasComuns() {
+    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
+      this.temas = resp
+    })
+  }
+
+
   PostPostagensComum() {
+
+    let regex = /^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.?be)\/.+$/
+
+    if (regex.test(this.postagem.midia)) {
+
+      const regex = /(?:.+)(?:\.be\/|v=)(.+?)(?:&|$)(?:t=)?(.+)?/gm
+      const subst = `$1`;
+
+      let url = this.postagem.midia
+
+      let idVideo = url.replace(regex, subst);
+
+      this.postagem.midia = "https://www.youtube.com/embed/" + idVideo;
+
+    }
 
     this.usuario.id = this.user
 
@@ -112,33 +171,36 @@ export class InicioComponent implements OnInit {
 
     this.postagem.tema = this.tema
 
-
-
     this.postagemService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
 
 
       alert('Postagem realizada com sucesso')
-      this.findPostagensComuns()
+      // this.findPostagensComuns()
       this.postagem = new Postagem()
       this.router.navigate(['/inicio'])
     })
   }
 
-  getAllTemas() {
-    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
-      this.temas = resp
-    })
-  }
 
-  findPostagensEmAlta(){
-    this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[])=>{
+  findPostagensEmAlta() {
+    this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[]) => {
       this.postagensEmAlta = resp;
     })
- 
 
+  }
+
+  verificandoVideo(url: string) {
+
+    let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\\-]+\?v=|embed\/|v\/))(\S+)?$/
+
+    if (regex.test(url)) {
+      return true
+    }
+    else {
+      return false;
     }
 
   }
 
-
+}
