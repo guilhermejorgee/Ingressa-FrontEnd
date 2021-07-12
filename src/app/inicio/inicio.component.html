@@ -96,7 +96,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title"><b>{{item.titulo}}</b></h5>
-                            <p class="card-text my-3">{{item.texto}}</p>
+                            <p class="card-text my-3" [innerHTML]="item.texto"></p>
                             <div class="d-flex justify-content-center">
                                 <img onerror="this.style.display='none'" src="{{item.midia}}"
                                     class="card-img-top img-fluid" alt="..." style="width: 370px;">
@@ -140,7 +140,7 @@
 
                         <div class="card-body">
                             <h5 class="card-title"><b>{{item.titulo}}</b></h5>
-                            <p class="card-text my-3">{{item.texto}}</p>
+                            <p class="card-text my-3" [innerHTML]="item.texto"></p>
                             <div class="d-flex justify-content-center">
                                 <img onerror="this.style.display='none'" src="{{item.midia}}"
                                     class="card-img-top img-fluid" alt="..." style="width: 370px;">
