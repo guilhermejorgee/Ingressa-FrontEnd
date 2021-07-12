@@ -6,9 +6,9 @@ export class Tema{
 
     public area: String;
 
-    public descricao: String;
-
     public palavraChave: String;
+
+    public tipoTema: boolean;
 
     public postagem: Postagem[];
 

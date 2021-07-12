@@ -19,6 +19,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
+import { TemaComponent } from './tema/tema.component';
+import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
+import { TemaDeleteComponent } from './deletar/tema-delete/tema-delete.component';
 
 
 
@@ -36,7 +39,10 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
     PerfilComponent,
     MinhasPostagensComponent,
     PostagemEditComponent,
-    SafePipe
+    SafePipe,
+    TemaComponent,
+    TemaEditComponent,
+    TemaDeleteComponent
 
   ],
   imports: [
