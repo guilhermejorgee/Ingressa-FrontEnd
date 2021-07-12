@@ -64,6 +64,11 @@ export class InicioComponent implements OnInit {
 
   rastrearOpcaoTema: string = "todos";
 
+  key = 'dataDePostagem'
+  reverse = true
+
+  
+
 
   constructor(
     private router: Router,
@@ -176,8 +181,8 @@ export class InicioComponent implements OnInit {
       this.postagem = resp;
 
 
-      this.alertas.showAlertSuccess('Postagem realizada com sucesso')
-      // this.findPostagensComuns()
+      alert('Postagem realizada com sucesso')
+      this.findPostagensComuns()
       this.postagem = new Postagem()
       this.router.navigate(['/inicio'])
     })

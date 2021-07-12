@@ -80,7 +80,7 @@
 
                 <!--Lista Temas-->
                 <div *ngIf="verificaPostagemTema()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -112,10 +112,10 @@
 
                         <div class="d-flex justify-content-around mb-2">
 
-                            <button class="btn btn-outline-success"> <a href="#">{{item.qtCurtidas}} Gostei</a>
+                            <button class="btn btn-outline-success">{{item.qtCurtidas}} Gostei
                             </button>
-                            <button class="btn btn-outline-secondary"> <a href="#">Comentar</a> </button>
-                            <button class="btn btn-outline-primary"> <a href="#">Compartilhar</a> </button>
+                            <button class="btn btn-outline-secondary">Comentar</button>
+                            <button class="btn btn-outline-primary">Compartilhar</button>
                         </div>
 
                     </div>
@@ -124,7 +124,7 @@
 
                  <!--Lista Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>

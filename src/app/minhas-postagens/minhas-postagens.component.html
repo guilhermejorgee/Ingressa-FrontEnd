@@ -67,8 +67,8 @@
 
                 <div class="container-fluid">
                     <span class="me-2 p-t-p">Postagens por tema:</span>
-                    <select [(ngModel)]="rastrearOpcaoTema" (change)="findByIdTemaPostagens($event)" class="form-select bg-roxo4 border-roxoclaro"
-                        name="" id="">
+                    <select [(ngModel)]="rastrearOpcaoTema" (change)="findByIdTemaPostagens($event)"
+                        class="form-select bg-roxo4 border-roxoclaro" name="" id="">
                         <option value="todos">Todos</option>
                         <option *ngFor="let item of listaTemas" value="{{item.id}}">{{item.area}}</option>
                     </select>
@@ -76,7 +76,7 @@
 
                 <!--Postagem Temas-->
                 <div *ngIf="verificaPostagemTema()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagem'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -109,7 +109,7 @@
                         <div class="d-flex justify-content-around mb-2">
 
 
-                            <button (mousemove)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
                                 class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Launch demo modal
                             </button>
@@ -125,7 +125,7 @@
 
                 <!--Postagem Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagem'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -158,14 +158,16 @@
                         <div class="d-flex justify-content-around mb-2">
 
 
-                            <button (mousemove)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
                                 class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Launch demo modal
                             </button>
 
 
 
-                            <button class=" btn btn-outline-dark"> <a href="#">Deletar</a> </button>
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()"
+                                class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                    Deletar</button>
                         </div>
 
                     </div>
@@ -242,6 +244,47 @@
                             <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
                         </select>
                         <button (click)="atualizar()">atualizar</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex flex-column align-items-center">
+
+                    <h5>Titulo</h5>
+
+                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100" type="text">
+
+                    <h5>Texto</h5>
+
+                    <!--  <textarea [(ngModel)]="postagem.texto" class="form-control"
+                        placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
+                        rows="8"></textarea>-->
+
+
+                    <div class="form-group my-3 mx-3">
+                        <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
+                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
+                        </select>
+                        <button (click)="apagar(postagemUsuario.id)">Apagar</button>
                     </div>
 
                 </div>

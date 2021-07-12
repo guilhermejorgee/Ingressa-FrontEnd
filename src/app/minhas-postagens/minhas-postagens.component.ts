@@ -53,6 +53,9 @@ export class MinhasPostagensComponent implements OnInit {
 
   rastrearOpcaoTema: string = "todos";
 
+  key = 'dataDePostagem'
+  reverse = true
+
   constructor(
     private router:Router,
     private postagemService: PostagemService,
@@ -132,7 +135,7 @@ export class MinhasPostagensComponent implements OnInit {
 
 
  findAllTemas(){
-   this.temaService.getAllTemas().subscribe((resp: Tema[])=>{
+   this.temaService.getTemasComuns().subscribe((resp: Tema[])=>{
      this.listaTemas = resp;
    })
  }
@@ -168,6 +171,14 @@ export class MinhasPostagensComponent implements OnInit {
 
     this.alertas.showAlertSuccess('Edição feita com sucesso')
   })
+}
+
+apagar(id:number){
+  this.postagemService.deletePostagem(id).subscribe(()=>{
+    alert('Publicação apagada com sucesso!')
+  })
+
+
 }
 
 }
