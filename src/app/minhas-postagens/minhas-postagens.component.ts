@@ -168,4 +168,12 @@ export class MinhasPostagensComponent implements OnInit {
   })
 }
 
+apagar(id:number){
+  this.postagemService.deletePostagem(id).subscribe(()=>{
+    alert('Publicação apagada com sucesso!')
+  })
+
+
+}
+
 }
