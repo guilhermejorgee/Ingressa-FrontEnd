@@ -52,6 +52,9 @@ export class MinhasPostagensComponent implements OnInit {
 
   rastrearOpcaoTema: string = "todos";
 
+  key = 'dataDePostagem'
+  reverse = true
+
   constructor(
     private router:Router,
     private postagemService: PostagemService,
@@ -130,7 +133,7 @@ export class MinhasPostagensComponent implements OnInit {
 
 
  findAllTemas(){
-   this.temaService.getAllTemas().subscribe((resp: Tema[])=>{
+   this.temaService.getTemasComuns().subscribe((resp: Tema[])=>{
      this.listaTemas = resp;
    })
  }

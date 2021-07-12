@@ -19,6 +19,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -43,7 +44,8 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    OrderModule
 
   ],
   providers: [{

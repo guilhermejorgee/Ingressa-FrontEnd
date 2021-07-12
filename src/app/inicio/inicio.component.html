@@ -80,7 +80,7 @@
 
                 <!--Lista Temas-->
                 <div *ngIf="verificaPostagemTema()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of temaPostagens.postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -124,7 +124,7 @@
 
                  <!--Lista Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens'>
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagens | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
