@@ -114,10 +114,13 @@ export class InicioComponent implements OnInit {
 
   }
 
+
   findPostagensComuns() {
 
     this.postagemService.getAllPostagensComuns().subscribe((resp: Postagem[]) => {
       this.postagens = resp;
+
+
 
     })
   }
