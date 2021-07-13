@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-vagas',
@@ -13,7 +14,16 @@ export class VagasComponent implements OnInit {
     
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    window.scroll(0,0)
+
+    if(environment.token == ''){
+      alert('Sessão expirada, faça login novamente')
+      this.router.navigate(['/entrar'])
+
+
+    }
+
   }
 
 }

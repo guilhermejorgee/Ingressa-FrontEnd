@@ -80,12 +80,14 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
 
-    /*   if(environment.token == ''){
+    window.scroll(0,0)
+
+       if(environment.token == ''){
          alert('Sessão expirada, faça login novamente')
          this.router.navigate(['/entrar'])
    
    
-       }*/
+       }
 
     this.findPostagensComuns()
 
@@ -115,10 +117,13 @@ export class InicioComponent implements OnInit {
 
   }
 
+
   findPostagensComuns() {
 
     this.postagemService.getAllPostagensComuns().subscribe((resp: Postagem[]) => {
       this.postagens = resp;
+
+
 
     })
   }

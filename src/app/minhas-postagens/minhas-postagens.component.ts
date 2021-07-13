@@ -36,6 +36,7 @@ export class SafePipe implements PipeTransform {
 export class MinhasPostagensComponent implements OnInit {
 
   nome = environment.nome
+  foto = environment.fotoPerfil
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
@@ -56,6 +57,8 @@ export class MinhasPostagensComponent implements OnInit {
   key = 'dataDePostagem'
   reverse = true
 
+  testeTexto: string = this.postagemUsuario.texto;
+
   constructor(
     private router:Router,
     private postagemService: PostagemService,
@@ -65,6 +68,16 @@ export class MinhasPostagensComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    window.scroll(0,0)
+
+    if(environment.token == ''){
+      alert('Sessão expirada, faça login novamente')
+      this.router.navigate(['/entrar'])
+
+
+    }
+
 
   /*  this.getAllPostagensDeUsuario()*/
 
@@ -120,8 +133,18 @@ export class MinhasPostagensComponent implements OnInit {
 
   findPostagemId(){
     this.idPostagem = this.route.snapshot.params['id']
+
+
     this.postagemService.getPostagemById(this.idPostagem).subscribe((resp:Postagem)=>{
       this.postagemUsuario = resp
+
+    let postagemConvertEspaco = this.postagemUsuario.texto.replace(/&nbsp;/g," ");
+    let postagemConvertLinha = postagemConvertEspaco.replace(/<br>/g,"\n")
+    let postagemComDestaqueUm = postagemConvertLinha.replace(/<strong>/g,"<destacar>")
+    let postagemComDestaqueDois = postagemComDestaqueUm.replace(/<\/strong>/g,"</destacar>")
+
+    this.postagemUsuario.texto = postagemComDestaqueDois
+
     })
   }
 
@@ -169,7 +192,9 @@ export class MinhasPostagensComponent implements OnInit {
   this.postagemService.putPostagemDeUsuario(this.postagemUsuario).subscribe((resp: Postagem) => {
     this.postagemUsuario = resp
 
+
     this.alertas.showAlertSuccess('Edição feita com sucesso')
+
   })
 }
 
