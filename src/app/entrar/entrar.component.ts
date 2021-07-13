@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from '../model/UserLogin';
-import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -17,8 +16,7 @@ export class EntrarComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private alertas: AlertasService
+    private router: Router
   ) { }
 
   ngOnInit(){
@@ -46,7 +44,7 @@ export class EntrarComponent implements OnInit {
 
     }, erro=>{
       if(erro.status == 500){
-        this.alertas.showAlertDanger('Email ou senha incorretos')
+        alert('Email ou senha incorretos')
       }
     })
 
