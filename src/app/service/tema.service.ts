@@ -16,28 +16,28 @@ export class TemaService {
   }
 
   getByIdTema(id: number): Observable<Tema> {
-    return this.http.get<Tema>(`https://redeingressa.herokuapp.com/tema/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)}
+    return this.http.get<Tema>(`https://redeingressa.herokuapp.com/tema/${id}`, this.token
     );
   }
 
   getTemasComuns(): Observable<Tema[]>{
-    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema/comuns', {headers: new HttpHeaders().set('Authorization', environment.token)})
+    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema/comuns', this.token)
   }
 
   getAllTemas(): Observable<Tema[]>{
-    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema', {headers: new HttpHeaders().set('Authorization', environment.token)})
+    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema', this.token)
   }
 
   postTema(tema: Tema): Observable<Tema>{
-    return this.http.post<Tema>('https://redeingressa.herokuapp.com/tema', tema, {headers: new HttpHeaders().set('Authorization', environment.token)});
+    return this.http.post<Tema>('https://redeingressa.herokuapp.com/tema', tema, this.token);
   }
 
   putTema(tema: Tema): Observable<Tema>{
-    return this.http.put<Tema>('https://redeingressa.herokuapp.com/tema', tema, {headers: new HttpHeaders().set('Authorization', environment.token)});
+    return this.http.put<Tema>('https://redeingressa.herokuapp.com/tema', tema, this.token);
   }
   
   deleteTema(id: number){
-    return this.http.delete(`https://redeingressa.herokuapp.com/tema/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)});
+    return this.http.delete(`https://redeingressa.herokuapp.com/tema/${id}`,this.token);
   }
 
 }

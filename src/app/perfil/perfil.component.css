@@ -3,13 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
 
 #tela {
-    background-color: #ede7f8;
-}
-
-a{
-    color: black;
-    text-decoration: none;
-    
+    background-color: #E3DCF2;
 }
 
 #container-central {
@@ -159,7 +153,7 @@ ul{
 }
 
 .bg-perfil{
-    background-color: #e5dff0;
+    background-color: #e3dcf2;
 }
 
 .border-roxoclaro{
@@ -172,8 +166,4 @@ ul{
 
 .mr-2-5{
     margin-left: 4px;
-}
-
-.fas{
-    font-size: 8pt;
 }

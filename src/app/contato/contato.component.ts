@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-contato',
@@ -9,21 +7,9 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ContatoComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
-  ngOnInit(){
-
-    window.scroll(0,0)
-
-    if(environment.token == ''){
-      alert('Sessão expirada, faça login novamente')
-      this.router.navigate(['/entrar'])
-
-
-    }
-
+  ngOnInit(): void {
   }
 
 }

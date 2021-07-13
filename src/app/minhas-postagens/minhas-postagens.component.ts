@@ -35,7 +35,6 @@ export class SafePipe implements PipeTransform {
 export class MinhasPostagensComponent implements OnInit {
 
   nome = environment.nome
-  foto = environment.fotoPerfil
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
@@ -66,16 +65,6 @@ export class MinhasPostagensComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    window.scroll(0,0)
-
-    if(environment.token == ''){
-      alert('Sessão expirada, faça login novamente')
-      this.router.navigate(['/entrar'])
-
-
-    }
-
 
   /*  this.getAllPostagensDeUsuario()*/
 
