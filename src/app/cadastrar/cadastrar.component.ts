@@ -33,7 +33,7 @@ export class CadastrarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0, 0)
+
 
     this.usuario.usuarioAdmin = false;
   }
