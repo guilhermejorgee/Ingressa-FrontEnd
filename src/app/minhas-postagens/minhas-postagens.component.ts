@@ -8,7 +8,6 @@ import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AlertasService } from '../service/alertas.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -63,8 +62,7 @@ export class MinhasPostagensComponent implements OnInit {
     private router:Router,
     private postagemService: PostagemService,
     private route: ActivatedRoute,
-    private temaService: TemaService,
-    private alertas: AlertasService
+    private temaService: TemaService
   ) { }
 
   ngOnInit() {
@@ -193,8 +191,7 @@ export class MinhasPostagensComponent implements OnInit {
     this.postagemUsuario = resp
 
 
-    this.alertas.showAlertSuccess('Edição feita com sucesso')
-
+    alert('Edição feita com sucesso')
   })
 }
 

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Usuario } from '../model/Usuario';
-import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -27,8 +26,7 @@ export class PerfilComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
-    private alertas: AlertasService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -36,7 +34,7 @@ export class PerfilComponent implements OnInit {
     window.scroll(0,0)
     
     if(environment.token == ''){
-        this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
+        alert('Sessão expirada, faça login novamente')
         this.router.navigate(['/entrar'])
     }
 
@@ -289,11 +287,11 @@ export class PerfilComponent implements OnInit {
     this.usuario.usuarioEmpregador = this.tipoDeUsuario
 
     if (this.usuario.usuarioEmpregador == null) {
-      this.alertas.showAlertDanger('Escolha uma das opções')
+      alert('Escolha uma das opções')
     }
 
     if (this.usuario.senha != this.validacaoSenha) {
-      this.alertas.showAlertDanger('Senhas diferentes')
+      alert('Senhas diferentes')
 
 
     }
@@ -310,7 +308,7 @@ export class PerfilComponent implements OnInit {
 
         //this.router.navigate(['/inicio'])
 
-        this.alertas.showAlertSuccess('Usuário atualizar com sucesso! Faça login novamente.')
+        alert('Usuário atualizar com sucesso! Faça login novamente.')
         environment.id = 0
         environment.nome = ''
         environment.token = ''
@@ -320,7 +318,7 @@ export class PerfilComponent implements OnInit {
 
       }, erro => {
         if (erro.status == 400, erro.status == 500) {
-          this.alertas.showAlertDanger('Informações inválidas')
+          alert('Informações inválidas')
         }
       })
     }
