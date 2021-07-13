@@ -24,6 +24,10 @@ export class TemaService {
     return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema/comuns', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getTemasVagas(): Observable<Tema[]>{
+    return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema/vagas', {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
   getAllTemas(): Observable<Tema[]>{
     return this.http.get<Tema[]>('https://redeingressa.herokuapp.com/tema', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }

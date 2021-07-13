@@ -13,8 +13,10 @@ import { TemaService } from '../service/tema.service';
 export class TemaComponent implements OnInit {
 
   tema: Tema = new Tema()
-  listaTemas: Tema[]
-
+  listaTemasComuns: Tema[]
+  listaTemasVagas: Tema[]
+  tpTema: boolean
+ 
   constructor(private router: Router, private temaService: TemaService, private alertas: AlertasService) { }
 
   ngOnInit(){
@@ -27,26 +29,54 @@ export class TemaComponent implements OnInit {
 
     
 
-    this.findAllTemas()
+    this.findTemasComuns()
+    this.findTemasVagas()
   }
 
   
-  findAllTemas(){
-    this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
-      this.listaTemas = resp
+  findTemasComuns(){
+    this.temaService.getTemasComuns().subscribe((resp: Tema[]) => {
+      this.listaTemasComuns = resp
     })
   }
 
+  findTemasVagas(){
+    this.temaService.getTemasVagas().subscribe((resp: Tema[])=>{
+      this.listaTemasVagas = resp
+    })
+  }
 
+ 
   cadastrar(){
+    this.tema.tipoTema = this.tpTema
+
+    if (this.tema.tipoTema == null) {
+      this.alertas.showAlertDanger('Escolha uma das opções')
+    }
+    else{
 
     this.temaService.postTema(this.tema).subscribe((resp: Tema) => {
       this.tema = resp
       this.alertas.showAlertSuccess('Tema cadastrado com sucesso')
-      this.findAllTemas()
+      this.findTemasComuns()
+      this.findTemasVagas()
       this.tema = new Tema()
       })
+    }
+  }
 
+
+  tipoTema(event: any){
+    
+    if(event.target.value == 'comum'){
+      this.tpTema = false;
+    }
+    else if(event.target.value == 'vaga'){
+      this.tpTema = true;
+    }
+    else{
+      this.tpTema = null;
+    }
   }
 
 }
