@@ -55,6 +55,7 @@ Implementações futuras:
 + Canal de suporte
 + Filtro de vagas que se encaixem melhor no perfil da profissional
 + Avaliação de empregadores
++ Sessão de comentários
 
 
 
