@@ -63,7 +63,10 @@ export class VagasComponent implements OnInit {
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
+      this.postagem = new Postagem()
+      this.findPostagensVagas()
       this.alertas.showAlertSuccess('Vaga publicada com sucesso!')
+      
     })
   }
 
