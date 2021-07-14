@@ -52,6 +52,29 @@ export class AuthService {
 
   }
 
+  
+  admin(){
+
+    
+
+    if(environment.usuarioAdmin == true){
+      
+    return true;
+    }
+    return false
+  }
+
+
+  empregador(){
+
+    
+
+    if(environment.usuarioEmpregador == true){
+      
+    return true;
+    }
+    return false
+  }
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(

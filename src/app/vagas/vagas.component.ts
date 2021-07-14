@@ -5,6 +5,7 @@ import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Temas';
 import { Usuario } from '../model/Usuario';
 import { AlertasService } from '../service/alertas.service';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -33,7 +34,8 @@ export class VagasComponent implements OnInit {
     private router: Router,
     private postagemService: PostagemService,
     private alertas: AlertasService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    public authService: AuthService
 
   ) { }
 

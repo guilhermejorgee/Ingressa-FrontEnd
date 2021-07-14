@@ -20,4 +20,6 @@ export class UserLogin{
 
     public telefone: string;
 
+    public usuarioAdmin: boolean;
+
 }
