@@ -7,9 +7,9 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form class="d-flex w-50 br-forms">
+            <!--<form class="d-flex w-50 br-forms">
                 <input class="form-control bg-lilas" type="search" placeholder="Search" aria-label="Search">
-            </form>
+            </form>-->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -21,9 +21,10 @@
                     <li class="nav-item">
                         <a class="nav-link me-5" routerLink='/contato'><i class="fas fa-at d-flex justify-content-center"></i> Contato</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-5" routerLink='/tema'><i class="fas fa-image d-flex justify-content-center"></i> Temas</a> 
+                   <div *ngIf="authService.admin()"> <li class="nav-item">
+                        <a  class="nav-link me-5" routerLink='/tema'><i class="fas fa-image d-flex justify-content-center"></i> Temas</a> 
                     </li>
+                    </div>
                     <li class="nav-item">
                         <a class="nav-link" (click)="deslogar()" href="#">Sair <i class="fas fa-sign-out-alt"></i></a>
                     </li>

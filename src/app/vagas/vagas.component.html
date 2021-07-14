@@ -3,17 +3,17 @@
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-md-7 flex-column">
 
-            <div class="bg-roxo container rounded-3 mt-3 mb-3 pb-3 ">
+           <!-- <div class="bg-roxo container rounded-3 mt-3 mb-3 pb-3 ">
                 <h3 class="text-center">Procure um novo emprego</h3>
                 <div class="d-flex justify-content-center">
                     <input placeholder="🔎 Cargo ou area" type="text" class="w-50  me-2">
                     <input placeholder="Região" type="text" class="m-auto w-50  me-2">
                     <button class="ms-auto rounded-3">Pesquisar</button>
                 </div>
-            </div>
+            </div>-->
         </div>
 
-        <div class="col-md-4 bg rounded-3  mt-3 mb-3 pb-3 ">
+        <div *ngIf="authService.empregador()" class="col-md-4 bg rounded-3  mt-3 mb-3 pb-3 ">
             <h6 class="text-center">Pensando em publicar uma vaga para sua empresa?</h6>
             <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-primary bg-perfil text-center text-dark" data-bs-toggle="modal"
