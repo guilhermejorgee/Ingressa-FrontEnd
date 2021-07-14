@@ -58,7 +58,7 @@ export class PerfilComponent implements OnInit {
 
     if (validaNome.test(this.usuario.nome)) {
 
-      nome.setAttribute('style', 'border-color:#53d78b');
+      nome.setAttribute('style', 'border-color:#9794F2');
     }
     else if (nomeValue == 0) {
       nome.setAttribute('style', 'border-color:#9794F2');
@@ -81,7 +81,7 @@ export class PerfilComponent implements OnInit {
 
     if (validaEmail.test(this.usuario.email)) {
 
-      email.setAttribute('style', 'border-color:#53d78b');
+      email.setAttribute('style', 'border-color:#9794F2');
     }
     else if (emailValue == 0) {
       email.setAttribute('style', 'border-color:#9794F2');
@@ -103,7 +103,7 @@ export class PerfilComponent implements OnInit {
 
     if (validaSenha.test(this.validacaoSenha)) {
 
-      senha.setAttribute('style', 'border-color:#53d78b');
+      senha.setAttribute('style', 'border-color:#9794F2');
     }
     else if (senhaValue == 0) {
       senha.setAttribute('style', 'border-color:#9794F2');
@@ -130,7 +130,7 @@ export class PerfilComponent implements OnInit {
       senhaConfirm.setAttribute('style', 'border-color:#9794F2');
     }
     else {
-      senhaConfirm.setAttribute('style', 'border-color:#53d78b');
+      senhaConfirm.setAttribute('style', 'border-color:#9794F2');
     }
 
   }
@@ -151,7 +151,7 @@ export class PerfilComponent implements OnInit {
 
     if (regex.test(this.usuario.telefone)) {
 
-      tel.setAttribute('style', 'border-color:#53d78b');
+      tel.setAttribute('style', 'border-color:#9794F2');
     }
     else if (telValue == 0) {
       tel.setAttribute('style', 'border-color:#9794F2');
@@ -173,7 +173,7 @@ export class PerfilComponent implements OnInit {
 
     if (regex.test(this.usuario.fotoPerfil)) {
 
-      foto.setAttribute('style', 'border-color:#53d78b');
+      foto.setAttribute('style', 'border-color:#9794F2');
     }
     else if (fotoValue == 0) {
       foto.setAttribute('style', 'border-color:#9794F2');
@@ -211,7 +211,7 @@ export class PerfilComponent implements OnInit {
 
     this.codigoAdminDigitado = event.target.value
 
-    if (this.codigoAdminDigitado != '6969:D') {
+    if (this.codigoAdminDigitado != 'devIngressa') {
       this.usuario.usuarioAdmin = false;
 
     }
