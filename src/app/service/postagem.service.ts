@@ -21,7 +21,11 @@ export class PostagemService {
     return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/comuns', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
-  postPostagemComum(postagem: Postagem): Observable<Postagem>{
+  getAllPostagensVagas(): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/vagas', {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+  postPostagem(postagem: Postagem): Observable<Postagem>{
     return this.http.post<Postagem>('https://redeingressa.herokuapp.com/postagens', postagem, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
