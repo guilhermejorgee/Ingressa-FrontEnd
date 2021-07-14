@@ -16,6 +16,7 @@ export class PerfilComponent implements OnInit {
   usuario: Usuario = new Usuario()
   idUsuario: number
   nome = environment.nome
+  foto = environment.fotoPerfil
   
   validacaoSenha: string;
   tipoDeUsuario: boolean;

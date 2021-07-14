@@ -270,10 +270,9 @@ export class CadastrarComponent implements OnInit {
     
     
       if (this.verificador.test(this.usuario.fotoPerfil)) {
-  
+        this.usuario.fotoPerfil = this.usuario.fotoPerfil
       }
       else {
-  
         this.usuario.fotoPerfil = "https://i.imgur.com/1afzaLZ.png"
       }
 

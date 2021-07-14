@@ -182,7 +182,7 @@ export class InicioComponent implements OnInit {
 
     this.postagem.tema = this.tema
 
-    this.postagemService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
 
 
