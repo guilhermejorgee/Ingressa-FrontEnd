@@ -50,11 +50,17 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
 
+  postagem2: Postagem = new Postagem()
+
   temaEscolhido: number;
 
   tema: Tema = new Tema()
 
   usuario: Usuario = new Usuario()
+
+  usuario2: Usuario = new Usuario()
+
+  postagemCurtida: Postagem = new Postagem()
 
   user = environment.id
 
@@ -67,7 +73,7 @@ export class InicioComponent implements OnInit {
   key = 'dataDePostagem'
   reverse = true
 
-  
+  postagensCurtidasUser: Postagem[]
 
 
   constructor(
@@ -94,6 +100,8 @@ export class InicioComponent implements OnInit {
     this.findPostagensEmAlta()
 
     this.getAllTemasComuns()
+
+    this.findByUser()
 
   }
 
@@ -212,6 +220,77 @@ export class InicioComponent implements OnInit {
       return false;
     }
 
+  }
+
+  curtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
+    this.authService.curtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+      this.usuario = resp;
+      this.findByUser()
+    })
+  }
+
+  descurtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
+    this.authService.descurtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+      this.usuario = resp;
+      this.findByUser()
+    })
+  }
+
+  findByUser(){
+    this.authService.getByIdUsuario(environment.id).subscribe((resp: Usuario)=>{
+      this.usuario2 = resp;
+    this.postagensCurtidasUser = this.usuario2.postagemCurtidas;
+    })
+  }
+
+  verificandoCurtidasFeita(id: number){
+
+    if(this.postagensCurtidasUser == null){
+      return false;
+    }
+    else if(this.postagensCurtidasUser.length == 0){
+      return false;
+    }
+
+    this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
+
+    if(this.postagemCurtida.id == id){
+      return true
+    }
+
+   return false;
+
+  }
+
+  verificandoCurtidasNaoFeita(id: number){
+    if(this.postagensCurtidasUser == null){
+      return true;
+    }
+    else if(this.postagensCurtidasUser.length == 0){
+      return true;
+    }
+
+    this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
+
+    if(this.postagemCurtida.id != id){
+      return true
+    }
+
+   return false;
+  }
+
+
+
+ contClickCurtida(id: number){
+    this.postagemService.contCurtidaPostagem(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+    })
+  }
+
+  contClickRetiradaCurtida(id: number){
+    this.postagemService.contRemoverCurtidaPostagem(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+    })
   }
 
 }
