@@ -78,17 +78,17 @@ export class AuthService {
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
-      `https://ingressateste.herokuapp.com/usuarios/${id}`,
+      `https://redeingressa.herokuapp.com/usuarios/${id}`,
       { headers: new HttpHeaders().set('Authorization', environment.token) }
     )
   }
 
   curtirPostagem(idUsuario: number, idPostagem: number): Observable<Usuario> {
-    return this.http.put<Usuario>(`https://ingressateste.herokuapp.com/usuarios/adicionarcurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
+    return this.http.put<Usuario>(`https://redeingressa.herokuapp.com/usuarios/adicionarcurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
   }
 
   descurtirPostagem(idUsuario: number, idPostagem: number): Observable<Usuario> {
-    return this.http.put<Usuario>(`https://ingressateste.herokuapp.com/usuarios/removercurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
+    return this.http.put<Usuario>(`https://redeingressa.herokuapp.com/usuarios/removercurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
   }
 
 
