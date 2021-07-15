@@ -24,19 +24,19 @@ export class AuthService {
 
   entrar(userLogin: UserLogin): Observable<UserLogin> {
 
-    return this.http.post<UserLogin>('https://ingressateste.herokuapp.com/usuarios/logar', userLogin);
+    return this.http.post<UserLogin>('https://redeingressa.herokuapp.com/usuarios/logar', userLogin);
 
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.post<Usuario>('https://ingressateste.herokuapp.com/usuarios/cadastrar', usuario);
+    return this.http.post<Usuario>('https://redeingressa.herokuapp.com/usuarios/cadastrar', usuario);
 
   }
 
   atualizar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.put<Usuario>('https://ingressateste.herokuapp.com/usuarios', usuario, { headers: new HttpHeaders().set('Authorization', environment.token) });
+    return this.http.put<Usuario>('https://redeingressa.herokuapp.com/usuarios', usuario, { headers: new HttpHeaders().set('Authorization', environment.token) });
 
   }
 
