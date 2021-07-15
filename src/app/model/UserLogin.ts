@@ -22,4 +22,5 @@ export class UserLogin{
 
     public usuarioAdmin: boolean;
 
+
 }
