@@ -166,7 +166,7 @@
                             <button (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item.id)" (click)="descurtidaPostagem(user, item.id)" (click)="contClickRetiradaCurtida(item.id)" class="btn btn-success" >Gostei
                             </button>
                         </div>
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quem curtiu</button>
+                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quem curtiu</button>
                         </div>
 
                     </div>
@@ -289,7 +289,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <ul>
+              <li *ngFor="let item of postagem2.curtidoresPostagem">{{item.nome}}</li>
+          </ul>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

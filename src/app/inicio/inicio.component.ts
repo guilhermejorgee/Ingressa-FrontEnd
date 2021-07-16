@@ -290,6 +290,13 @@ export class InicioComponent implements OnInit {
   contClickRetiradaCurtida(id: number){
     this.postagemService.contRemoverCurtidaPostagem(id).subscribe((resp: Postagem)=>{
       this.postagem2 = resp
+
+    })
+  }
+
+  findByIdPostagem(id: number){
+    this.postagemService.getPostagemById(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp;
     })
   }
 
