@@ -24,4 +24,6 @@ export class Postagem{
 
     public usuario: Usuario;
 
+    public curtidoresPostagem: Usuario[];
+
 }
