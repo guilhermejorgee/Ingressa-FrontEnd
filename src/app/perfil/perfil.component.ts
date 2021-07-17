@@ -315,7 +315,7 @@ export class PerfilComponent implements OnInit {
         environment.id = 0
         environment.nome = ''
         environment.token = ''
-        environment.usuarioEmpregador = false,
+        environment.usuarioEmpregador = null
         environment.fotoPerfil = ''
         this.router.navigate(['/entrar'])
 

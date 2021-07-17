@@ -14,3 +14,11 @@
     height: 300px;
     width: 375px;
 }
+.box {
+    position:relative;
+}
+.bet_time {
+    position:absolute;
+    bottom:0;
+    right:0;
+}

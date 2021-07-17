@@ -197,6 +197,8 @@ export class InicioComponent implements OnInit {
       alert('Postagem realizada com sucesso')
       this.findPostagensComuns()
       this.postagem = new Postagem()
+      this.tema = new Tema()
+      this.temaEscolhido = null;
       this.router.navigate(['/inicio'])
     })
   }
@@ -254,7 +256,10 @@ export class InicioComponent implements OnInit {
 
     this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
 
-    if(this.postagemCurtida.id == id){
+    if(this.postagemCurtida == null){
+      return false
+    }
+    else if(this.postagemCurtida.id == id){
       return true
     }
 
@@ -272,7 +277,10 @@ export class InicioComponent implements OnInit {
 
     this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
 
-    if(this.postagemCurtida.id != id){
+    if(this.postagemCurtida == null){
+      return true
+    }
+    else if(this.postagemCurtida.id != id){
       return true
     }
 
@@ -299,5 +307,23 @@ export class InicioComponent implements OnInit {
       this.postagem2 = resp;
     })
   }
+
+ /* myMove() {
+
+    const elem = document.querySelector("#teste1");   
+    let pos = 30;
+    let id = setInterval(frame, 6);
+    function frame() {
+      if (pos == 0) {
+        clearInterval(id);
+      } else {
+        pos--; 
+       // elem.style.top = pos + "px"; 
+       // elem.style.top = pos + "px"; 
+        elem.setAttribute('style', 'top:${pos}px')
+        elem.setAttribute('style', 'top:${pos}px')
+      }
+    }*/
+
 
 }
