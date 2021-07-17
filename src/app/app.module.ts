@@ -25,6 +25,7 @@ import { TemaDeleteComponent } from './deletar/tema-delete/tema-delete.component
 import { AlertaComponent } from './alerta/alerta.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderModule } from 'ngx-order-pipe';
+import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 
 
 
@@ -47,7 +48,8 @@ import { OrderModule } from 'ngx-order-pipe';
     TemaComponent,
     TemaEditComponent,
     TemaDeleteComponent,
-    AlertaComponent
+    AlertaComponent,
+    PerfilUserComponent
 
   ],
   imports: [
