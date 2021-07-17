@@ -29,6 +29,8 @@ export class Usuario{
     public postagem: Postagem[];
 
     public postagemCurtidas: Postagem[];
+
+    public token: string;
  
 
 }
