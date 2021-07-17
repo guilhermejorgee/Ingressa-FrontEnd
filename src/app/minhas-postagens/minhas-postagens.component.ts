@@ -192,6 +192,10 @@ export class MinhasPostagensComponent implements OnInit {
   this.postagemService.putPostagemDeUsuario(this.postagemUsuario).subscribe((resp: Postagem) => {
     this.postagemUsuario = resp
 
+    this.postagemUsuario = new Postagem()
+    this.tema = new Tema()
+    this.idTema = null;
+    this.getAllPostagensDeUsuario()
 
     this.alertas.showAlertSuccess('Edição feita com sucesso')
 
@@ -200,6 +204,7 @@ export class MinhasPostagensComponent implements OnInit {
 
 apagar(id:number){
   this.postagemService.deletePostagem(id).subscribe(()=>{
+    this.getAllPostagensDeUsuario()
     alert('Publicação apagada com sucesso!')
   })
 

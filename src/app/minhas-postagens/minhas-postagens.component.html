@@ -249,14 +249,13 @@
                         <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
                             <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
                         </select>
-                        <button (click)="atualizar()">atualizar</button>
                     </div>
 
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-primary" (click)="atualizar()">Atualizar</button>
             </div>
         </div>
     </div>
@@ -275,29 +274,13 @@
             <div class="modal-body">
                 <div class="container-fluid d-flex flex-column align-items-center">
 
-                    <h5>Titulo</h5>
-
-                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100" type="text">
-
-                    <h5>Texto</h5>
-
-                    <!--  <textarea [(ngModel)]="postagem.texto" class="form-control"
-                        placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                        rows="8"></textarea>-->
-
-
-                    <div class="form-group my-3 mx-3">
-                        <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
-                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
-                        </select>
-                        <button (click)="apagar(postagemUsuario.id)">Apagar</button>
-                    </div>
+                    <h5>{{postagemUsuario?.titulo}}</h5>
 
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" >Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="apagar(postagemUsuario.id)">Deletar</button>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ export class VagasComponent implements OnInit {
 
   postagemSelecionada: Postagem
 
-  tema: Tema = new Tema
+  tema: Tema = new Tema()
   listaTema: Tema[]
   temaEscolhido: number
 
@@ -78,6 +78,8 @@ export class VagasComponent implements OnInit {
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       this.postagem = new Postagem()
+      this.tema = new Tema()
+      this.temaEscolhido = null;
       this.findPostagensVagas()
       this.alertas.showAlertSuccess('Vaga publicada com sucesso!')
       
