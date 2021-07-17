@@ -22,12 +22,13 @@ import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.compon
 import { TemaComponent } from './tema/tema.component';
 import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
 import { TemaDeleteComponent } from './deletar/tema-delete/tema-delete.component';
-<<<<<<< HEAD
+
 import { AlertaComponent } from './alerta/alerta.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-=======
+
 import { OrderModule } from 'ngx-order-pipe';
->>>>>>> 42e65333481aef68faab0e59fc9da4a55deaedce
+import { MinhasVagasComponent } from './minhas-vagas/minhas-vagas.component';
+
 
 
 
@@ -49,7 +50,8 @@ import { OrderModule } from 'ngx-order-pipe';
     TemaComponent,
     TemaEditComponent,
     TemaDeleteComponent,
-    AlertaComponent
+    AlertaComponent,
+    MinhasVagasComponent
 
   ],
   imports: [
@@ -57,7 +59,8 @@ import { OrderModule } from 'ngx-order-pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule
 
   ],
   providers: [{

@@ -40,6 +40,10 @@ export class PostagemService {
   getPostagemById(id:number):Observable<Postagem>{
     return this.http.get<Postagem>(`https://redeingressa.herokuapp.com/postagens/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
+  //pegar vaga publicada
+  getVagasById(id:number):Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/vaga/usuario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
 
   deletePostagem(id: number){
     return this.http.delete(`https://redeingressa.herokuapp.com/postagens/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
