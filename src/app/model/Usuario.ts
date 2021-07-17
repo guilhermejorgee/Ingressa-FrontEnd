@@ -27,6 +27,10 @@ export class Usuario{
     public empresaAtual: string;
 
     public postagem: Postagem[];
+
+    public postagemCurtidas: Postagem[];
+
+    public token: string;
  
 
 }

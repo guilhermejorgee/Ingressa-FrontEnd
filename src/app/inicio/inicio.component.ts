@@ -50,11 +50,17 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
 
+  postagem2: Postagem = new Postagem()
+
   temaEscolhido: number;
 
   tema: Tema = new Tema()
 
   usuario: Usuario = new Usuario()
+
+  usuario2: Usuario = new Usuario()
+
+  postagemCurtida: Postagem = new Postagem()
 
   user = environment.id
 
@@ -67,7 +73,7 @@ export class InicioComponent implements OnInit {
   key = 'dataDePostagem'
   reverse = true
 
-  
+  postagensCurtidasUser: Postagem[]
 
 
   constructor(
@@ -94,6 +100,8 @@ export class InicioComponent implements OnInit {
     this.findPostagensEmAlta()
 
     this.getAllTemasComuns()
+
+    this.findByUser()
 
   }
 
@@ -182,13 +190,15 @@ export class InicioComponent implements OnInit {
 
     this.postagem.tema = this.tema
 
-    this.postagemService.postPostagemComum(this.postagem).subscribe((resp: Postagem) => {
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp;
 
 
       alert('Postagem realizada com sucesso')
       this.findPostagensComuns()
       this.postagem = new Postagem()
+      this.tema = new Tema()
+      this.temaEscolhido = null;
       this.router.navigate(['/inicio'])
     })
   }
@@ -213,5 +223,107 @@ export class InicioComponent implements OnInit {
     }
 
   }
+
+  curtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
+    this.authService.curtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+      this.usuario = resp;
+      this.findByUser()
+    })
+  }
+
+  descurtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
+    this.authService.descurtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+      this.usuario = resp;
+      this.findByUser()
+    })
+  }
+
+  findByUser(){
+    this.authService.getByIdUsuario(environment.id).subscribe((resp: Usuario)=>{
+      this.usuario2 = resp;
+    this.postagensCurtidasUser = this.usuario2.postagemCurtidas;
+    })
+  }
+
+  verificandoCurtidasFeita(id: number){
+
+    if(this.postagensCurtidasUser == null){
+      return false;
+    }
+    else if(this.postagensCurtidasUser.length == 0){
+      return false;
+    }
+
+    this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
+
+    if(this.postagemCurtida == null){
+      return false
+    }
+    else if(this.postagemCurtida.id == id){
+      return true
+    }
+
+   return false;
+
+  }
+
+  verificandoCurtidasNaoFeita(id: number){
+    if(this.postagensCurtidasUser == null){
+      return true;
+    }
+    else if(this.postagensCurtidasUser.length == 0){
+      return true;
+    }
+
+    this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
+
+    if(this.postagemCurtida == null){
+      return true
+    }
+    else if(this.postagemCurtida.id != id){
+      return true
+    }
+
+   return false;
+  }
+
+
+
+ contClickCurtida(id: number){
+    this.postagemService.contCurtidaPostagem(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+    })
+  }
+
+  contClickRetiradaCurtida(id: number){
+    this.postagemService.contRemoverCurtidaPostagem(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+
+    })
+  }
+
+  findByIdPostagem(id: number){
+    this.postagemService.getPostagemById(id).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp;
+    })
+  }
+
+ /* myMove() {
+
+    const elem = document.querySelector("#teste1");   
+    let pos = 30;
+    let id = setInterval(frame, 6);
+    function frame() {
+      if (pos == 0) {
+        clearInterval(id);
+      } else {
+        pos--; 
+       // elem.style.top = pos + "px"; 
+       // elem.style.top = pos + "px"; 
+        elem.setAttribute('style', 'top:${pos}px')
+        elem.setAttribute('style', 'top:${pos}px')
+      }
+    }*/
+
 
 }

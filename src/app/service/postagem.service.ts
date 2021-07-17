@@ -14,14 +14,21 @@ export class PostagemService {
   ) { }
   
   token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token).set('Content-Type','application/json').set('Access-Control-Allow-Origin','*').set('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept')
   }
+
+
+
 
   getAllPostagensComuns(): Observable<Postagem[]>{
     return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/comuns', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
-  postPostagemComum(postagem: Postagem): Observable<Postagem>{
+  getAllPostagensVagas(): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/vagas', {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+  postPostagem(postagem: Postagem): Observable<Postagem>{
     return this.http.post<Postagem>('https://redeingressa.herokuapp.com/postagens', postagem, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
@@ -47,6 +54,14 @@ export class PostagemService {
 
   deletePostagem(id: number){
     return this.http.delete(`https://redeingressa.herokuapp.com/postagens/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+  contCurtidaPostagem(id: number): Observable<Postagem>{
+    return this.http.put<Postagem>(`https://redeingressa.herokuapp.com/postagens/curtir/${id}`, null, {    headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+  contRemoverCurtidaPostagem(id: number): Observable<Postagem>{
+    return this.http.put<Postagem>(`https://redeingressa.herokuapp.com/postagens/descurtir/${id}`, null, {    headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
 }

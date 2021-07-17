@@ -47,9 +47,8 @@ export class CadastrarComponent implements OnInit {
 
     let nomeValue = (<HTMLInputElement>document.querySelector("#nome")).value.length;
 
-    if (validaNome.test(this.usuario.nome)) {
-
-      nome.setAttribute('style', 'border-color:#53d78b');
+    if (validaNome.test(this.usuario.nome)) { 
+      nome.setAttribute('style', 'border-color:#9794F2');
     }
     else if (nomeValue == 0) {
       nome.setAttribute('style', 'border-color:#9794F2');
@@ -71,8 +70,7 @@ export class CadastrarComponent implements OnInit {
     let emailValue = (<HTMLInputElement>document.querySelector("#email")).value.length;
 
     if (validaEmail.test(this.usuario.email)) {
-
-      email.setAttribute('style', 'border-color:#53d78b');
+      email.setAttribute('style', 'border-color:#9794F2');
     }
     else if (emailValue == 0) {
       email.setAttribute('style', 'border-color:#9794F2');
@@ -93,8 +91,7 @@ export class CadastrarComponent implements OnInit {
     const validaSenha = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
     if (validaSenha.test(this.validacaoSenha)) {
-
-      senha.setAttribute('style', 'border-color:#53d78b');
+      senha.setAttribute('style', 'border-color:#9794F2');
     }
     else if (senhaValue == 0) {
       senha.setAttribute('style', 'border-color:#9794F2');
@@ -115,15 +112,13 @@ export class CadastrarComponent implements OnInit {
 
 
     if (this.usuario.senha != this.validacaoSenha) {
-
       senhaConfirm.setAttribute('style', 'border-color:#e84c3d');
-
     }
     else if (confirmSenhaValue == 0) {
       senhaConfirm.setAttribute('style', 'border-color:#9794F2');
     }
     else {
-      senhaConfirm.setAttribute('style', 'border-color:#53d78b');
+      senhaConfirm.setAttribute('style', 'border-color:#9794F2');
     }
 
   }
@@ -143,8 +138,7 @@ export class CadastrarComponent implements OnInit {
     let telValue = (<HTMLInputElement>document.querySelector("#phone")).value.length;
 
     if (regex.test(this.usuario.telefone)) {
-
-      tel.setAttribute('style', 'border-color:#53d78b');
+      tel.setAttribute('style', 'border-color:#9794F2');
     }
     else if (telValue == 0) {
       tel.setAttribute('style', 'border-color:#9794F2');
@@ -165,8 +159,7 @@ export class CadastrarComponent implements OnInit {
     let fotoValue = (<HTMLInputElement>document.querySelector("#linkFoto")).value.length;
 
     if (regex.test(this.usuario.fotoPerfil)) {
-
-      foto.setAttribute('style', 'border-color:#53d78b');
+      foto.setAttribute('style', 'border-color:#9794F2');
     }
     else if (fotoValue == 0) {
       foto.setAttribute('style', 'border-color:#9794F2');
@@ -207,7 +200,7 @@ export class CadastrarComponent implements OnInit {
 
     this.codigoAdminDigitado = event.target.value
 
-    if (this.codigoAdminDigitado != '6969:D') {
+    if (this.codigoAdminDigitado != 'devIngressa') {
       this.usuario.usuarioAdmin = false;
 
     }
@@ -270,10 +263,9 @@ export class CadastrarComponent implements OnInit {
     
     
       if (this.verificador.test(this.usuario.fotoPerfil)) {
-  
+        this.usuario.fotoPerfil = this.usuario.fotoPerfil
       }
       else {
-  
         this.usuario.fotoPerfil = "https://i.imgur.com/1afzaLZ.png"
       }
 

@@ -1,3 +1,5 @@
+import { Usuario } from "./Usuario";
+
 export class UserLogin{
 
     public id: number;
@@ -19,5 +21,9 @@ export class UserLogin{
     public empresaAtual: string;
 
     public telefone: string;
+
+    public usuarioAdmin: boolean;
+
+
 
 }
