@@ -83,49 +83,71 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalPublicacao" tabindex="-1" aria-labelledby="modalPublicacaoLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalPublicacaoLabel">Modal title</h5>
+            <div class="modal-header bg-roxo">
+                <h5 class="modal-title text-white" id="modalPublicacaoLabel">Publicar Vaga</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-roxo3">
 
-                <div class="container-fluid d-flex flex-column align-items-center">
+                <!--  <h5>Titulo</h5>-->
 
-                    <h5>Titulo</h5>
+                <div class="form-group text-center texto mb-2">
 
-                    <input [(ngModel)]="postagem.titulo" class="form-control w-100" type="text">
+                    <input [(ngModel)]="postagem.titulo" class="form-control w-100 bg-in" type="text"
+                        placeholder="Titulo (mínimo de 4 caracteres)">
 
-                    <h5>Cargo</h5>
+                </div>
 
-                    <input [(ngModel)]="postagem.cargo" class="form-control w-100" type="text">
+                <div class="form-group text-center texto mb-2">
 
-                    <h5>Região</h5>
+                    <input [(ngModel)]="postagem.cargo" class="form-control w-100 bg-in" type="text"
+                        placeholder="Informe o cargo">
 
-                    <input [(ngModel)]="postagem.regiao" class="form-control w-100" type="text">
+                </div>
 
-                    <h5>Texto</h5>
+                <div class="form-group text-center texto mb-2">
 
-                    <textarea [(ngModel)]="postagem.texto" class="form-control" placeholder="Escreva sua publicação"
-                        name="textoPublicacao" id="" cols="30" rows="8"></textarea>
+                    <input [(ngModel)]="postagem.regiao" class="form-control w-100 bg-in" type="text"
+                        placeholder="Localidade">
 
-                    <div class="form-group my-3 mx-3">
-                        <select [(ngModel)]="temaEscolhido" class="form-control" name="tema" id="tema"
-                            (change)="findByIdTema()">
-                            <option *ngFor='let item of listaTema' value="{{item.id}}">{{item.area}}
-                            </option>
-                        </select>
+                </div>
 
-                    </div>
+                <!--  <h5>Texto</h5>-->
+
+                <div class="form-group text-center texto mb-2">
+                    <small style="font-size: 10pt; text-align: left; text-transform:none; margin: 0;">Para destacar uma palavra coloque &lt;d&gt;&lt;/d&gt; | Exemplo: &lt;d&gt;<span class="text-dark">Requisitos:</span>&lt;/d&gt; </small>
+                    <textarea [(ngModel)]="postagem.texto" class="form-control bg-in"
+                        placeholder="Descreva as caracteristicas da vaga (mínimo de 10 caracteres)" name="textoPublicacao" id="" cols="30"
+                        rows="8"></textarea>
+
+                </div>
+
+
+            <div class="form-group text-center texto">
+
+                <div class="form-group my-3 mx-3">
+                    <select [(ngModel)]="temaEscolhido" class="form-select bg-in" name="tema" id="tema"
+                        (change)="findByIdTema()">
+                        <option value="-1">Escolha um Tema</option>
+                        <option *ngFor='let item of listaTema' class="fw-bolder" value="{{item.id}}">{{item.area}}</option>
+                    </select>
+
                 </div>
 
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button data-bs-dismiss="modal" (click)="postVaga()" type="button" class="btn btn-primary">Publicar</button>
+
+        </div>
+        <div class="modal-footer bg-roxo3">
+
+            <div class="col-md-12 d-flex justify-content-center">
+                <button data-bs-dismiss="modal" (click)="postVaga()" type="button"
+                    class="btn btn-secondary bg-roxo">Publicar</button>
             </div>
+
+        </div>
         </div>
     </div>
 </div>

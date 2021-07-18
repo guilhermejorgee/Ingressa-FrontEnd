@@ -121,7 +121,8 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <button *ngIf="verificandoCurtidasNaoFeita(item?.id)"
-                                    (click)="curtidaPostagem(user, item?.id)" class="btn btn-outline-success clickcurtir"
+                                    (click)="curtidaPostagem(user, item?.id)"
+                                    class="btn btn-outline-success clickcurtir"
                                     (click)="contClickCurtida(item?.id)">Gostei
                                 </button>
                                 <button (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
@@ -230,56 +231,59 @@
         <!-- Modal -->
         <div class="modal fade" id="publicacaoModal" tabindex="-1" aria-labelledby="publicacaoModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-roxo text-center">
                         <h5 class="modal-title text-white" id="publicacaoModalLabel">Nova Publicação</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body bg-roxo3">
 
-                        <div class="container-fluid d-flex flex-column align-items-center">
+                            <!--  <h5>Titulo</h5>-->
 
-                            <h5>Titulo</h5>
+                            <div class="form-group text-center texto mb-2">
 
-                            <input [(ngModel)]="postagem.titulo" class="form-control w-100" type="text">
+                                <input [(ngModel)]="postagem.titulo" class="form-control w-100 bg-in" type="text"
+                                    placeholder="Titulo (mínimo de 4 caracteres)">
 
-                            <h5>Texto</h5>
+                            </div>
 
-                            <textarea [(ngModel)]="postagem.texto" class="form-control"
-                                placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                                rows="8"></textarea>
+                            <!--  <h5>Texto</h5>-->
 
-                            <h5>Link de video ou Foto</h5>
+                            <div class="form-group text-center texto mb-2">
 
-                            <input [(ngModel)]="postagem.midia" class="form-control w-100" type="text">
+                                <textarea [(ngModel)]="postagem.texto" class="form-control bg-in"
+                                    placeholder="Escreva sua publicação (mínimo de 10 caracteres)" name="textoPublicacao" id="" cols="30"
+                                    rows="8"></textarea>
 
+                            </div>
+
+                         <!--  <h5>Link de video ou Foto</h5>--> 
+
+                         <div class="form-group text-center texto mb-2">
+
+                            <input [(ngModel)]="postagem.midia" class="form-control w-100 bg-in" type="text" placeholder="Link de video ou Foto">
+
+                        </div>
+
+                        <div class="form-group text-center texto">
 
                             <div class="form-group my-3 mx-3">
-                                <select [(ngModel)]="temaEscolhido" class="form-control" name="tema" id="tema"
+                                <select [(ngModel)]="temaEscolhido" class="form-select bg-in" name="tema" id="tema"
                                     (change)="findByIdTema()">
-                                    <option *ngFor='let item of temas' value="{{item.id}}">{{item.area}}</option>
+                                    <option value="-1">Escolha um Tema</option>
+                                    <option *ngFor='let item of temas' class="fw-bolder" value="{{item.id}}">{{item.area}}</option>
                                 </select>
 
                             </div>
+
                         </div>
+
 
                     </div>
-                    <div class=" row modal-footer d-flex justify-content-around mx-3">
+                    <div class="modal-footer bg-roxo3">
 
-                        <div class="col-md-2">
-                            <!-- <a href="#" type="file">Foto</a>-->
-                        </div>
-
-                        <div class="col-md-2">
-                            <!-- <a href="#" type="file">Video</a>-->
-                        </div>
-
-                        <div class="col-md-2">
-                            <!--<a href="#" type="file">Arquivo</a>-->
-                        </div>
-
-                        <div class="col-md-4">
+                        <div class="col-md-12 d-flex justify-content-center">
                             <button data-bs-dismiss="modal" (click)="PostPostagensComum()" type="button"
                                 class="btn btn-secondary bg-roxo">Publicar</button>
                         </div>

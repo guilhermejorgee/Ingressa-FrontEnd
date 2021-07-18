@@ -26,7 +26,7 @@ export class VagasComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTema: Tema[]
-  temaEscolhido: number
+  temaEscolhido: number = -1;
 
   listaPostagens: Postagem[]
 

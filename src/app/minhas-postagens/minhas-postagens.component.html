@@ -221,41 +221,63 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title text-white" id="publicacaoModalLabel">Nova Publicação</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="modal-body bg-roxo3">
 
-                    <h5>Titulo</h5>
+                    <!--  <h5>Titulo</h5>-->
 
-                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100" type="text">
+                    <div class="form-group text-center texto mb-2">
 
-                    <textarea [(ngModel)]="postagemUsuario.texto" class="form-control"
-                    placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                    rows="8"></textarea>
+                        <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100 bg-in" type="text"
+                            placeholder="Titulo (mínimo de 4 caracteres)">
 
-                    <h5>Texto</h5>
+                    </div>
 
-                    <!--  <textarea [(ngModel)]="postagem.texto" class="form-control"
-                        placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                        rows="8"></textarea>-->
+                    <!--  <h5>Texto</h5>-->
 
+                    <div class="form-group text-center texto mb-2">
+
+                        <textarea [(ngModel)]="postagemUsuario.texto" class="form-control bg-in"
+                            placeholder="Escreva sua publicação (mínimo de 10 caracteres)" name="textoPublicacao" id="" cols="30"
+                            rows="8"></textarea>
+
+                    </div>
+
+                 <!--  <h5>Link de video ou Foto</h5>--> 
+
+                 <div class="form-group text-center texto mb-2">
+
+                    <input [(ngModel)]="postagemUsuario.midia" class="form-control w-100 bg-in" type="text" placeholder="Link de video ou Foto">
+
+                </div>
+
+                <div class="form-group text-center texto">
 
                     <div class="form-group my-3 mx-3">
-                        <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
-                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
+                        <select [(ngModel)]="idTema" class="form-select bg-in" name="tema" id="tema"
+                            (change)="findByIdTema()">
+                            <option value="-1">{{postagemUsuario?.tema?.area}}</option>
+                            <option *ngFor='let item of listaTemas' class="fw-bolder" value="{{item.id}}">{{item.area}}</option>
                         </select>
+
                     </div>
 
                 </div>
+
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button data-bs-dismiss="modal" type="button" class="btn btn-primary" (click)="atualizar()">Atualizar</button>
+            <div class="modal-footer bg-roxo3">
+
+                <div class="col-md-12 d-flex justify-content-center">
+                    <button data-bs-dismiss="modal" (click)="atualizar()" type="button"
+                        class="btn btn-secondary bg-roxo">Publicar</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -285,3 +307,4 @@
         </div>
     </div>
 </div>
+

@@ -32,6 +32,7 @@ export class MinhasVagasComponent implements OnInit {
   postagem: Postagem[]
   postagemUsuario: Postagem = new Postagem()
   listaVagasTemas: Postagem[]
+  postagemConsultaInteressadas: Postagem = new Postagem()
 
   rastrearOpcaoTema: string = "todos";
 
@@ -176,5 +177,11 @@ export class MinhasVagasComponent implements OnInit {
     })
 
 
+  }
+
+  findByIdPostagem(id: number){
+    this.postagemService.getPostagemById(id).subscribe((resp: Postagem)=>{
+      this.postagemConsultaInteressadas = resp;
+    })
   }
 }
