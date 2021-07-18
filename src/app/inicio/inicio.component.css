@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
 
 a{
     color: black;
@@ -115,6 +119,60 @@ ul{
 #dibloc{
     display:block
 }
+
+.texto {
+
+    font-family: 'Eczar', serif;
+    font-style: normal;
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #845ABF;
+    /*text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+}
+
+
+.bg-in {
+    /* background-color: rgba(170, 167, 242, 0.8);*/
+    background-color: #e3dcf2;
+    border: 1px solid #9794F2;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.bg-in > input{
+    height: 46px;
+}
+
+.bg-in::placeholder {
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-weight:bolder;
+    font-size: 10pt;
+
+}
+
+.bg-in:focus {
+    background-color: #e3dcf2;
+    box-shadow: 0px 0px 3px #9794F2;
+    outline: 0;
+    border: 1px solid #9794F2;
+}
+
+.bg-in-valid:focus {
+    background-color: #e3dcf2;
+    box-shadow: 0px 0px 3px #9794F2;
+    border: 1px solid #37b605;
+}
+
+.bg-in-invalid:focus {
+    background-color: #4b01eb;
+    box-shadow: 0px 0px 3px #9794F2;
+    border: 1px solid #bd0a6c;
+}
+
 .animacaoRolagem{
     position: relative;
     animation: mymove 1s;

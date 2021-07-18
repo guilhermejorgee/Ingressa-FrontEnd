@@ -40,7 +40,7 @@ export class MinhasPostagensComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
-  idTema: number;
+  
   postagensTema: Postagem[]
 
 
@@ -51,6 +51,7 @@ export class MinhasPostagensComponent implements OnInit {
   idPostagem:number
   postagem: Postagem[]
   postagemUsuario: Postagem = new Postagem()
+  idTema: number = -1;
 
   rastrearOpcaoTema: string = "todos";
 
@@ -138,6 +139,8 @@ export class MinhasPostagensComponent implements OnInit {
     this.postagemService.getPostagemById(this.idPostagem).subscribe((resp:Postagem)=>{
       this.postagemUsuario = resp
 
+      console.log(this.postagemUsuario.tema.id);
+
     let postagemConvertEspaco = this.postagemUsuario.texto.replace(/&nbsp;/g," ");
     let postagemConvertLinha = postagemConvertEspaco.replace(/<br>/g,"\n")
     let postagemComDestaqueUm = postagemConvertLinha.replace(/<strong>/g,"<destacar>")
@@ -179,6 +182,10 @@ export class MinhasPostagensComponent implements OnInit {
 
  atualizar() {
 
+  if(this.idTema == -1){
+    this.idTema = this.postagemUsuario.tema.id;
+  }
+
   this.tema.id = this.idTema
 
   this.postagemUsuario.tema = this.tema
@@ -194,7 +201,7 @@ export class MinhasPostagensComponent implements OnInit {
 
     this.postagemUsuario = new Postagem()
     this.tema = new Tema()
-    this.idTema = null;
+    this.idTema = -1;
     this.findAllPostagensComumDeUsuario()
 
     this.alertas.showAlertSuccess('Edição feita com sucesso')

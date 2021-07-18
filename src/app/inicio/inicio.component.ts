@@ -52,7 +52,7 @@ export class InicioComponent implements OnInit {
 
   postagem2: Postagem = new Postagem()
 
-  temaEscolhido: number;
+  temaEscolhido: number = -1;
 
   tema: Tema = new Tema()
 
@@ -190,18 +190,36 @@ export class InicioComponent implements OnInit {
 
     this.postagem.tema = this.tema
 
-    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
-      this.postagem = resp;
+    if(this.temaEscolhido == -1){
+      this.alertas.showAlertInfo('Escolha um tema')
+    }
+    else if(this.postagem.texto.length < 10){
+      this.alertas.showAlertInfo('Insira no mínimo 10 caracteres no texto')
+    }
+    else if(this.postagem.titulo.length < 10){
+      this.alertas.showAlertInfo('Insira no mínimo 4 caracteres no titulo')
+    }
+    else{
 
+      this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
+        this.postagem = resp;
+  
+  
+        this.alertas.showAlertSuccess('Postagem realizada com sucesso')
+        this.findPostagensComuns()
+        this.postagem = new Postagem()
+        this.tema = new Tema()
+        this.temaEscolhido = null;
+        this.router.navigate(['/inicio'])
+      }, erro =>{
+        if (erro.status == 400 || erro.status == 500) {
+          this.alertas.showAlertDanger('Informações inválidas')
+        }
+      })
+    }
 
-      alert('Postagem realizada com sucesso')
-      this.findPostagensComuns()
-      this.postagem = new Postagem()
-      this.tema = new Tema()
-      this.temaEscolhido = null;
-      this.router.navigate(['/inicio'])
-    })
-  }
+    }
+
 
 
   findPostagensEmAlta() {

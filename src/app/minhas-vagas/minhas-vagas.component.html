@@ -79,7 +79,7 @@
 
                         <div class="d-flex justify-content-around mb-2">
 
-                            <button class="btn btn-outline-dark"> Interessados a vaga</button>
+                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessados a vaga</button>
 
                             <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
                                 class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -118,7 +118,7 @@
 
                         <div class="d-flex justify-content-around mb-2">
 
-                            <button [routerLink]="['/perfil-user',-1]" class="btn btn-outline-dark"> Interessados a vaga</button>
+                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessados a vaga</button>
 
                             <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
                             class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -208,6 +208,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="apagar(postagemUsuario.id)">Deletar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Interessadas -->
+<div class="modal fade" id="modalInteressadas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalInteressadasLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalInteressadasLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li *ngFor="let item of postagemConsultaInteressadas.curtidoresPostagem"><a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.nome}}</a></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
             </div>
         </div>
     </div>
