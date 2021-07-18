@@ -30,6 +30,12 @@ export class VagasComponent implements OnInit {
 
   listaPostagens: Postagem[]
 
+  listaPostagensRegiao: Postagem[]
+
+  listaPostagensAreaCargo: Postagem[]
+
+  listaPostagensAreaCargoERegiao: Postagem[]
+
   key = 'dataDePostagem'
   reverse = true
 
@@ -38,6 +44,11 @@ export class VagasComponent implements OnInit {
   postagemCurtida: Postagem = new Postagem()
 
   postagensCurtidasUser: Postagem[]
+
+
+  keyPesquisaCargoArea: string = ''
+  keyPesquisaRegiao: string = ''
+
 
   constructor(
     private router: Router,
@@ -53,7 +64,7 @@ export class VagasComponent implements OnInit {
 
     window.scroll(0, 0)
 
-   if (environment.token == '') {
+    if (environment.token == '') {
       alert('Sessão expirada, faça login novamente')
       this.router.navigate(['/entrar'])
 
@@ -65,6 +76,70 @@ export class VagasComponent implements OnInit {
 
     this.findByUser()
 
+  }
+
+  pesquisaCargoArea() {
+
+
+    if (this.keyPesquisaCargoArea != '' && this.keyPesquisaRegiao == '') {
+
+      this.postagemService.getPostagemAreaCargo(this.keyPesquisaCargoArea.toLowerCase()).subscribe((resp: Postagem[]) => {
+        this.listaPostagensAreaCargo = resp;
+      })
+    }
+  }
+
+  pesquisaRegiao() {
+
+    if (this.keyPesquisaCargoArea == '' && this.keyPesquisaRegiao != '') {
+      this.postagemService.getPostagemByRegiao(this.keyPesquisaRegiao.toLowerCase()).subscribe((resp: Postagem[]) => {
+        this.listaPostagensRegiao = resp;
+      })
+    }
+
+  }
+
+  pesquisaCargoAreaRegiao() {
+
+    if (this.keyPesquisaCargoArea != '' && this.keyPesquisaRegiao != '') {
+      this.postagemService.getPostagemAreaCargoRegiao(this.keyPesquisaCargoArea.toLowerCase(), this.keyPesquisaRegiao.toLowerCase()).subscribe((resp: Postagem[]) => {
+        this.listaPostagensAreaCargoERegiao = resp;
+      })
+    }
+
+  }
+
+
+  verificandoParaTodasPostagens() {
+
+    if (this.keyPesquisaCargoArea == '' && this.keyPesquisaRegiao == '') {
+      return true
+    }
+    return false
+  }
+
+  verificandoParaCargoArea() {
+
+    if (this.keyPesquisaCargoArea != '' && this.keyPesquisaRegiao == '') {
+      return true
+    }
+    return false
+  }
+
+  verificandoParaRegiao() {
+
+    if (this.keyPesquisaCargoArea == '' && this.keyPesquisaRegiao != '') {
+      return true
+    }
+    return false
+  }
+
+  verificandoParaCargoAreaRegiao() {
+
+    if (this.keyPesquisaCargoArea != '' && this.keyPesquisaRegiao != '') {
+      return true
+    }
+    return false
   }
 
 
@@ -82,103 +157,103 @@ export class VagasComponent implements OnInit {
       this.temaEscolhido = null;
       this.findPostagensVagas()
       this.alertas.showAlertSuccess('Vaga publicada com sucesso!')
-      
+
     })
   }
 
-  findByIdTema(){
-    this.temaService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema)=>{
+  findByIdTema() {
+    this.temaService.getByIdTema(this.temaEscolhido).subscribe((resp: Tema) => {
       this.tema = resp
     })
 
   }
 
-  findTemasVagas(){
-    this.temaService.getTemasVagas().subscribe((resp: Tema[])=>{
+  findTemasVagas() {
+    this.temaService.getTemasVagas().subscribe((resp: Tema[]) => {
       this.listaTema = resp
     })
   }
 
-  findPostagensVagas(){
-    this.postagemService.getAllPostagensVagas().subscribe((resp: Postagem[])=>{
+  findPostagensVagas() {
+    this.postagemService.getAllPostagensVagas().subscribe((resp: Postagem[]) => {
       this.listaPostagens = resp
     })
   }
 
-  redEditPost(id: number){
+  redEditPost(id: number) {
     this.router.navigate(["vagas/", id]);
   }
 
-  findPostagemId(){
+  findPostagemId() {
     this.idPostagem = this.route.snapshot.params['idpostagem']
- 
-     this.postagemService.getPostagemById(this.idPostagem).subscribe((resp:Postagem)=>{
-       this.postagemSelecionada = resp
- 
-     })
-   }
 
-   curtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
-    this.authService.curtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+    this.postagemService.getPostagemById(this.idPostagem).subscribe((resp: Postagem) => {
+      this.postagemSelecionada = resp
+
+    })
+  }
+
+  curtidaPostagem(idUserCurtida: number, idPostagemCurtida: number) {
+    this.authService.curtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario) => {
       this.usuario = resp;
       this.findByUser()
     })
   }
 
-  descurtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
-    this.authService.descurtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario)=>{
+  descurtidaPostagem(idUserCurtida: number, idPostagemCurtida: number) {
+    this.authService.descurtirPostagem(idUserCurtida, idPostagemCurtida).subscribe((resp: Usuario) => {
       this.usuario = resp;
       this.findByUser()
     })
   }
 
-  findByUser(){
-    this.authService.getByIdUsuario(environment.id).subscribe((resp: Usuario)=>{
+  findByUser() {
+    this.authService.getByIdUsuario(environment.id).subscribe((resp: Usuario) => {
       this.usuario2 = resp;
-    this.postagensCurtidasUser = this.usuario2.postagemCurtidas;
+      this.postagensCurtidasUser = this.usuario2.postagemCurtidas;
     })
   }
 
-  verificandoCurtidasFeita(id: number){
+  verificandoCurtidasFeita(id: number) {
 
-    if(this.postagensCurtidasUser == null){
+    if (this.postagensCurtidasUser == null) {
       return false;
     }
-    else if(this.postagensCurtidasUser.length == 0){
+    else if (this.postagensCurtidasUser.length == 0) {
       return false;
     }
 
     this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
 
-    if(this.postagemCurtida == null){
+    if (this.postagemCurtida == null) {
       return false
     }
-    else if(this.postagemCurtida.id == id){
+    else if (this.postagemCurtida.id == id) {
       return true
     }
 
-   return false;
+    return false;
 
   }
 
-  verificandoCurtidasNaoFeita(id: number){
-    if(this.postagensCurtidasUser == null){
+  verificandoCurtidasNaoFeita(id: number) {
+    if (this.postagensCurtidasUser == null) {
       return true;
     }
-    else if(this.postagensCurtidasUser.length == 0){
+    else if (this.postagensCurtidasUser.length == 0) {
       return true;
     }
 
     this.postagemCurtida = this.postagensCurtidasUser.find(myObj => myObj.id == id)
 
-    if(this.postagemCurtida == null){
+    if (this.postagemCurtida == null) {
       return true
     }
-    else if(this.postagemCurtida.id != id){
+    else if (this.postagemCurtida.id != id) {
       return true
     }
 
-   return false;
+    return false;
   }
 
 

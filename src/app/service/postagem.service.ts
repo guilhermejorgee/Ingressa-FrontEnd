@@ -75,4 +75,15 @@ export class PostagemService {
     return this.http.put<Postagem>(`https://redeingressa.herokuapp.com/postagens/descurtir/${id}`, null, {    headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getPostagemByRegiao(regiao: string): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/regiao/${regiao}`, { headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+  getPostagemAreaCargo(pesquisa: string): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/areacargo/${pesquisa}`, { headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+  
+  getPostagemAreaCargoRegiao(pesquisa: string, regiao: string): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/areacargo/${pesquisa}/regiao/${regiao}`, { headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
 }
