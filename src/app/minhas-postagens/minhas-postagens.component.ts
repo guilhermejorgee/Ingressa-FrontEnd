@@ -41,7 +41,7 @@ export class MinhasPostagensComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number;
-  temaPostagens: Tema = new Tema()
+  postagensTema: Postagem[]
 
 
   usuario: Usuario = new Usuario()
@@ -84,7 +84,7 @@ export class MinhasPostagensComponent implements OnInit {
     
    // this.findPostagemId()
 
-   this.getAllPostagensDeUsuario()
+   this.findAllPostagensComumDeUsuario()
    this.findAllTemas()
 
   }
@@ -113,15 +113,15 @@ export class MinhasPostagensComponent implements OnInit {
 
     if (event.target.value != "todos") {
 
-      this.temaService.getByIdTema(event.target.value).subscribe((resp: Tema) => {
-        this.temaPostagens = resp;
+      this.postagemService.getByIdUserByIdTema(this.user, event.target.value).subscribe((resp: Postagem[]) => {
+        this.postagensTema = resp;
       
 
       })}
   }
 
-  getAllPostagensDeUsuario(){
-    this.postagemService.getPostagemDeUsuario(this.user).subscribe((resp: Postagem[])=>{
+  findAllPostagensComumDeUsuario(){
+    this.postagemService.getPostagemComumDeUsuario(this.user).subscribe((resp: Postagem[])=>{
       this.postagem = resp
     })
 
@@ -195,7 +195,7 @@ export class MinhasPostagensComponent implements OnInit {
     this.postagemUsuario = new Postagem()
     this.tema = new Tema()
     this.idTema = null;
-    this.getAllPostagensDeUsuario()
+    this.findAllPostagensComumDeUsuario()
 
     this.alertas.showAlertSuccess('Edição feita com sucesso')
 
@@ -204,7 +204,7 @@ export class MinhasPostagensComponent implements OnInit {
 
 apagar(id:number){
   this.postagemService.deletePostagem(id).subscribe(()=>{
-    this.getAllPostagensDeUsuario()
+    this.findAllPostagensComumDeUsuario()
     alert('Publicação apagada com sucesso!')
   })
 

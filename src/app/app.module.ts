@@ -27,7 +27,10 @@ import { AlertaComponent } from './alerta/alerta.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { OrderModule } from 'ngx-order-pipe';
+
 import { MinhasVagasComponent } from './minhas-vagas/minhas-vagas.component';
+import { PerfilUserComponent } from './perfil-user/perfil-user.component';
+
 
 
 
@@ -51,7 +54,9 @@ import { MinhasVagasComponent } from './minhas-vagas/minhas-vagas.component';
     TemaEditComponent,
     TemaDeleteComponent,
     AlertaComponent,
-    MinhasVagasComponent
+    MinhasVagasComponent,
+    PerfilUserComponent
+
 
   ],
   imports: [

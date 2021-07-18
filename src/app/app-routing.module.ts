@@ -10,6 +10,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { MenuComponent } from './menu/menu.component';
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
 import { MinhasVagasComponent } from './minhas-vagas/minhas-vagas.component';
+import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
 import { TemaComponent } from './tema/tema.component';
@@ -31,7 +32,9 @@ const routes: Routes = [
   {path: 'tema',component: TemaComponent}, 
   {path: 'tema-edit/:id', component: TemaEditComponent},
 	{path: 'tema-delete/:id',component: TemaDeleteComponent},
-  {path: 'minhas-vagas/:id', component: MinhasVagasComponent}
+  {path: 'minhas-vagas/:id', component: MinhasVagasComponent},
+  {path: 'perfil-user/:id', component: PerfilUserComponent}
+
 
 
 
