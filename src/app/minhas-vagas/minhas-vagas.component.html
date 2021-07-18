@@ -4,7 +4,7 @@
         <div class="row d-flex justify-content-center">
 
             <div class="col-md-3">
-                <div class="row">.</div>
+                <div class="row" style="color:#ede7f8">.</div>
                 <div class="card border-roxoclaro mb-3 bg-roxo4">
                     <div class="d-flex justify-content-center">
                         <div class="col-md-6">
@@ -20,17 +20,18 @@
 
                         <div class="ms-1">
 
-                            <div class="d-flex align-items-center rounded p-2 border-b-p">
+                            <div class="d-flex align-items-center rounded p-2  mt-1 border-b-p">
+                                <i class="fas fa-home me-2"></i><a routerLink='/inicio'>Página Inicial</a>
+                            </div>
+
+                            <div class="d-flex align-items-center rounded p-2">
                                 <i class="fas fa-user-edit me-2"></i><a class="mr-2-5"
                                     [routerLink]="['/perfil', user]">Meu Perfil</a>
                             </div>
+
                             <div class="d-flex align-items-center rounded p-2  mt-1">
                                 <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-postagens', -1]">Minhas
                                     Postagens</a>
-                            </div>
-                            <div class="d-flex align-items-center rounded p-2  mt-1">
-                                <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-vagas', -1]">Minhas
-                                    Vagas</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +39,7 @@
             </div>
 
             <div class="col-md-6">
-                <div class="row">.</div>
+                <div class="row" style="color:#ede7f8">.</div>
 
                 <div class="border-roxoclaro card mb-4 bg-roxo4">
                     <div class="row my-3 mx-2 d-flex align-items-center">
@@ -57,7 +58,8 @@
 
                 <!--Postagem Vagas por tema-->
                 <div *ngIf="verificaPostagemTema()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of listaVagasTemas | orderBy: key : reverse'>
+                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p"
+                        *ngFor='let item of listaVagasTemas | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -79,7 +81,8 @@
 
                         <div class="d-flex justify-content-around mb-2">
 
-                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessados a vaga</button>
+                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark"
+                                data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessadas na vaga</button>
 
                             <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
                                 class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -87,7 +90,9 @@
                             </button>
 
 
-                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">Deletar</button>
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()"
+                                class=" btn btn-outline-dark" data-bs-target="#modalDelete"
+                                data-bs-toggle="modal">Deletar</button>
                         </div>
 
                     </div>
@@ -96,7 +101,8 @@
 
                 <!--Postagem Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagem | orderBy: key : reverse'>
+                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p"
+                        *ngFor='let item of postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
                             <div>
@@ -115,20 +121,17 @@
                             <p class="card-text my-3" [innerHTML]="item.texto"></p>
                         </div>
 
-
                         <div class="d-flex justify-content-around mb-2">
-
-                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessados a vaga</button>
+                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-dark"
+                                data-bs-toggle="modal" data-bs-target="#modalInteressadas">Interessadas na vaga</button>
 
                             <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
-                            class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Editar
-                        </button>
+                                class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Editar
+                            </button>
 
-
-
-                        <button (click)="redEditPost(item.id)" (click)="findPostagemId()"
-                            class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()"
+                                class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">
                                 Deletar</button>
                         </div>
 
@@ -137,6 +140,7 @@
                 <!--/Postagens Geral-->
 
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 </div>
@@ -144,45 +148,57 @@
 
 <!-- Modal -->
 <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Editar Vaga</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="container-fluid d-flex flex-column align-items-center">
 
-                    <h5 class="mt-2">Titulo</h5>
-                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100" type="text">
+            <div class="modal-body bg-roxo3">
+                <!-- <h5 class="mt-2">Titulo</h5> -->
+                <div class="form-group text-center texto mb-2">
+                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100 bg-in" type="text"
+                        placeholder="Titulo (mínimo de 4 caracteres)">
+                </div>
 
-                    <h5 class="mt-2">Cargo</h5>
-                    <input [(ngModel)]="postagemUsuario.cargo" class="form-control w-100" type="text">
+                <!--  <h5 class="mt-2">Cargo</h5> -->
+                <div class="form-group text-center texto mb-2">
+                    <input [(ngModel)]="postagemUsuario.cargo" class="form-control w-100 bg-in" type="text"
+                        placeholder="Cargo">
+                </div>
 
-                    <h5 class="mt-2">Região</h5>
-                    <input [(ngModel)]="postagemUsuario.regiao" class="form-control w-100" type="text">
+                <!--  <h5 class="mt-2">Região</h5> -->
+                <div class="form-group text-center texto mb-2">
+                    <input [(ngModel)]="postagemUsuario.regiao" class="form-control w-100 bg-in" type="text"
+                        placeholder="Região">
+                </div>
 
-                    <h5 class="mt-2">Texto</h5>
-                    <textarea [(ngModel)]="postagemUsuario.texto" class="form-control"
-                    placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                    rows="8"></textarea>
+                <!--  <h5 class="mt-2">Texto</h5> -->
+                <div class="form-group text-center texto mb-2">
+                    <textarea [(ngModel)]="postagemUsuario.texto" class="form-control bg-in"
+                        placeholder="Descrição sobre a vaga" name="textoPublicacao" id="" cols="30" rows="8"></textarea>
+                </div>
 
-                    <!--  <textarea [(ngModel)]="postagem.texto" class="form-control"
-                        placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
-                        rows="8"></textarea>-->
-
-                    <h5 class="mt-2">Tema</h5>
-                    <div class="form-group my-2 mx-3">
-                        <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
-                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
+                <!--  <h5 class="mt-2">Tema</h5> -->
+                <div class="form-group text-center texto">
+                    <div class="form-group my-3 mx-3">
+                        <select [(ngModel)]="idTema" class="form-select bg-in" name="tema" id="tema"
+                            (change)="findByIdTema()">
+                            <option value="-1">{{postagemUsuario?.tema?.area}}</option>
+                            <option *ngFor='let item of listaTemas' class="fw-bolder" value="{{item.id}}">{{item.area}}
+                            </option>
                         </select>
                     </div>
-
                 </div>
             </div>
-            <div class="modal-footer p-0">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button data-bs-dismiss="modal" type="button" class="btn btn-primary" (click)="atualizar()">Atualizar Vaga</button>
+
+            <div class="modal-footer bg-roxo3">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-secondary bg-roxo"
+                        (click)="atualizar()">Atualizar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -194,42 +210,49 @@
 <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Deletar Vaga</h5>
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Deletar Vaga</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="container-fluid d-flex flex-column align-items-center">
 
+            <div class="modal-body bg-roxo3">
+                <div class="container-fluid d-flex flex-column align-items-center text-center">
                     <h6>Tem certeza que deseja deletar a vaga: {{postagemUsuario?.titulo}} ?</h6>
-
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="apagar(postagemUsuario.id)">Deletar</button>
+
+            <div class="modal-footer bg-roxo3">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary bg-roxo" data-bs-dismiss="modal"
+                        (click)="apagar(postagemUsuario.id)">Deletar</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal Interessadas -->
-<div class="modal fade" id="modalInteressadas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="modalInteressadas" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="modalInteressadasLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalInteressadasLabel">Modal title</h5>
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title text-white" id="modalInteressadasLabel">Interessadas a vaga</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+
+            <div class="modal-body bg-roxo3">
                 <ul>
-                    <li *ngFor="let item of postagemConsultaInteressadas.curtidoresPostagem"><a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.nome}}</a></li>
+                    <li *ngFor="let item of postagemConsultaInteressadas.curtidoresPostagem">
+                        <div class="d-flex align-items-center">
+                            <img src="{{item.fotoPerfil}}" class="me-2 card-img-top img-fluid rounded-circle"
+                                alt="Foto de perfil" style="width: 50px;">
+
+                            <a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.nome}}</a>
+                        </div>
+                    </li>
+
                 </ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
             </div>
         </div>
     </div>

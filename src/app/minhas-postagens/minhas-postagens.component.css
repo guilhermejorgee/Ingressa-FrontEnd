@@ -156,3 +156,7 @@ ul{
     outline: 0;
     border: 1px solid #9794F2;
 }
+
+button:hover{
+    background-color: #845ABF;
+}
