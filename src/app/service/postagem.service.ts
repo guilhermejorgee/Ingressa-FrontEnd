@@ -28,6 +28,11 @@ export class PostagemService {
     return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/vagas', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getByIdUserByIdTema(idUsuario: number, idTema: number): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/usuario/${idUsuario}/tema/${idTema}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+
   postPostagem(postagem: Postagem): Observable<Postagem>{
     return this.http.post<Postagem>('https://redeingressa.herokuapp.com/postagens', postagem, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
@@ -36,8 +41,8 @@ export class PostagemService {
     return this.http.get<Postagem[]>('https://redeingressa.herokuapp.com/postagens/emaltasemana', {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
-  getPostagemDeUsuario(id:number): Observable<Postagem[]>{
-    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/usuario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
+  getPostagemComumDeUsuario(id:number): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/comum/usuario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   putPostagemDeUsuario(postagem: Postagem): Observable<Postagem>{
