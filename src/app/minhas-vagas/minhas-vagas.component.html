@@ -1,0 +1,214 @@
+<div class="container-fluid bg-roxo6">
+    <div class="container">
+
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-3">
+                <div class="row">.</div>
+                <div class="card border-roxoclaro mb-3 bg-roxo4">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-md-6">
+                            <div>
+                                <img src="{{foto}}" class="bg-l card-img-top img-fluid rounded-circle  my-3" alt="...">
+                                <h4 class="text-center">{{nome}}</h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex flex-column p-1 mt-2">
+
+                        <div class="ms-1">
+
+                            <div class="d-flex align-items-center rounded p-2 border-b-p">
+                                <i class="fas fa-user-edit me-2"></i><a class="mr-2-5"
+                                    [routerLink]="['/perfil', user]">Meu Perfil</a>
+                            </div>
+                            <div class="d-flex align-items-center rounded p-2  mt-1">
+                                <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-postagens', -1]">Minhas
+                                    Postagens</a>
+                            </div>
+                            <div class="d-flex align-items-center rounded p-2  mt-1">
+                                <i class="fas fa-align-left me-3"></i><a [routerLink]="['/minhas-vagas', -1]">Minhas
+                                    Vagas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">.</div>
+
+                <div class="border-roxoclaro card mb-4 bg-roxo4">
+                    <div class="row my-3 mx-2 d-flex align-items-center">
+                        <h1 class="text-center">Minhas Vagas</h1>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <span class="me-2 p-t-p">Postagens por tema:</span>
+                    <select [(ngModel)]="rastrearOpcaoTema" (change)="findByIdTemaVagas($event)"
+                        class="form-select bg-roxo4 border-roxoclaro" name="" id="">
+                        <option value="todos">Todos</option>
+                        <option *ngFor="let item of listaTemas" value="{{item.id}}">{{item.area}}</option>
+                    </select>
+                </div>
+
+                <!--Postagem Vagas por tema-->
+                <div *ngIf="verificaPostagemTema()">
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of listaVagasTemas | orderBy: key : reverse'>
+
+                        <div class="mx-4 my-3 d-flex align-items-center">
+                            <div>
+                                <img src="{{item.usuario.fotoPerfil}}"
+                                    class="me-2 card-img-top img-fluid rounded-circle" alt="..." style="width: 50px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="text-secondary">{{item.usuario.nome}}</span>
+                                <small>{{item.dataDePostagem | date: 'dd/MM/yyyy'}} às {{item.dataDePostagem | date:
+                                    'HH:mm'}}</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{item.titulo}}</b></h5>
+                            <p class="card-text my-3" [innerHTML]="item.texto"></p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-around mb-2">
+
+                            <button class="btn btn-outline-dark"> Interessados a vaga</button>
+
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
+                                class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Editar
+                            </button>
+
+
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">Deletar</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/Postagens Temas-->
+
+                <!--Postagem Geral-->
+                <div *ngIf="verificaPostagemGeral()">
+                    <div class="border-roxoclaro card my-3 bg-roxo6 h-p" *ngFor='let item of postagem | orderBy: key : reverse'>
+
+                        <div class="mx-4 my-3 d-flex align-items-center">
+                            <div>
+                                <img src="{{item.usuario.fotoPerfil}}"
+                                    class="me-2 card-img-top img-fluid rounded-circle" alt="..." style="width: 50px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="text-secondary">{{item.usuario.nome}}</span>
+                                <small>{{item.dataDePostagem | date: 'dd/MM/yyyy'}} às {{item.dataDePostagem | date:
+                                    'HH:mm'}}</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{item.titulo}}</b></h5>
+                            <p class="card-text my-3" [innerHTML]="item.texto"></p>
+                        </div>
+
+
+                        <div class="d-flex justify-content-around mb-2">
+
+                            <button [routerLink]="['/perfil-user',-1]" class="btn btn-outline-dark"> Interessados a vaga</button>
+
+                            <button (click)="redEditPost(item.id)" (click)="findPostagemId()" type="button"
+                            class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Editar
+                        </button>
+
+
+
+                        <button (click)="redEditPost(item.id)" (click)="findPostagemId()"
+                            class=" btn btn-outline-dark" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                Deletar</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/Postagens Geral-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Vaga</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex flex-column align-items-center">
+
+                    <h5 class="mt-2">Titulo</h5>
+                    <input [(ngModel)]="postagemUsuario.titulo" class="form-control w-100" type="text">
+
+                    <h5 class="mt-2">Cargo</h5>
+                    <input [(ngModel)]="postagemUsuario.cargo" class="form-control w-100" type="text">
+
+                    <h5 class="mt-2">Região</h5>
+                    <input [(ngModel)]="postagemUsuario.regiao" class="form-control w-100" type="text">
+
+                    <h5 class="mt-2">Texto</h5>
+                    <textarea [(ngModel)]="postagemUsuario.texto" class="form-control"
+                    placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
+                    rows="8"></textarea>
+
+                    <!--  <textarea [(ngModel)]="postagem.texto" class="form-control"
+                        placeholder="Escreva sua publicação" name="textoPublicacao" id="" cols="30"
+                        rows="8"></textarea>-->
+
+                    <h5 class="mt-2">Tema</h5>
+                    <div class="form-group my-2 mx-3">
+                        <select [(ngModel)]="idTema" class="form-control" name="tema" id="tema">
+                            <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.area}}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer p-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-primary" (click)="atualizar()">Atualizar Vaga</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deletar Vaga</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid d-flex flex-column align-items-center">
+
+                    <h6>Tem certeza que deseja deletar a vaga: {{postagemUsuario?.titulo}} ?</h6>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="apagar(postagemUsuario.id)">Deletar</button>
+            </div>
+        </div>
+    </div>
+</div>
