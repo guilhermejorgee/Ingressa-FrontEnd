@@ -165,7 +165,7 @@ export class MinhasVagasComponent implements OnInit {
     this.idTema = null;
     this.findVagasById()
 
-    this.alertas.showAlertSuccess('Edição feita com sucesso!')
+    this.alertas.showAlertSuccess('Vaga atualizada com sucesso!')
 
     })
   }
@@ -173,7 +173,7 @@ export class MinhasVagasComponent implements OnInit {
 
   apagar(id: number) {
     this.postagemService.deletePostagem(id).subscribe(() => {
-      this.alertas.showAlertSuccess('Publicação apagada com sucesso!')
+      this.alertas.showAlertSuccess('Vaga deletada com sucesso!')
     })
 
 

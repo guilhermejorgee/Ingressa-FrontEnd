@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
 
 #tela {
-    background-color: #ede7f8;
+    background-color: #e5dff0;
 }
 
 a{
@@ -44,6 +44,10 @@ a{
     font-weight:bolder;
     font-size: 10pt;
 
+}
+
+.bg-roxo4{
+    background-color: #ede7f8;
 }
 
 .bg-in:focus {

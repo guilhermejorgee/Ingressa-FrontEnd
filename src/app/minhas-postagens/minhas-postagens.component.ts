@@ -204,7 +204,7 @@ export class MinhasPostagensComponent implements OnInit {
     this.idTema = -1;
     this.findAllPostagensComumDeUsuario()
 
-    this.alertas.showAlertSuccess('Edição feita com sucesso')
+    this.alertas.showAlertSuccess('Postagem atualizada com sucesso!')
 
   })
 }
@@ -212,7 +212,7 @@ export class MinhasPostagensComponent implements OnInit {
 apagar(id:number){
   this.postagemService.deletePostagem(id).subscribe(()=>{
     this.findAllPostagensComumDeUsuario()
-    alert('Publicação apagada com sucesso!')
+    this.alertas.showAlertSuccess('Postagem deletada com sucesso!')
   })
 
 
