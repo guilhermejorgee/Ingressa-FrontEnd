@@ -52,6 +52,12 @@ export class PostagemService {
     return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/vaga/usuario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
+  getByIdVagaTema(idUsuario: number, idTema: number):Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://redeingressa.herokuapp.com/postagens/usuario/${idUsuario}/tema/${idTema}`,  {headers: new HttpHeaders().set('Authorization', environment.token)})
+  }
+
+
+
   deletePostagem(id: number){
     return this.http.delete(`https://redeingressa.herokuapp.com/postagens/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }

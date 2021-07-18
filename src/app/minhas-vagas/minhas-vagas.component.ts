@@ -31,6 +31,7 @@ export class MinhasVagasComponent implements OnInit {
   idPostagem: number
   postagem: Postagem[]
   postagemUsuario: Postagem = new Postagem()
+  listaVagasTemas: Postagem[]
 
   rastrearOpcaoTema: string = "todos";
 
@@ -38,8 +39,6 @@ export class MinhasVagasComponent implements OnInit {
   reverse = true
 
   testeTexto: string = this.postagemUsuario.texto;
-
-
 
   constructor(
     private router: Router,
@@ -89,12 +88,12 @@ export class MinhasVagasComponent implements OnInit {
 
   }
 
-  findByIdTemaPostagens(event: any) {
+  findByIdTemaVagas(event: any) {
 
     if (event.target.value != "todos") {
 
-      this.temaService.getByIdTema(event.target.value).subscribe((resp: Tema) => {
-        this.temaPostagens = resp;
+      this.postagemService.getByIdVagaTema(this.user, event.target.value).subscribe((resp: Postagem[]) => {
+        this.listaVagasTemas = resp;
       })
     }
   }
@@ -107,7 +106,7 @@ export class MinhasVagasComponent implements OnInit {
   }
 
   redEditPost(id: number) {
-    this.router.navigate(["minhas-postagens/", id]);
+    this.router.navigate(["/minhas-vagas", id]);
   }
 
   findPostagemId() {
@@ -153,18 +152,27 @@ export class MinhasVagasComponent implements OnInit {
 
     this.postagemUsuario.qtCurtidas = null;
 
+    if(this.postagemUsuario.titulo == '' || this.postagemUsuario.cargo == '' || this.postagemUsuario.regiao == '' || this.postagemUsuario.texto == ''){
+      this.alertas.showAlertDanger('Por favor, não deixe os campos nulos.')
+    }
+    else{
     this.postagemService.putPostagemDeUsuario(this.postagemUsuario).subscribe((resp: Postagem) => {
       this.postagemUsuario = resp
 
+    this.postagemUsuario = new Postagem()
+    this.tema = new Tema()
+    this.idTema = null;
+    this.findVagasById()
 
-      this.alertas.showAlertSuccess('Edição feita com sucesso')
+    this.alertas.showAlertSuccess('Edição feita com sucesso!')
 
     })
+  }
   }
 
   apagar(id: number) {
     this.postagemService.deletePostagem(id).subscribe(() => {
-      alert('Publicação apagada com sucesso!')
+      this.alertas.showAlertSuccess('Publicação apagada com sucesso!')
     })
 
 
