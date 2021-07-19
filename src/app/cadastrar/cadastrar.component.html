@@ -82,6 +82,12 @@
                                 required="required" />
                         </div>
 
+                        <div>
+                            <textarea [(ngModel)]="usuario.descSobre" class="form-control mt-2 bg-in"
+                                placeholder="Fale um pouco sobre você" name="textoPublicacao" id="" cols="30"
+                                rows="4"></textarea>
+                        </div>
+
                         <div class="form-group text-center texto">
                             <!-- <label for="usuario">Usuário</label>-->
                             <input [(ngModel)]="usuario.fotoPerfil" class="form-control bg-in mt-2" type="text"

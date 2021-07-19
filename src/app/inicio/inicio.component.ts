@@ -46,6 +46,8 @@ export class InicioComponent implements OnInit {
 
   postagensEmAlta: Postagem[]
 
+  topUsuariosEmpregadores: Usuario[]
+
   temas: Tema[]
 
   postagem: Postagem = new Postagem()
@@ -98,6 +100,8 @@ export class InicioComponent implements OnInit {
     this.findPostagensComuns()
 
     this.findPostagensEmAlta()
+
+    this.findTopUsuariosEmpregadores()
 
     this.getAllTemasComuns()
 
@@ -225,6 +229,14 @@ export class InicioComponent implements OnInit {
   findPostagensEmAlta() {
     this.postagemService.getPostagensEmAlta().subscribe((resp: Postagem[]) => {
       this.postagensEmAlta = resp;
+    })
+
+  }
+
+  findTopUsuariosEmpregadores() {
+    this.authService.getTopUsuariosEmpregadores().subscribe((resp: Usuario[]) => {
+      this.topUsuariosEmpregadores = resp;
+
     })
 
   }

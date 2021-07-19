@@ -24,12 +24,14 @@
 .bg-in {
     /* background-color: rgba(170, 167, 242, 0.8);*/
     background-color: #e3dcf2;
-    height: 46px;
     border: 1px solid #9794F2;
     color: #000;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     font-size: 10pt;
+}
+.bg-in > input{
+    height: 46px;
 }
 
 .bg-in::placeholder {

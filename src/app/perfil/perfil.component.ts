@@ -15,12 +15,16 @@ export class PerfilComponent implements OnInit {
 
   usuario: Usuario = new Usuario()
   idUsuario: number
+
+  novaSenha: string = null;
+
   nome = environment.nome
   foto = environment.fotoPerfil
   
-  validacaoSenha: string;
+  validacaoSenha: string = '';
   tipoDeUsuario: boolean;
   consultaClickAdmin: number = 0;
+  consultaClickSenha: number = 0;
   codigoAdminDigitado: string;
   verificaEmpresaAtual: boolean;
 
@@ -40,10 +44,12 @@ export class PerfilComponent implements OnInit {
         this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
         this.router.navigate(['/entrar'])
     }
-
-      this.usuario.usuarioAdmin = false;
       this.idUsuario = this.route.snapshot.params['id']
       this.findByIdUsuario(this.idUsuario)
+
+      this.usuario.senha = null;
+
+      this.usuario
   }
 
   //Validações dos campos de cadastro
@@ -185,14 +191,6 @@ export class PerfilComponent implements OnInit {
 
   }
 
-  dataNascimento() {
-
-    let data = document.querySelector("#dataNascimento");
-
-    data.setAttribute('type', 'date');
-
-  }
-
   exibeAdmin() {
 
     let admin = document.querySelector("#admin");
@@ -204,6 +202,22 @@ export class PerfilComponent implements OnInit {
     else {
       this.consultaClickAdmin = 0;
       admin.setAttribute('style', 'display:none');
+    }
+  }
+
+  exibeAlterarSenha() {
+
+    let admin = document.querySelector("#alterarSenha");
+
+    if (this.consultaClickSenha == 0) {
+      this.consultaClickSenha = 1;
+      admin.setAttribute('style', 'display:inline');
+    }
+    else {
+      this.consultaClickSenha = 0;
+      admin.setAttribute('style', 'display:none');
+      this.validacaoSenha = ''
+      this.usuario.senha = ''
     }
   }
 
@@ -222,87 +236,33 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  tipoUsuario(event: any) {
-
-    let inserirEmpresa = document.querySelector("#empresaAtual");
-
-
-    if (event.target.value == 'valor2') {
-      this.tipoDeUsuario = false
-      inserirEmpresa.setAttribute('style', 'display: none')
-      this.usuario.empresaAtual = null
-    }
-    else if (event.target.value == 'valor3') {
-      this.tipoDeUsuario = true;
-      inserirEmpresa.setAttribute('style', 'display: inline')
-    }
-    else {
-      this.tipoDeUsuario = false;
-      inserirEmpresa.setAttribute('style', 'display: none')
-      this.usuario.empresaAtual = null
-    }
-
-
-  }
-
-  empresaAtual(event: any) {
-
-    if (this.tipoDeUsuario == true) {
-      this.usuario.empresaAtual = event.target.value
-    }
-    else {
-      this.usuario.empresaAtual = null;
-    }
-
-  }
-
-  verificaFoto() {
-
-    let foto;
-
-    const verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
-
-    // if(environment.fotoPerfil.match(verificador)){
-
-    if (verificador.test(environment.fotoPerfil)) {
-
-      foto = environment.fotoPerfil
-
-    }
-    else {
-
-      foto = "../assets/unnamed.png"
-    }
-
-    return foto;
-
-  }
 
   findByIdUsuario(id: number){
     this.authService.getByIdUsuario(id).subscribe((resp: Usuario)=>{
       this.usuario = resp
+
+      this.usuario.senha = ''
     })
   }
 
   atualizar(){
 
-    
-    this.usuario.usuarioEmpregador = this.tipoDeUsuario
 
     if (this.usuario.usuarioEmpregador == null) {
       this.alertas.showAlertDanger('Escolha uma das opções')
     }
-
-    if (this.usuario.senha != this.validacaoSenha) {
-      this.alertas.showAlertDanger('Senhas diferentes')
-
-
-    }
+    else if (this.usuario.senha != this.validacaoSenha) {
+        this.alertas.showAlertDanger('Senhas diferentes')
+      }
     else {
 
       if(this.usuario.email == ''){
         this.usuario.email = null;
       } 
+
+      if(this.usuario.senha == ''){
+        this.usuario.senha = null;
+      }
 
       console.log(this.usuario.email)
 

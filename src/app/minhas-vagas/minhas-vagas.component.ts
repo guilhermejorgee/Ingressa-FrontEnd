@@ -20,7 +20,7 @@ export class MinhasVagasComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
-  idTema: number;
+  idTema: number = -1;
   temaPostagens: Tema = new Tema()
 
 
@@ -143,6 +143,10 @@ export class MinhasVagasComponent implements OnInit {
 
   atualizar() {
 
+    if(this.idTema == -1){
+      this.idTema = this.postagemUsuario.tema.id;
+    }
+
     this.tema.id = this.idTema
 
     this.postagemUsuario.tema = this.tema
@@ -162,7 +166,7 @@ export class MinhasVagasComponent implements OnInit {
 
     this.postagemUsuario = new Postagem()
     this.tema = new Tema()
-    this.idTema = null;
+    this.idTema = -1;
     this.findVagasById()
 
     this.alertas.showAlertSuccess('Vaga atualizada com sucesso!')
