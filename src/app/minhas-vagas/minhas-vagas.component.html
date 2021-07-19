@@ -58,7 +58,7 @@
 
                 <!--Postagem Vagas por tema-->
                 <div *ngIf="verificaPostagemTema()">
-                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p"
+                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p animacaoRolagem"
                         *ngFor='let item of listaVagasTemas | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
@@ -101,7 +101,7 @@
 
                 <!--Postagem Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p"
+                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p animacaoRolagem"
                         *ngFor='let item of postagem | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
@@ -237,7 +237,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-roxo text-center">
-                <h5 class="modal-title text-white" id="modalInteressadasLabel">Interessadas a vaga</h5>
+                <h5 class="modal-title text-white" id="modalInteressadasLabel">Interessadas na vaga</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
