@@ -50,7 +50,9 @@ export class PerfilComponent implements OnInit {
 
       this.usuario.senha = null;
 
-      this.usuario
+
+      (<HTMLInputElement>document.querySelector("#confirmSenha")).value = ''
+
   }
 
   //Validações dos campos de cadastro
@@ -143,6 +145,8 @@ export class PerfilComponent implements OnInit {
   }
 
   confirmSenha(event: any) {
+
+    let telValue = (<HTMLInputElement>document.querySelector("#phone")).value = "teste"
 
     this.validacaoSenha = event.target.value;
 
