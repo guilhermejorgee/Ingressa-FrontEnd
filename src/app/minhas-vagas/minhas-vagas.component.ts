@@ -119,8 +119,8 @@ export class MinhasVagasComponent implements OnInit {
 
       let postagemConvertEspaco = this.postagemUsuario.texto.replace(/&nbsp;/g, " ");
       let postagemConvertLinha = postagemConvertEspaco.replace(/<br>/g, "\n")
-      let postagemComDestaqueUm = postagemConvertLinha.replace(/<strong>/g, "<destacar>")
-      let postagemComDestaqueDois = postagemComDestaqueUm.replace(/<\/strong>/g, "</destacar>")
+      let postagemComDestaqueUm = postagemConvertLinha.replace(/<strong>/g, "<d>")
+      let postagemComDestaqueDois = postagemComDestaqueUm.replace(/<\/strong>/g, "</d>")
 
       this.postagemUsuario.texto = postagemComDestaqueDois
 
