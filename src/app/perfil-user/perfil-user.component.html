@@ -16,6 +16,12 @@
                                 <i class="fas fa-home me-2"></i><a class="mr-2-5" routerLink='/inicio'>Página
                                     Inicial</a>
                             </div>
+                            <div *ngIf="verificaPerfilUsuario()" class="d-flex align-items-center rounded p-2 border-b-p">
+                                <i class="fas fa-home me-2"></i><a class="mr-2-5"[routerLink]="['/perfil', user]">Editar Perfil</a>
+                            </div>
+                            <div *ngIf="verificaPerfilUsuario()" class="d-flex align-items-center rounded p-2 border-b-p">
+                                <i class="fas fa-home me-2"></i><a class="mr-2-5"[routerLink]="['/minhas-postagens', user]">Minhas Postagens</a>
+                            </div>
                         </div>
                     </div>
                 </div>
