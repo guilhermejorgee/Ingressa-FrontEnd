@@ -285,11 +285,11 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="postagemPesquisadaLabel">Modal title</h5>
+                <div class="modal-header bg-roxo text-center">
+                    <h5 class="modal-title text-white" id="postagemPesquisadaLabel">Sobre a vaga</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bg-roxo3">
                     <div class="mx-4 my-3 d-flex align-items-center">
                         <div>
                             <img src="{{postagemSelecionada?.usuario?.fotoPerfil}}"
@@ -313,11 +313,11 @@
                         <div class="d-flex flex-column align-items-center">
                             <button *ngIf="verificandoCurtidasNaoFeita(postagemSelecionada?.id)"
                                 (click)="curtidaPostagem(user, postagemSelecionada?.id)"
-                                class="btn btn-outline-success">Tenho Interesse
+                                class="btn btn-secondary bg-roxo">Tenho Interesse
                             </button>
                             <button (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(postagemSelecionada?.id)"
                                 (click)="descurtidaPostagem(user, postagemSelecionada?.id)"
-                                class="btn btn-success">Tenho Interesse
+                                class="btn btn-secondary bg-roxo">Tenho Interesse
                             </button>
                         </div>
                     </div>
