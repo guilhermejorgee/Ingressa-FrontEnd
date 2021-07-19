@@ -91,6 +91,10 @@ export class AuthService {
     return this.http.put<Usuario>(`https://redeingressa.herokuapp.com/usuarios/removercurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
   }
 
+  getTopUsuariosEmpregadores(): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>('https://redeingressa.herokuapp.com/usuarios/tops', { headers: new HttpHeaders().set('Authorization', environment.token) } )
+  }
+
 
   
 }

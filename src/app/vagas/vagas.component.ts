@@ -150,15 +150,25 @@ export class VagasComponent implements OnInit {
     this.usuario.id = this.user
     this.postagem.usuario = this.usuario
 
-    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
-      this.postagem = resp
-      this.postagem = new Postagem()
-      this.tema = new Tema()
-      this.temaEscolhido = null;
-      this.findPostagensVagas()
-      this.alertas.showAlertSuccess('Vaga publicada com sucesso!')
+    if(this.postagem.cargo == '' || this.postagem.cargo == null){
+      this.alertas.showAlertDanger("É obrigatório inserir um cargo")
+    }
+    else if(this.postagem.regiao == '' || this.postagem.regiao == null){
+      this.alertas.showAlertDanger("É obrigatório inserir uma região")
+    }
+    else{
+      this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
+        this.postagem = resp
+        this.postagem = new Postagem()
+        this.tema = new Tema()
+        this.temaEscolhido = null;
+        this.findPostagensVagas()
+        this.alertas.showAlertSuccess('Vaga publicada com sucesso!')
+  
+      })
+    }
 
-    })
+
   }
 
   findByIdTema() {
