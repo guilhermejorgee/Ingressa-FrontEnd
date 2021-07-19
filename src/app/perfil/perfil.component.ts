@@ -146,8 +146,6 @@ export class PerfilComponent implements OnInit {
 
   confirmSenha(event: any) {
 
-    let telValue = (<HTMLInputElement>document.querySelector("#phone")).value = "teste"
-
     this.validacaoSenha = event.target.value;
 
   }
