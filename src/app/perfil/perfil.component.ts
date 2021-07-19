@@ -15,6 +15,7 @@ export class PerfilComponent implements OnInit {
 
   usuario: Usuario = new Usuario()
   idUsuario: number
+ 
 
   novaSenha: string = null;
 

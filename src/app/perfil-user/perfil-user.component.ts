@@ -14,6 +14,7 @@ export class PerfilUserComponent implements OnInit {
 
   usuario: Usuario = new Usuario()
   idUsuario: number
+  user = environment.id
 
   constructor(
     private route: ActivatedRoute,
@@ -39,5 +40,13 @@ export class PerfilUserComponent implements OnInit {
     this.authService.getByIdUsuario(id).subscribe((resp: Usuario)=>{
       this.usuario = resp
     })
+  }
+
+  verificaPerfilUsuario(){
+
+    if(this.idUsuario == environment.id){
+      return true
+    }
+    return false;
   }
 }
