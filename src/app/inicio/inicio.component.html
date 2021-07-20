@@ -124,21 +124,21 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="d-flex">
-                                <span class="me-3">{{item.qtCurtidas}}</span>
-                                <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
-                                    (click)="curtidaPostagem(user, item?.id)" (click)="contClickCurtida(item?.id)" (click)="findPostagensComuns()"
-                                    class="botaoapoio"><i style="font-size: 18pt;"
-                                        class="fas fa-hand-holding-heart"></i>
-                                </span>
-                                <span (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
-                                    (click)="descurtidaPostagem(user, item?.id)"
-                                    (click)="contClickRetiradaCurtida(item?.id)" (click)="findPostagensComuns()" class="botaoapoio"
-                                    style="color: #845ABF;"><i style="font-size: 18pt;"
-                                        class="fas fa-hand-holding-heart"></i>
-                                </span>
+                                    <span class="me-3">{{item.qtCurtidas}}</span>
+                                    <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
+                                        (click)="curtidaPostagem(user, item?.id)" (click)="contClickCurtida(item?.id)"
+                                        (click)="findPostagensComuns()" class="botaoapoio"><i style="font-size: 18pt;"
+                                            class="fas fa-hand-holding-heart"></i>
+                                    </span>
+                                    <span (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
+                                        (click)="descurtidaPostagem(user, item?.id)"
+                                        (click)="contClickRetiradaCurtida(item?.id)" (click)="findPostagensComuns()"
+                                        class="botaoapoio" style="color: #845ABF;"><i style="font-size: 18pt;"
+                                            class="fas fa-hand-holding-heart"></i>
+                                    </span>
+                                </div>
                             </div>
-                            </div>
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            <button class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">Quem curtiu</button>
                         </div>
 
@@ -181,17 +181,26 @@
 
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
-                                <button *ngIf="verificandoCurtidasNaoFeita(item?.id)"
-                                    (click)="curtidaPostagem(user, item.id)" class="btn btn-outline-success clickcurtir"
-                                    (click)="contClickCurtida(item.id)">Gostei
-                                </button>
-                                <button (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
-                                    (click)="descurtidaPostagem(user, item.id)"
-                                    (click)="contClickRetiradaCurtida(item.id)" class="btn btn-success">Gostei
-                                </button>
+                                <div class="d-flex">
+                                    <span class="me-3">{{item.qtCurtidas}}</span>
+                                    <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
+                                        (click)="curtidaPostagem(user, item.id)"
+                                        class="btn btn-outline-success clickcurtir" (click)="contClickCurtida(item.id)"
+                                        class="botaoapoio"><i style="font-size: 18pt;"
+                                            class="fas fa-hand-holding-heart"></i>
+                                    </span>
+                                    <span (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
+                                        (click)="descurtidaPostagem(user, item.id)"
+                                        (click)="contClickRetiradaCurtida(item.id)" class="botaoapoio"
+                                        style="color: #845ABF;"><i style="font-size: 18pt;"
+                                            class="fas fa-hand-holding-heart"></i>
+                                    </span>
+                                </div>
                             </div>
-                            <button (click)="findByIdPostagem(item.id)" class="btn btn-outline-primary"
-                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quem curtiu</button>
+                            <button (click)="findByIdPostagem(item.id)"
+                                class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Quem curtiu</button>
+
                         </div>
 
                     </div>

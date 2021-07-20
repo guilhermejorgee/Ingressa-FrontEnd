@@ -186,3 +186,8 @@ ul{
 .botaoapoio:hover{
     cursor: pointer;
 }
+
+.btn-qmcurtiu:hover{
+    background-color: #845ABF;
+    color: #fff;
+}
