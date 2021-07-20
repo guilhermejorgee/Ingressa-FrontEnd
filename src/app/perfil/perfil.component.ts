@@ -51,9 +51,6 @@ export class PerfilComponent implements OnInit {
       this.usuario.senha = null;
 
 
-      (<HTMLFormElement>document.querySelector("#senha")).reset()
-
-
   }
 
   //Validações dos campos de cadastro
