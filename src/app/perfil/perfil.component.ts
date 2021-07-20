@@ -51,8 +51,6 @@ export class PerfilComponent implements OnInit {
       this.usuario.senha = null;
 
 
-      (<HTMLInputElement>document.querySelector("#confirmSenha")).value = ''
-
   }
 
   //Validações dos campos de cadastro
@@ -235,6 +233,14 @@ export class PerfilComponent implements OnInit {
     else {
       this.usuario.usuarioAdmin = true;
     }
+
+  }
+
+  mudandoSenha() {
+
+    let data = document.querySelector("#senha");
+
+    data.setAttribute('type', 'password');
 
   }
 
