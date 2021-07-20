@@ -51,7 +51,8 @@ export class PerfilComponent implements OnInit {
       this.usuario.senha = null;
 
 
-      (<HTMLInputElement>document.querySelector("#confirmSenha")).value = ''
+      (<HTMLFormElement>document.querySelector("#senha")).reset()
+
 
   }
 
@@ -235,6 +236,14 @@ export class PerfilComponent implements OnInit {
     else {
       this.usuario.usuarioAdmin = true;
     }
+
+  }
+
+  mudandoSenha() {
+
+    let data = document.querySelector("#senha");
+
+    data.setAttribute('type', 'password');
 
   }
 
