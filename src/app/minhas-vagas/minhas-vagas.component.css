@@ -17,6 +17,15 @@ body{
     background-color: #ede7f8;
 }
 
+.ft-title1{
+    font-family: "Argentum";
+    font-weight: bolder
+}
+
+.bg-azul{
+    background-color: #9794F2;
+}
+
 .bg-roxo{
     background-color: #845ABF;
 }
@@ -124,8 +133,9 @@ ul{
     border: 1px solid #9794F2;
 }
 
-button:hover{
+.btn-style:hover{
     background-color: #845ABF;
+    color: #fff;
 }
 
 .animacaoRolagem{

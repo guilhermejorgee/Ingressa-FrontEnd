@@ -10,7 +10,7 @@
     background-color: #E3DCF2;
 }
 
-.bg-perfil{
+.bg-azul{
     background-color: #9794F2;
 }
 
@@ -46,7 +46,7 @@ a.bet_time:hover{
 }
 
 a.bet_time > span{
-background-color: #000;
+background-color: #845ABF;
 padding: 3px;
 margin-right: -3px;
 border-top-left-radius: 3px;
@@ -111,4 +111,14 @@ border-top-left-radius: 3px;
     position: relative;
     animation: mymove 1s;
     animation-timing-function: linear;
+}
+
+.btn-vaga:hover{
+    background-color: #845ABF;
+    color: #fff;
+}
+
+.ft-title1{
+    font-family: "Argentum";
+    font-weight: bolder
 }

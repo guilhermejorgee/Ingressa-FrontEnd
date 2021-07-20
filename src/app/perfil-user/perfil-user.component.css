@@ -10,3 +10,12 @@
     border: 1px solid #d7d1e2;
 }
 
+a{
+    color: black;
+    text-decoration: none;
+    
+}
+
+.border-b-p{
+    border-bottom: 1px solid #d7d1e2;
+}

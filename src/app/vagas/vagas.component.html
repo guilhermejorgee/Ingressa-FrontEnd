@@ -4,7 +4,7 @@
         <div class="col-md-7 flex-column">
 
             <div class="bg-roxo4 container card rounded-1 mt-3 mb-3 pb-3 ">
-                <h3 class="text-center">Procure um novo emprego</h3>
+                <h3 class="text-center ft-title1">Procure um novo emprego</h3>
                 <div class="d-flex justify-content-center">
                     <input [(ngModel)]="keyPesquisaCargoArea" (keyup)="pesquisaCargoAreaRegiao()" (keyup)="pesquisaCargoArea()"
                         placeholder="🔎 Cargo ou area" type="text" class="w-50  me-2">
@@ -14,10 +14,10 @@
             </div>
         </div>
 
-        <div *ngIf="authService.empregador()" class="col-md-4 bg rounded-3  mt-3 mb-3 pb-3 ">
-            <h6 class="text-center">Pensando em publicar uma vaga para sua empresa?</h6>
+        <div *ngIf="authService.empregador()" class="col-md-4 bg rounded-3  mt-4 mb-3 pb-3 ">
+            <h5 class="text-center ft-title1">Pensando em publicar uma vaga para sua empresa?</h5>
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary bg-perfil text-center text-dark" data-bs-toggle="modal"
+                <button type="button" class="btn btn-light bg-azul btn-vaga text-white" data-bs-toggle="modal"
                     data-bs-target="#modalPublicacao">
                     Crie uma Vaga</button>
 
@@ -28,7 +28,7 @@
 
     <div class="container-fluid mt-5">
 
-        <h1 class="text-center">Vagas disponiveis</h1>
+        <h1 class="text-center ft-title1">Vagas disponiveis</h1>
 
         <!--Todas as postagens-->
         <div *ngIf="verificandoParaTodasPostagens()" class="row">
@@ -313,11 +313,11 @@
                         <div class="d-flex flex-column align-items-center">
                             <button *ngIf="verificandoCurtidasNaoFeita(postagemSelecionada?.id)"
                                 (click)="curtidaPostagem(user, postagemSelecionada?.id)"
-                                class="btn btn-secondary bg-roxo">Tenho Interesse
+                                class="btn btn-light bg-azul text-white">Tenho Interesse
                             </button>
                             <button (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(postagemSelecionada?.id)"
                                 (click)="descurtidaPostagem(user, postagemSelecionada?.id)"
-                                class="btn btn-secondary bg-roxo">Tenho Interesse
+                                class="btn btn-light bg-roxo text-white">Tenho Interesse <i class="fas fa-check-circle"></i>
                             </button>
                         </div>
                     </div>
