@@ -183,3 +183,6 @@ ul{
     to {top: 0px;}
   }
 
+.botaoapoio:hover{
+    cursor: pointer;
+}
