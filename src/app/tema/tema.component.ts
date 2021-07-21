@@ -24,6 +24,7 @@ export class TemaComponent implements OnInit {
     window.scroll(0, 0)
 
     if (environment.token == '') {
+      this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
       this.router.navigate(['/entrar'])
     }
 

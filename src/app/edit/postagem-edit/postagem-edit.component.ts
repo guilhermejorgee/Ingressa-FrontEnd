@@ -78,8 +78,6 @@ export class PostagemEditComponent implements OnInit {
     this.postagemService.putPostagemDeUsuario(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
 
-      console.log(this.tema.id)
-
       this.alertas.showAlertSuccess('Edição feita com sucesso')
     })
   }

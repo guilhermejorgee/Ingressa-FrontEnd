@@ -41,13 +41,13 @@
                             </div>
                             <!-- <label for="nome">Usuário</label>-->
                             <input [(ngModel)]="usuario.nome" class="form-control bg-in" type="text" name="nome"
-                                id="nome" (keyup)="validandoNome()" placeholder="Digite seu Nome e Sobrenome">
+                                id="nome" (keyup)="validandoNome()" placeholder="Digite seu Nome e Sobrenome*">
                         </div>
 
                         <div class="form-group text-center texto">
                             <!-- <label for="usuario">Email</label>-->
                             <input [(ngModel)]="usuario.email" class="form-control bg-in mt-2" type="text" name="email"
-                                id="email" (keyup)="validandoEmail()" placeholder="Digite seu email">
+                                id="email" (keyup)="validandoEmail()" placeholder="Digite seu email *">
                         </div>
 
                         <div class="form-group text-center texto">
@@ -55,20 +55,20 @@
                             <input (input)="confirmSenha($event)" (blur)="verificandoSenhas()"
                                 (keyup)="verificandoSenhas()" class="form-control mt-2 bg-in " type="password"
                                 name="senha" id="senha" (keyup)="validandoSenha()"
-                                placeholder="Digite a senha (Minimo 8 caracteres, uma letra maiuscula e um número)">
+                                placeholder="Digite a senha* (Minimo 8 caracteres, uma letra maiuscula e um número)">
                         </div>
 
                         <div class="form-group text-center texto">
                             <!-- <label for="senha">Senha</label> -->
                             <input [(ngModel)]="usuario.senha" class="form-control mt-2 bg-in " type="password"
                                 name="confirmSenha" id="confirmSenha" (keyup)="verificandoSenhas()"
-                                placeholder="Confirme a senha digitada">
+                                placeholder="Confirme a senha digitada*">
                         </div>
 
                         <div class="form-group text-center texto">
                             <!-- <label for="senha">Senha</label> -->
                             <input [(ngModel)]="usuario.dataNascimento" class="form-control mt-2 bg-in" type="text"
-                                name="dataNascimento" id="dataNascimento" placeholder="Data de Nascimento"
+                                name="dataNascimento" id="dataNascimento" placeholder="Data de Nascimento*"
                                 (focus)="dataNascimento()">
                         </div>
 
@@ -76,10 +76,9 @@
                             <!--<label for="phone">Telefone <span class="required">*</span></label>-->
                             <input [(ngModel)]="usuario.telefone" class="form-control mt-2 bg-in"
                                 (keyup)="validandoTel()" type="text" id="phone" name="phone"
-                                placeholder="Telefone celular, formato: (99) 9999-9999"
+                                placeholder="Telefone celular, formato: 9999999999"
                                 pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})"
-                                title="Número de telefone celular precisa ser no formato 11989999999"
-                                required="required" />
+                                title="Número de telefone celular precisa ser no formato 11989999999"/>
                         </div>
 
                         <div>
@@ -92,7 +91,7 @@
                             <!-- <label for="usuario">Usuário</label>-->
                             <input [(ngModel)]="usuario.fotoPerfil" class="form-control bg-in mt-2" type="text"
                                 name="linkFoto" id="linkFoto" (keyup)="validaFoto()"
-                                placeholder="Link foto de perfil (não é obrigatório)">
+                                placeholder="Link foto de perfil (Caso se sinta confortável)">
                         </div>
 
                         <select name="select" class="form-select bg-in mt-2" (change)="tipoUsuario($event)">
@@ -106,14 +105,14 @@
                             <!--  <label for="usuario">Admin</label>-->
                             <input (input)="empresaAtual($event)" class="form-control bg-in mt-2 empresaAtual"
                                 type="text" name="inputEmpresaAtual" id="inputEmpresaAtual"
-                                placeholder="Digite o nome da sua empresa">
+                                placeholder="Digite o nome da sua empresa*">
                         </div>
 
                         <div class="form-group text-center texto" id="admin">
                             <!--  <label for="usuario">Admin</label>-->
                             <input (input)="verificandoAdmin($event)" class="form-control bg-in mt-2" type="text"
                                 name="inputAdmin" id="inputAdmin"
-                                placeholder="Digite a chave para criação da conta de administrador">
+                                placeholder="Digite a chave para criação da conta de administrador*">
                         </div>
 
                         <div class="d-flex justify-content-center mt-3">

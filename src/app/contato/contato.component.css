@@ -29,3 +29,8 @@ ul.list{
 .fa-linkedin:hover{
     color: #0072b1;
 }
+
+.ft-title1{
+    font-family: "Argentum";
+    font-weight: bolder
+}

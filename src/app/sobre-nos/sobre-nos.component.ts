@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-sobre-nos',
@@ -10,14 +11,15 @@ import { environment } from 'src/environments/environment.prod';
 export class SobreNosComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
 
     if(environment.token == ''){
-      alert('Sessão expirada, faça login novamente')
+      this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
       this.router.navigate(['/entrar'])
 
 
