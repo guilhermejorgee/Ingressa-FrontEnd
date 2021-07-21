@@ -17,16 +17,16 @@ export class TemaDeleteComponent implements OnInit {
 
   constructor(private temaService: TemaService, private router: Router, private route: ActivatedRoute, private alertas: AlertasService) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    window.scroll(0,0)
+    window.scroll(0, 0)
 
-       if(environment.token == ''){
-         alert('Sessão expirada, faça login novamente')
-         this.router.navigate(['/entrar'])
-   
-   
-       }
+    if (environment.token == '') {
+      this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
+      this.router.navigate(['/entrar'])
+
+
+    }
 
 
     this.idTema = this.route.snapshot.params['id']
@@ -34,14 +34,14 @@ export class TemaDeleteComponent implements OnInit {
 
   }
 
-  findByIdTema(id: number){
-    this.temaService.getByIdTema(id).subscribe((resp: Tema)=>{
+  findByIdTema(id: number) {
+    this.temaService.getByIdTema(id).subscribe((resp: Tema) => {
       this.tema = resp
     })
   }
 
-  apagar(){
-    this.temaService.deleteTema(this.idTema).subscribe(()=>{
+  apagar() {
+    this.temaService.deleteTema(this.idTema).subscribe(() => {
       this.alertas.showAlertSuccess('Tema apagado com sucesso!')
       this.router.navigate(['/tema'])
     })

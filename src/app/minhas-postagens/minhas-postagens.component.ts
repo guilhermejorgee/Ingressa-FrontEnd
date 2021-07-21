@@ -73,7 +73,7 @@ export class MinhasPostagensComponent implements OnInit {
     window.scroll(0,0)
 
     if(environment.token == ''){
-      alert('Sessão expirada, faça login novamente')
+      this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
       this.router.navigate(['/entrar'])
 
 

@@ -124,7 +124,6 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="d-flex">
-                                    <span class="me-3">{{item.qtCurtidas}}</span>
                                     <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
                                         (click)="curtidaPostagem(user, item?.id)" (click)="contClickCurtida(item?.id)"
                                         (click)="findPostagensComuns()" class="botaoapoio"><i style="font-size: 18pt;"
@@ -182,7 +181,6 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="d-flex">
-                                    <span class="me-3">{{item.qtCurtidas}}</span>
                                     <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
                                         (click)="curtidaPostagem(user, item.id)"
                                         class="btn btn-outline-success clickcurtir" (click)="contClickCurtida(item.id)"

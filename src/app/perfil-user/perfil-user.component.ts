@@ -26,10 +26,10 @@ export class PerfilUserComponent implements OnInit {
   ngOnInit(){
     window.scroll(0,0)
     
-    //if(environment.token == ''){
-        //this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
-       // this.router.navigate(['/entrar'])
-    //}
+    if(environment.token == ''){
+        this.alertas.showAlertInfo('Sessão expirada, faça login novamente')
+        this.router.navigate(['/entrar'])
+    }
 
       this.usuario.usuarioAdmin = false;
       this.idUsuario = this.route.snapshot.params['id']
