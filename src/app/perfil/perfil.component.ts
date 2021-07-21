@@ -244,6 +244,14 @@ export class PerfilComponent implements OnInit {
 
   }
 
+  mudandoSenhaConfirm() {
+
+    let data = document.querySelector("#confirmSenha");
+
+    data.setAttribute('type', 'password');
+
+  }
+
 
 
   findByIdUsuario(id: number){
