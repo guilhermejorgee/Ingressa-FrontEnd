@@ -31,10 +31,10 @@ export class PerfilComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private alertas: AlertasService
+    private alertas: AlertasService,
   ) { }
 
   ngOnInit() {
