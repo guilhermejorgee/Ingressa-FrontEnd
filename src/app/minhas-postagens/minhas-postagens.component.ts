@@ -9,6 +9,7 @@ import { TemaService } from '../service/tema.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AlertasService } from '../service/alertas.service';
+import { AuthService } from '../service/auth.service';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -65,7 +66,8 @@ export class MinhasPostagensComponent implements OnInit {
     private postagemService: PostagemService,
     private route: ActivatedRoute,
     private temaService: TemaService,
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

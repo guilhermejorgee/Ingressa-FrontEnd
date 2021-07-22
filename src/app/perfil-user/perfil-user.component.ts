@@ -18,7 +18,7 @@ export class PerfilUserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService,
+    public authService: AuthService,
     private alertas: AlertasService,
     private router: Router,
   ) { }
