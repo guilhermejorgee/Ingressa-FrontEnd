@@ -24,19 +24,19 @@ export class AuthService {
 
   entrar(userLogin: UserLogin): Observable<UserLogin> {
 
-    return this.http.post<UserLogin>('https://redeingressa.herokuapp.com/usuarios/logar', userLogin);
+    return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userLogin);
 
   }
 
   cadastrar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.post<Usuario>('https://redeingressa.herokuapp.com/usuarios/cadastrar', usuario);
+    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario);
 
   }
 
   atualizar(usuario: Usuario): Observable<Usuario> {
 
-    return this.http.put<Usuario>('https://redeingressa.herokuapp.com/usuarios', usuario, { headers: new HttpHeaders().set('Authorization', environment.token) });
+    return this.http.put<Usuario>('http://localhost:8080/usuarios', usuario, { headers: new HttpHeaders().set('Authorization', environment.token) });
 
   }
 
@@ -78,21 +78,21 @@ export class AuthService {
 
   getByIdUsuario(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(
-      `https://redeingressa.herokuapp.com/usuarios/${id}`,
+      `http://localhost:8080/usuarios/${id}`,
       { headers: new HttpHeaders().set('Authorization', environment.token) }
     )
   }
 
   curtirPostagem(idUsuario: number, idPostagem: number): Observable<Usuario> {
-    return this.http.put<Usuario>(`https://redeingressa.herokuapp.com/usuarios/adicionarcurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
+    return this.http.put<Usuario>(`http://localhost:8080/usuarios/adicionarcurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
   }
 
   descurtirPostagem(idUsuario: number, idPostagem: number): Observable<Usuario> {
-    return this.http.put<Usuario>(`https://redeingressa.herokuapp.com/usuarios/removercurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
+    return this.http.put<Usuario>(`http://localhost:8080/usuarios/removercurtida/${idUsuario}/${idPostagem}`, null, { headers: new HttpHeaders().set('Authorization', environment.token) })
   }
 
   getTopUsuariosEmpregadores(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>('https://redeingressa.herokuapp.com/usuarios/tops', { headers: new HttpHeaders().set('Authorization', environment.token) } )
+    return this.http.get<Usuario[]>('http://localhost:8080/usuarios/tops', { headers: new HttpHeaders().set('Authorization', environment.token) } )
   }
 
 

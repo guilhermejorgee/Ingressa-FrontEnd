@@ -199,6 +199,10 @@
                                 class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop">Quem curtiu</button>
 
+                                <button (click)="findByIdPostagem(item.id)"
+                                class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                data-bs-target="#comentarios">Comentários</button>
+
                         </div>
 
                     </div>
@@ -335,6 +339,32 @@
                                 alt="Foto de perfil" style="width: 50px;">
 
                             <a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.nome}}</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="comentarios" data-bs-keyboard="false" tabindex="-1" aria-labelledby="comentariosLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title" id="comentariosLabel">Comentarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body bg-roxo3">
+                <ul>
+                    <li *ngFor="let item of postagem2.comentarios">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="{{item.usuario.fotoPerfil}}" class="me-2 card-img-top img-fluid rounded-circle"
+                                alt="Foto de perfil" style="width: 50px;">
+
+                            <a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.comentario}}</a>
                         </div>
                     </li>
                 </ul>
