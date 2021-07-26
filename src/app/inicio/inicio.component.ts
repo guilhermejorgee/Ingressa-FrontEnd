@@ -11,6 +11,8 @@ import { TemaService } from '../service/tema.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AlertasService } from '../service/alertas.service';
+import { ComentariosService } from '../service/comentarios.service';
+import { Comentarios } from '../model/Comentarios';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -73,9 +75,12 @@ export class InicioComponent implements OnInit {
   rastrearOpcaoTema: string = "todos";
 
   key = 'dataDePostagem'
+  keyc = 'dataDeComentario'
   reverse = true
 
   postagensCurtidasUser: Postagem[]
+
+  comentario: Comentarios = new Comentarios()
 
 
   constructor(
@@ -83,7 +88,8 @@ export class InicioComponent implements OnInit {
     private postagemService: PostagemService,
     private temaService: TemaService,
     public authService: AuthService,
-    private alertas: AlertasService
+    private alertas: AlertasService,
+    private comentarios: ComentariosService
   ) { }
 
   ngOnInit() {
@@ -158,7 +164,15 @@ export class InicioComponent implements OnInit {
         this.temaPostagens = resp;
       
 
-      })}
+      })}else{
+
+        this.postagemService.getAllPostagensComuns().subscribe((resp: Postagem[]) => {
+          this.postagens = resp;
+    
+    
+    
+        })
+      }
   }
 
 
@@ -259,6 +273,30 @@ export class InicioComponent implements OnInit {
       this.usuario = resp;
       this.findByUser()
     })
+
+    this.postagemService.contCurtidaPostagem(idPostagemCurtida).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+    })
+
+    if (this.rastrearOpcaoTema == "todos") {
+
+      this.postagens.forEach(postagem => {
+        if(postagem.id == idPostagemCurtida){
+          postagem.qtCurtidas = postagem.qtCurtidas + 1;
+        }
+      });
+
+    }
+    else{
+
+      this.temaPostagens.postagem.forEach(postagem => {
+        if(postagem.id == idPostagemCurtida){
+          postagem.qtCurtidas = postagem.qtCurtidas + 1;
+        }
+      });
+    }
+
+
   }
 
   descurtidaPostagem(idUserCurtida: number, idPostagemCurtida: number){
@@ -266,6 +304,30 @@ export class InicioComponent implements OnInit {
       this.usuario = resp;
       this.findByUser()
     })
+
+    this.postagemService.contRemoverCurtidaPostagem(idPostagemCurtida).subscribe((resp: Postagem)=>{
+      this.postagem2 = resp
+
+    })
+
+    if (this.rastrearOpcaoTema == "todos") {
+
+      this.postagens.forEach(postagem => {
+        if(postagem.id == idPostagemCurtida){
+          postagem.qtCurtidas = postagem.qtCurtidas - 1;
+        }
+      });
+
+    }
+    else{
+
+      this.temaPostagens.postagem.forEach(postagem => {
+        if(postagem.id == idPostagemCurtida){
+          postagem.qtCurtidas = postagem.qtCurtidas - 1;
+        }
+      });
+    }
+
   }
 
   findByUser(){
@@ -319,7 +381,7 @@ export class InicioComponent implements OnInit {
 
 
 
- contClickCurtida(id: number){
+ /*contClickCurtida(id: number){
     this.postagemService.contCurtidaPostagem(id).subscribe((resp: Postagem)=>{
       this.postagem2 = resp
     })
@@ -330,7 +392,8 @@ export class InicioComponent implements OnInit {
       this.postagem2 = resp
 
     })
-  }
+  }*/
+
 
   findByIdPostagem(id: number){
     this.postagemService.getPostagemById(id).subscribe((resp: Postagem)=>{
@@ -338,22 +401,22 @@ export class InicioComponent implements OnInit {
     })
   }
 
- /* myMove() {
+  postarComentarioPostagem(){
 
-    const elem = document.querySelector("#teste1");   
-    let pos = 30;
-    let id = setInterval(frame, 6);
-    function frame() {
-      if (pos == 0) {
-        clearInterval(id);
-      } else {
-        pos--; 
-       // elem.style.top = pos + "px"; 
-       // elem.style.top = pos + "px"; 
-        elem.setAttribute('style', 'top:${pos}px')
-        elem.setAttribute('style', 'top:${pos}px')
-      }
-    }*/
+    this.usuario.id = this.user
 
+    this.comentario.usuario = this.usuario
+
+    this.postagem.id = this.postagem2.id
+
+    this.comentario.postagem = this.postagem
+
+    this.comentarios.postarComentario(this.comentario).subscribe((resp: Comentarios)=>{
+      this.comentario = resp;
+      this.comentario = new Comentarios();
+      this.postagem = new Postagem()
+      this.findByIdPostagem(this.postagem2.id);
+    })
+  }
 
 }

@@ -7,6 +7,8 @@ export class Comentarios{
 
     public comentario: string;
 
+    public dataDeComentario: Date;
+
     public usuario: Usuario;
 
     public postagem: Postagem;
