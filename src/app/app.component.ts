@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './service/auth.service';
+import { environment } from 'src/environments/environment.prod';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,8 +12,10 @@ import { AuthService } from './service/auth.service';
 export class AppComponent {
   title = 'ingressa';
 
+
   constructor(
-    public auth: AuthService
+    public auth: AuthService,
+    private route: ActivatedRoute
   ){}
 
 }
