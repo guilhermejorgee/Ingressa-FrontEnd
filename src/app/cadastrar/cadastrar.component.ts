@@ -25,6 +25,13 @@ export class CadastrarComponent implements OnInit {
 
   verificador = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/g;
 
+  verificadorNome = 0;
+  verificadorEmail = 0;
+  verificadorSenha = 0;
+  verificadorTel = 0;
+  verificadorFoto = 0;
+
+
 
   constructor(
     private authService: AuthService,
@@ -49,13 +56,17 @@ export class CadastrarComponent implements OnInit {
 
     if (validaNome.test(this.usuario.nome)) { 
       nome.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorNome = 0;
     }
     else if (nomeValue == 0) {
       nome.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorNome = 1;
     }
     else {
 
       nome.setAttribute('style', 'border-color:#e84c3d');
+      this.verificadorNome = 1;
+
     }
 
 
@@ -71,13 +82,16 @@ export class CadastrarComponent implements OnInit {
 
     if (validaEmail.test(this.usuario.email)) {
       email.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorEmail = 0;
     }
     else if (emailValue == 0) {
       email.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorEmail = 1;
     }
     else {
 
       email.setAttribute('style', 'border-color:#e84c3d');
+      this.verificadorEmail = 1;
     }
 
   }
@@ -92,13 +106,16 @@ export class CadastrarComponent implements OnInit {
 
     if (validaSenha.test(this.validacaoSenha)) {
       senha.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorSenha = 0;
     }
     else if (senhaValue == 0) {
       senha.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorSenha = 1;
     }
     else {
 
       senha.setAttribute('style', 'border-color:#e84c3d');
+      this.verificadorSenha = 1;
     }
 
   }
@@ -139,13 +156,16 @@ export class CadastrarComponent implements OnInit {
 
     if (regex.test(this.usuario.telefone)) {
       tel.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorTel = 0;
     }
     else if (telValue == 0) {
       tel.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorTel = 0;
     }
     else {
 
       tel.setAttribute('style', 'border-color:#e84c3d');
+      this.verificadorTel = 1;
     }
 
   }
@@ -160,13 +180,16 @@ export class CadastrarComponent implements OnInit {
 
     if (regex.test(this.usuario.fotoPerfil)) {
       foto.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorFoto = 0;
     }
     else if (fotoValue == 0) {
       foto.setAttribute('style', 'border-color:#9794F2');
+      this.verificadorFoto = 0;
     }
     else {
 
       foto.setAttribute('style', 'border-color:#e84c3d');
+      this.verificadorFoto = 1;
     }
 
   }
@@ -254,10 +277,13 @@ export class CadastrarComponent implements OnInit {
       this.alertas.showAlertDanger('Escolha uma das opções')
     }
 
-    if (this.usuario.senha != this.validacaoSenha) {
+    else if(this.usuario.senha != this.validacaoSenha) {
       this.alertas.showAlertDanger('Senhas diferentes')
 
 
+    }
+    else if(this.verificadorNome != 0 || this.verificadorEmail != 0 || this.verificadorSenha != 0 || this.verificadorTel != 0 || this.verificadorFoto != 0){
+      this.alertas.showAlertDanger('Verifique se todas as informações estão corretas')
     }
     else {
     

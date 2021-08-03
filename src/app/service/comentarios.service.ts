@@ -14,15 +14,15 @@ export class ComentariosService {
   ) { }
 
   postarComentario(comentario: Comentarios): Observable<Comentarios>{
-   return this.http.post<Comentarios>('http://localhost:8080/comentario', comentario, {headers: new HttpHeaders().set('Authorization', environment.token)})
+   return this.http.post<Comentarios>('https://redeingressa.herokuapp.com/comentario', comentario, {headers: new HttpHeaders().set('Authorization', environment.token)})
   }
 
   atualizarComentario(comentario: Comentarios): Observable<Comentarios>{
-    return this.http.put<Comentarios>('http://localhost:8080/comentario', comentario, {headers: new HttpHeaders().set('Authorization', environment.token)})
+    return this.http.put<Comentarios>('https://redeingressa.herokuapp.com/comentario', comentario, {headers: new HttpHeaders().set('Authorization', environment.token)})
    }
 
   deletarComentario(id: number){
-    return this.http.delete(`http://localhost:8080/comentario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
+    return this.http.delete(`https://redeingressa.herokuapp.com/comentario/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
    }
 
 }
