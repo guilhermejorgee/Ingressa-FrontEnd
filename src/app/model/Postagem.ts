@@ -1,3 +1,4 @@
+import { Comentarios } from "./Comentarios";
 import { Tema } from "./Temas";
 import { Usuario } from "./Usuario";
 
@@ -25,5 +26,7 @@ export class Postagem{
     public usuario: Usuario;
 
     public curtidoresPostagem: Usuario[];
+
+    public comentarios: Comentarios[];
 
 }

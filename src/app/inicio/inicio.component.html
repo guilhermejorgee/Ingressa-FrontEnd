@@ -1,4 +1,4 @@
-<div class="container-fluid bg-roxo6">
+<div class="container-fluid">
     <div class="container">
 
         <div class="row" style="color:#ede7f8">
@@ -124,21 +124,29 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="d-flex">
+                                    <span (click)="findByIdPostagem(item.id)"
+                                    class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop" class="me-2 botaoapoio">{{item.qtCurtidas}}</span>
                                     <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
-                                        (click)="curtidaPostagem(user, item?.id)" (click)="contClickCurtida(item?.id)"
-                                        (click)="findPostagensComuns()" class="botaoapoio"><i style="font-size: 18pt;"
+                                        (click)="curtidaPostagem(user, item?.id)"
+                                        (click)="findByIdTemaPostagens(temaPostagens.id)" class="botaoapoio"><i style="font-size: 18pt;"
                                             class="fas fa-hand-holding-heart"></i>
                                     </span>
                                     <span (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
                                         (click)="descurtidaPostagem(user, item?.id)"
-                                        (click)="contClickRetiradaCurtida(item?.id)" (click)="findPostagensComuns()"
+                                        (click)="findByIdTemaPostagens(temaPostagens.id)"
                                         class="botaoapoio" style="color: #845ABF;"><i style="font-size: 18pt;"
                                             class="fas fa-hand-holding-heart"></i>
                                     </span>
                                 </div>
                             </div>
-                            <button class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">Quem curtiu</button>
+                           <!-- <button class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Quem curtiu</button>-->
+
+
+                            <button (click)="findByIdPostagem(item.id)"
+                                class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                data-bs-target="#comentarios">Comentários</button>
                         </div>
 
                     </div>
@@ -147,7 +155,7 @@
 
                 <!--Lista Geral-->
                 <div *ngIf="verificaPostagemGeral()">
-                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p animacaoRolagem"
+                    <div class="border-roxoclaro card my-3 bg-roxo4 h-p"
                         *ngFor='let item of postagens | orderBy: key : reverse'>
 
                         <div class="mx-4 my-3 d-flex align-items-center">
@@ -181,23 +189,30 @@
                         <div class="d-flex justify-content-around mb-2">
                             <div class="d-flex flex-column align-items-center">
                                 <div class="d-flex">
+                                    <span (click)="findByIdPostagem(item.id)"
+                                    class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop" class="me-2 botaoapoio">{{item.qtCurtidas}}</span>
                                     <span *ngIf="verificandoCurtidasNaoFeita(item?.id)"
                                         (click)="curtidaPostagem(user, item.id)"
-                                        class="btn btn-outline-success clickcurtir" (click)="contClickCurtida(item.id)"
+                                        class="btn btn-outline-success clickcurtir"
                                         class="botaoapoio"><i style="font-size: 18pt;"
                                             class="fas fa-hand-holding-heart"></i>
                                     </span>
                                     <span (load)="this.findByUser()" *ngIf="verificandoCurtidasFeita(item?.id)"
                                         (click)="descurtidaPostagem(user, item.id)"
-                                        (click)="contClickRetiradaCurtida(item.id)" class="botaoapoio"
+                                        class="botaoapoio"
                                         style="color: #845ABF;"><i style="font-size: 18pt;"
                                             class="fas fa-hand-holding-heart"></i>
                                     </span>
                                 </div>
                             </div>
+                       <!--     <button (click)="findByIdPostagem(item.id)"
+                                class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Quem curtiu</button>-->
+
                             <button (click)="findByIdPostagem(item.id)"
                                 class="btn btn-light bg-azul btn-qmcurtiu text-white" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">Quem curtiu</button>
+                                data-bs-target="#comentarios">Comentários</button>
 
                         </div>
 
@@ -335,6 +350,57 @@
                                 alt="Foto de perfil" style="width: 50px;">
 
                             <a data-bs-dismiss="modal" [routerLink]="['/perfil-user', item.id]">{{item.nome}}</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="comentarios" data-bs-keyboard="false" tabindex="-1" aria-labelledby="comentariosLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-roxo text-center">
+                <h5 class="modal-title text-white" id="comentariosLabel">Comentarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body bg-roxo3">
+
+
+                <div class="form-group text-center texto mb-2">
+
+                    <textarea [(ngModel)]="comentario.comentario" class="form-control bg-in"
+                        placeholder="Escreva um comentário" name="textoPublicacao" id="" cols="30" rows="5"></textarea>
+
+                </div>
+
+                <div class="col-md-12 d-flex justify-content-end">
+                    <button type="button" (click)="postarComentarioPostagem()"
+                        class="btn btn-secondary bg-roxo">Comentar</button>
+                </div>
+
+
+                <ul class="mt-2">
+                    <li *ngFor="let item of postagem2.comentarios | orderBy: keyc : reverse">
+                        <div class=" mb-2 bg-roxo4 border-roxoclaro p-1">
+                            <div class="d-flex align-items-center border-bottom pb-1">
+                                <img src="{{item.usuario.fotoPerfil}}"
+                                    class="me-2 card-img-top img-fluid rounded-circle" alt="Foto de perfil"
+                                    style="width: 50px;">
+                                <div class="d-flex">
+                                    <a data-bs-dismiss="modal" class="ms-2"
+                                        [routerLink]="['/perfil-user', item.usuario.id]">{{item.usuario.nome}} </a>
+                                    <span>&nbsp;em {{item.dataDeComentario | date: 'dd/MM/yyyy'}} às
+                                        {{item.dataDeComentario | date:
+                                        'HH:mm'}}</span>
+                                </div>
+                            </div>
+                            <p class="mt-1 ms-2">{{item.comentario}}</p>
+
                         </div>
                     </li>
                 </ul>
