@@ -7,23 +7,7 @@ vista a desigualdade de gênero presente no mercado de trabalho.
 O projeto aborda a desigualdade de gênero, em específico na falta de inclusão da mulher no mercado de trabalho, busca 
 criar uma plataforma aberta para receber profissionais mulheres e conectá-las a possíveis empregadores.</h4>
 
-Campos da Model usuario
-
-+ id
-+ nome
-+ email
-+ dataNascimento
-+ senha
-+ usuarioEmpregador
-+ descSobre
-+ fotoPerfil
-
-O campo dataNascimento é utilizado para verificar a idade do usuario cadastrado, e se ele for menor de 14 anos, o usuário não pode
-usar a plataforma, já que ele não seria empregável
-O campo usuarioEmpregador é um boolean que serve para verificar se o usuário pretende criar uma conta de empregador ou de candidato
-a emprego.
-
-Resumo:
+<b>Resumo:</b>
 Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation Brasil, como o framework SpringBoot para criação da API REST no back-end, juntamente com: Java, JUnit, MySQL e as tecnologias/ferramentas: Postman, Swagger, Heroku. Posteriomente o framework Angular no front-end, para o consumo da API, em conjunto com: Bootstrap, JavaScript, TypeScript, Nodejs e tecnologias/ferramentas, como: Figma, VSCODE.
 
 <h3>Tecnologias usadas</h3>
@@ -69,10 +53,7 @@ Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation
 Entre em contato com um dos desenvolvedores para solicitar a chave para ativação das funções administrativas do seu usuário.
 
 
-
-
-
-Implementações futuras:
+<h4>Implementações futuras:</h4>
 
 + Canal de suporte
 + Filtro de vagas que se encaixem melhor no perfil da profissional
