@@ -23,6 +23,9 @@ usar a plataforma, já que ele não seria empregável
 O campo usuarioEmpregador é um boolean que serve para verificar se o usuário pretende criar uma conta de empregador ou de candidato
 a emprego.
 
+Resumo:
+Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation Brasil, como o framework SpringBoot para criação da API REST no back-end, juntamente com: Java, JUnit, MySQL e as tecnologias/ferramentas: Postman, Swagger, Heroku. Posteriomente o framework Angular no front-end, para o consumo da API, em conjunto com: Bootstrap, JavaScript, TypeScript, Nodejs e tecnologias/ferramentas, como: Figma, VSCODE.
+
 <h3>Tecnologias usadas</h3>
 
 <table>
@@ -34,6 +37,7 @@ a emprego.
 		<td>CSS</td>
 		<td>Bootstrap</td>
 		<td>Angular</td>
+    <td>Heroku</td>
   </tr>
 	<tr>
 		<td>16</td>
@@ -46,6 +50,23 @@ a emprego.
 	</tr>
 </table>
 
+<h3>Principais Funcionalidades</h3>
+
+<ul>
+  <li>Editar perfil</li>
+  <li>Fazer postagens comuns e de vagas de emprego / Editar e deletar essas postagens</li>
+  <li>Curtir e descurtir postagens / Verificar quem curtiu a postagem</li>
+  <li>Comentar nas postagens</li>
+  <li>Se interessar por uma vaga / Verificar quem se interessou pela vaga</li>
+  <li>Ranking dos empregadores que mais postaram vagas na plataforma</li>
+  <li>Ranking de postagem com mais curtidas nos últimos 7 dias</li>
+  <li>Filtro de busca de vagas apenas por cargo ou área, apenas por região e por carga ou área e região</li>
+  <li>Visitar perfis e editar perfil</li>
+  <li>As alterações na formatação do texto feitas no textarea quando a postagem está sendo criada são identificadas e convertidas em tag's HTML para posteriormente ser exibido com as quebras de linhas e espaços. Além de criarmos a tag "<d></d>" para destacar uma palavra</li>
+</ul>
+
+Entre em contato com um dos desenvolvedores para solicitar a chave para ativação das funções administrativas do seu usuário.
+
 
 
 
@@ -55,43 +76,3 @@ Implementações futuras:
 + Canal de suporte
 + Filtro de vagas que se encaixem melhor no perfil da profissional
 + Avaliação de empregadores
-+ Sessão de comentários
-
-
-
-
-
-
-
-
-
-
-
-
-# Ingressa
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
