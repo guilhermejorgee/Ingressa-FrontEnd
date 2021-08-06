@@ -64,6 +64,7 @@ Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation
   <li>Visitar perfis e editar perfil</li>
   <li>As alterações na formatação do texto feitas no textarea quando a postagem está sendo criada são identificadas e convertidas em tag's HTML para posteriormente ser exibido com as quebras de linhas e espaços. Além de criarmos a tag "<d></d>" para destacar uma palavra</li>
 </ul>
+<hr>
 
 Entre em contato com um dos desenvolvedores para solicitar a chave para ativação das funções administrativas do seu usuário.
 
