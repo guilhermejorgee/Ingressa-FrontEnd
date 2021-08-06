@@ -8,7 +8,7 @@ O projeto aborda a desigualdade de gênero, em específico na falta de inclusão
 criar uma plataforma aberta para receber profissionais mulheres e conectá-las a possíveis empregadores.</h4>
 
 <b>Resumo:</b>
-Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation Brasil, como o framework SpringBoot para criação da API REST no back-end, juntamente com: Java, JUnit, MySQL e as tecnologias/ferramentas: Postman, Swagger, Heroku. Posteriomente o framework Angular no front-end, para o consumo da API, em conjunto com: Bootstrap, JavaScript, TypeScript, Nodejs e tecnologias/ferramentas, como: Figma, VSCODE.
+Neste projeto foi utilizado todo conhecimento abordado no bootcamp da Generation Brasil, como o framework SpringBoot para criação da API REST no back-end, juntamente com: Java, JUnit, MySQL e as tecnologias/ferramentas: Postman, Swagger, Heroku. Posteriomente o framework Angular no front-end, para o consumo da API, em conjunto com: Bootstrap, TypeScript, Nodejs e tecnologias/ferramentas, como: Figma, VSCODE.
 
 <h3>Tecnologias usadas</h3>
 
